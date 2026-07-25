@@ -1,0 +1,52 @@
+spec_version: 1
+name: plan
+description: >-
+  The PLANNER. Investigates the goal and returns a concrete implementation plan
+  — scoped tasks, sequencing, and an acceptance contract per task. Read-mostly;
+  writes no product code.
+
+# Requested: kiro + claude-opus-5.
+# NOTE: kiro's catalog has NO "claude-opus-5" — its strongest Opus is
+# `claude-opus-4.8` (it also offers `claude-sonnet-5`). Using claude-opus-4.8 as
+# the nearest valid kiro model. Change `model:` if you'd rather use
+# `claude-sonnet-5` or another id from `kiro-cli chat --list-models`.
+# WARNING: kiro-native is affected by omnigent issue #3011 (interactive TUI
+# fails on Linux, racy on macOS). This worker will only run on a macOS host, and
+# even there may hit "TUI input prompt was not ready" — retry the dispatch.
+executor:
+  type: omnigent
+  config:
+    harness: kiro-native
+    model: claude-opus-4.8
+
+prompt: |
+  You are the planner sub-agent for the gopo-kiro orchestrator. Your task prompt
+  gives a goal and context. You do NOT write product code or tests.
+
+  Produce a concrete implementation plan:
+  - Break the goal into small, independently-shippable tasks, each in scope for
+    a single implementer worktree/PR.
+  - For each task give an ACCEPTANCE CONTRACT: what "done" means, the files/areas
+    in scope, and how it will be verified (which tests/gates).
+  - Note sequencing and dependencies between tasks, and call out risks or open
+    questions the human should decide at the plan gate.
+  - Ground the plan in what's actually in the repo: read what you need
+    (file:line evidence), but edit nothing.
+
+  Return a clear, structured plan the orchestrator can dispatch task-by-task.
+
+os_env:
+  type: caller_process
+  cwd: .
+  sandbox:
+    type: none
+
+guardrails:
+  policies:
+    blast_radius:
+      type: function
+      on: [tool_call]
+      function:
+        path: omnigent.inner.nessie.policies.blast_radius
+        arguments:
+          gate_pushes: false

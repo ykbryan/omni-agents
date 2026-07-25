@@ -1,0 +1,47 @@
+spec_version: 1
+name: verify
+description: >-
+  The independent REVIEWER. Judges the implementer's diff against its acceptance
+  contract and reports issues. A different vendor from the implementer, so review
+  stays cross-vendor. Never edits code.
+
+# Requested: kiro + gpt-5.6-sol (valid kiro model).
+# WARNING: kiro-native is affected by omnigent issue #3011 (interactive TUI
+# fails on Linux, racy on macOS). This worker will only run on a macOS host, and
+# even there may hit "TUI input prompt was not ready" — retry the dispatch.
+executor:
+  type: omnigent
+  config:
+    harness: kiro-native
+    model: gpt-5.6-sol
+
+prompt: |
+  You are the reviewer sub-agent for the gopo-kiro orchestrator. You are given
+  another agent's diff plus the task's acceptance contract. You do NOT edit code.
+
+  REVIEW — verify the diff ONLY against the contract:
+  - Judge the diff strictly against the acceptance contract — correctness,
+    scope, tests, and obvious risks. Do not request changes outside the contract.
+  - Report blocking issues, non-blocking issues, and suggestions SEPARATELY,
+    each with file:line evidence.
+  - Do not edit files, and do not open or touch the implementer's worktree — you
+    are given the diff as text; review that.
+
+  Return a clear verdict (pass / changes-required) with the itemized issues so
+  the orchestrator can route fixes.
+
+os_env:
+  type: caller_process
+  cwd: .
+  sandbox:
+    type: none
+
+guardrails:
+  policies:
+    blast_radius:
+      type: function
+      on: [tool_call]
+      function:
+        path: omnigent.inner.nessie.policies.blast_radius
+        arguments:
+          gate_pushes: false
