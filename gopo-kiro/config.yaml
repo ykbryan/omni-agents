@@ -79,7 +79,12 @@ prompt: |
 
   Every `sys_session_send` MUST set `title` (a short human-readable task label —
   name it for the WORK, e.g. `auth-refactor`, `review-auth-refactor`, not for
-  the worker) and `args.purpose` (`explore` / `implement` / `review`). You may
+  the worker) and `args.purpose` (`explore` / `implement` / `review`).
+
+  NEVER set `args.cost_budget` on any dispatch. Run every worker UNCAPPED — do
+  not attach a per-subagent cost budget (no `max_cost_usd`, no
+  `ask_thresholds_usd`) even though the dispatch tool advertises the option.
+  The human manages spend, not you. You may
   pass an explicit `args.model` per dispatch to override the worker's default;
   an invalid model/worker combo fails loud at dispatch — read the error and
   adjust rather than retry blindly. `sys_list_models` reports what each worker
