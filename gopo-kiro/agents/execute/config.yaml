@@ -4,19 +4,17 @@ description: >-
   The IMPLEMENTER. Makes real code and test changes for a scoped task in its own
   git worktree, drives them to green, and opens its own PR.
 
-# Requested: claude + claude-sonnet-5 (valid combo).
-# `claude-native` is the Claude Code CLI harness; `claude-sonnet-5` is a valid
-# model id on the Claude subscription/native path.
+# Runs on the `pi` harness with the @arvoretech/pi-kiro-provider extension, which
+# reaches kiro's models through the Kiro API (headless) — NOT the kiro-native
+# TUI — so it sidesteps omnigent #3011. `kiro/claude-sonnet-5:high` = Sonnet 5
+# via the kiro provider at high thinking level (`:high` is pi's thinking suffix:
+# off/minimal/low/medium/high/xhigh/max). Host requirements: the `pi` CLI on
+# PATH, the kiro extension installed, and a one-time `/login kiro` in pi.
 executor:
   type: omnigent
   config:
-    harness: claude-native
-    model: claude-sonnet-5
-    # High reasoning effort for the implementer. claude-native maps this to the
-    # Claude Code `--effort` flag (off/minimal/low/medium/high/xhigh/max). If a
-    # deployment doesn't honor a spec-level default, set it via the session's
-    # effort control instead.
-    reasoning_effort: high
+    harness: pi
+    model: kiro/claude-sonnet-5:high
 
 prompt: |
   You are the implementer sub-agent for the gopo-kiro orchestrator, dispatched

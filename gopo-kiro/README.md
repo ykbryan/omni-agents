@@ -1,8 +1,9 @@
 # gopo-kiro
 
-A polly-style coding orchestrator with a fixed three-stage pipeline. The
-orchestrator and the two kiro-backed workers all run on the headless **`pi`**
-harness, so nothing depends on the kiro-native TUI.
+A polly-style coding orchestrator with a fixed four-worker pipeline. The
+orchestrator and the three kiro-backed workers (`plan`/`execute`/`verify`) run
+headless on the **`pi`** harness (no kiro-native TUI); a claude-native `qa`
+worker adds browser/MCP verification.
 
 ## Pipeline
 
@@ -10,21 +11,28 @@ harness, so nothing depends on the kiro-native TUI.
 |---|---|---|---|---|
 | **gopo** (brain) | orchestrator | `pi` | `minimax-m3` | plans, delegates, verifies; writes no code |
 | **plan** | planner | `pi` (kiro provider) | `kiro/claude-opus-4-8:high` | investigate + produce plan/acceptance contracts (`explore`) |
-| **execute** | implementer | `claude-native` | `claude-sonnet-5` · effort `high` | make code/test changes, open PR (`implement`) |
-| **verify** | reviewer | `pi` (kiro provider) | `kiro/gpt-5-6-sol:high` | independent review of the diff (`review`) |
+| **execute** | implementer | `pi` (kiro provider) | `kiro/claude-sonnet-5:high` | make code/test changes, open PR (`implement`) |
+| **verify** | code reviewer | `pi` (kiro provider) | `kiro/gpt-5-6-sol:high` | independent review of the diff (`review`) |
+| **qa** | QA / visual-check | `claude-native` | `claude-sonnet-5` · effort `xhigh` | run & see: browser/UI + MCP checks (`review`) |
 
-**Reasoning effort** is `high` on all three workers. For the pi workers it's the
-model `:high` suffix (pi's thinking level: off/minimal/low/medium/high/xhigh/max);
-for the claude-native `execute` worker it's `reasoning_effort: high` in the
-executor config (mapped to Claude Code `--effort`). The `gopo` brain is left at
-its default.
+**Reasoning effort:** pi workers use the model `:high` suffix (pi's thinking
+level: off/minimal/low/medium/high/xhigh/max); the claude-native `qa` worker uses
+`reasoning_effort: xhigh` ("extra effort", one above high; mapped to Claude Code
+`--effort`). The `gopo` brain is left at its default.
 
-Flow: **plan → execute (opens its own PR) → verify → (fixes loop) → human merges.**
-gopo never writes code and never merges.
+**Why `qa` is claude-native:** plan/execute/verify run headless via pi and can't
+drive a browser or MCP tools. `qa` runs on claude-native (Claude Code) so it can
+launch the app, drive **Chrome** for visual/UI checks, and use **MCP** tools —
+verifying that a change actually *works and looks right*, which the diff-only
+`verify` can't. (Its visual capability depends on a browser/Chrome MCP being
+configured for Claude Code on the host.)
+
+Flow: **plan → execute (opens its own PR) → verify → qa (when UI/browser/MCP) →
+(fixes loop) → human merges.** gopo never writes code and never merges.
 
 ## How the kiro models are reached (this is the point)
 
-`plan` and `verify` use kiro's models — but through the **`pi` harness + the
+`plan`, `execute`, and `verify` use kiro's models — but through the **`pi` harness + the
 [`@arvoretech/pi-kiro-provider`](https://www.npmjs.com/package/@arvoretech/pi-kiro-provider)
 extension**, which talks to the **Kiro API** directly (headless). They do **not**
 drive the `kiro-native` TUI, so they completely sidestep omnigent
