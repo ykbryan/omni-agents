@@ -15,20 +15,19 @@ spawn: true
 
 # ---------------------------------------------------------------------------
 # Orchestrator "brain" = gopo.
-# Requested: hermes + minimax-m3.
-# CAVEAT (see README): the orchestrator brain drives the tool-calling
-# orchestration layer (sys_session_send / spawn / guardrails). That layer is
-# proven on the SDK harnesses (claude-sdk, openai-agents-sdk). Running the brain
-# on a native TUI harness (hermes-native) is UNPROVEN for orchestration; if gopo
-# cannot dispatch sub-agents, switch `harness:` to `claude-sdk` (drop `model:`)
-# or `openai-agents-sdk`. `minimax-m3` also is not in Omnigent's static catalog
-# — it must be served by your configured gateway/provider, or the turn errors.
+# Runs on the `pi` harness (headless, non-native) for two reasons: (1) the Web UI
+# lists non-native-harness agents in the "Agents" picker — native-harness brains
+# get folded into the "Harnesses" section and hidden — so `pi` makes gopo-kiro
+# appear alongside polly/debby; (2) pi can run ANY gateway model, so it keeps
+# minimax-m3. Requires the `pi` CLI on the host PATH (https://pi.dev/install.sh)
+# and your gateway to serve `minimax-m3`; if minimax-m3 isn't served there, drop
+# `model:` (pi default) or set a served model.
 # ---------------------------------------------------------------------------
 executor:
   type: omnigent
   context_window: 1000000
   config:
-    harness: hermes-native
+    harness: pi
     model: minimax-m3
 
 prompt: |
