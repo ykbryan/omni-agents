@@ -7,7 +7,7 @@ custom harness/model mix.
 
 | Stage | Worker | Harness | Model | Purpose |
 |---|---|---|---|---|
-| **gopo** (brain) | orchestrator | `hermes-native` | `minimax-m3` | plans, delegates, verifies; writes no code |
+| **gopo** (brain) | orchestrator | `pi` | `minimax-m3` | plans, delegates, verifies; writes no code |
 | **plan** | planner | `kiro-native` | `claude-opus-4.8` | investigate + produce plan/acceptance contracts (`explore`) |
 | **execute** | implementer | `claude-native` | `claude-sonnet-5` | make code/test changes, open PR (`implement`) |
 | **verify** | reviewer | `kiro-native` | `gpt-5.6-sol` | cross-vendor review of the diff (`review`) |
@@ -49,18 +49,18 @@ the relevant `config.yaml` if you disagree with the call.
    only resolvable if your configured gateway/provider serves it. If it doesn't,
    the brain's turns will error. Verify with `sys_list_models` / your gateway.
 
-3. **gopo brain harness `hermes-native`** is kept as you asked, but this is the
-   riskiest choice: the orchestrator brain has to drive the tool-calling
-   orchestration layer (`sys_session_send`, spawn, guardrails), which is proven
-   on the **SDK** harnesses (`claude-sdk`, `openai-agents-sdk`), not on native
-   TUI harnesses. If gopo can't dispatch its sub-agents, switch the brain in
-   `config.yaml` to:
-   ```yaml
-   executor:
-     config:
-       harness: claude-sdk        # or openai-agents-sdk
-       # (drop `model:` to use the provider default, or pin a supported model)
-   ```
+3. **gopo brain harness: `pi` (not `hermes-native`).** The brain was originally
+   `hermes-native`, but a native-harness brain (a) can't drive the orchestration
+   toolset (`sys_session_send`, spawn) and (b) is hidden from the Web UI **Agents**
+   picker (the UI folds `*-native` harnesses into the "Harnesses" section). The
+   `pi` harness is headless + non-native, so gopo-kiro now lists in the Agents
+   picker alongside polly/debby, and pi can run any gateway model — keeping
+   `minimax-m3`. Requirements: the `pi` CLI on the host PATH
+   (`curl -fsSL https://pi.dev/install.sh | sh`) and a configured Pi model
+   provider that serves `minimax-m3` (`omni setup` → Pi, or the app's Pi
+   "needs setup" flow). If your provider doesn't serve `minimax-m3`, drop the
+   `model:` line (pi default) or pin a served model. To go fully SDK instead,
+   set `harness: claude-sdk` and drop `model:`.
 
 ## ⚠️ kiro-native is currently broken (Omnigent #3011)
 
@@ -85,11 +85,16 @@ bundled `examples/`, or point at it explicitly), then launch it against your
 server, e.g.:
 
 ```bash
-# from the gopo-kiro parent dir, on the macOS host
-omni run --agent gopo-kiro --server http://omni.taile2a4c7.ts.net:8000
-# (or open it from the desktop app's agent picker once registered)
+# on the macOS host (kiro workers are macOS-only, #3011)
+omni run ~/omni-agents/gopo-kiro --server http://omni.taile2a4c7.ts.net:8000
 ```
 
-Worker CLIs must be on PATH on the host: `kiro-cli` (plan, verify) and `claude`
+Or, since gopo-kiro is seeded as a persistent built-in on the server (via the
+`OMNIGENT_BUILTIN_AGENT_DIRS` env in the server's compose), just pick
+**Gopo-kiro** from the desktop app's Agents picker.
+
+Host PATH requirements: `pi` (brain), `kiro-cli` (plan, verify), and `claude`
 (execute). gopo runs a one-shot preflight (`command -v kiro-cli claude`) and
-routes only to workers whose CLI resolves.
+routes only to workers whose CLI resolves. The `pi` brain additionally needs a
+configured Pi model provider (see note 3 above) — until then the app shows a
+"needs setup" badge on the agent.
