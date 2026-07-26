@@ -77,8 +77,8 @@ editing: `git pull` in the mounted checkout, then restart the server container.
 Launch on the **macOS host** (kiro auth + pi extension live there):
 
 ```bash
-omni run ~/omni-agents/gopo-kiro --server http://omni.taile2a4c7.ts.net:8000
-# or pick "Gopo-kiro" from the app's Agents picker, host = Bryans-M3-MacBook-Pro-8.local
+omni run ~/omni-agents/gopo-kiro --server http://<your-omnigent-server>:8000
+# or pick "Gopo-kiro" from the app's Agents picker, host = <your-macos-host>
 ```
 
 gopo runs a one-shot preflight (`command -v pi claude`) and routes only to
