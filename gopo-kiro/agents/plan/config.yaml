@@ -16,7 +16,8 @@ executor:
   type: omnigent
   config:
     harness: pi
-    model: kiro/claude-opus-4-8
+    # `:high` is pi's thinking-level suffix (off/minimal/low/medium/high/xhigh/max).
+    model: kiro/claude-opus-4-8:high
 
 prompt: |
   You are the planner sub-agent for the gopo-kiro orchestrator. Your task prompt

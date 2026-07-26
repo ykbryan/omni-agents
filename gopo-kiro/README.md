@@ -9,9 +9,15 @@ harness, so nothing depends on the kiro-native TUI.
 | Stage | Worker | Harness | Model | Purpose |
 |---|---|---|---|---|
 | **gopo** (brain) | orchestrator | `pi` | `minimax-m3` | plans, delegates, verifies; writes no code |
-| **plan** | planner | `pi` (kiro provider) | `kiro/claude-opus-4-8` | investigate + produce plan/acceptance contracts (`explore`) |
-| **execute** | implementer | `claude-native` | `claude-sonnet-5` | make code/test changes, open PR (`implement`) |
-| **verify** | reviewer | `pi` (kiro provider) | `kiro/gpt-5-6-sol` | independent review of the diff (`review`) |
+| **plan** | planner | `pi` (kiro provider) | `kiro/claude-opus-4-8:high` | investigate + produce plan/acceptance contracts (`explore`) |
+| **execute** | implementer | `claude-native` | `claude-sonnet-5` · effort `high` | make code/test changes, open PR (`implement`) |
+| **verify** | reviewer | `pi` (kiro provider) | `kiro/gpt-5-6-sol:high` | independent review of the diff (`review`) |
+
+**Reasoning effort** is `high` on all three workers. For the pi workers it's the
+model `:high` suffix (pi's thinking level: off/minimal/low/medium/high/xhigh/max);
+for the claude-native `execute` worker it's `reasoning_effort: high` in the
+executor config (mapped to Claude Code `--effort`). The `gopo` brain is left at
+its default.
 
 Flow: **plan → execute (opens its own PR) → verify → (fixes loop) → human merges.**
 gopo never writes code and never merges.

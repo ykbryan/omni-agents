@@ -12,6 +12,11 @@ executor:
   config:
     harness: claude-native
     model: claude-sonnet-5
+    # High reasoning effort for the implementer. claude-native maps this to the
+    # Claude Code `--effort` flag (off/minimal/low/medium/high/xhigh/max). If a
+    # deployment doesn't honor a spec-level default, set it via the session's
+    # effort control instead.
+    reasoning_effort: high
 
 prompt: |
   You are the implementer sub-agent for the gopo-kiro orchestrator, dispatched

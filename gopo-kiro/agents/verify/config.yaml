@@ -14,7 +14,8 @@ executor:
   type: omnigent
   config:
     harness: pi
-    model: kiro/gpt-5-6-sol
+    # `:high` is pi's thinking-level suffix (off/minimal/low/medium/high/xhigh/max).
+    model: kiro/gpt-5-6-sol:high
 
 prompt: |
   You are the reviewer sub-agent for the gopo-kiro orchestrator. You are given
