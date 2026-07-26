@@ -5,19 +5,18 @@ description: >-
   — scoped tasks, sequencing, and an acceptance contract per task. Read-mostly;
   writes no product code.
 
-# Requested: kiro + claude-opus-5.
-# NOTE: kiro's catalog has NO "claude-opus-5" — its strongest Opus is
-# `claude-opus-4.8` (it also offers `claude-sonnet-5`). Using claude-opus-4.8 as
-# the nearest valid kiro model. Change `model:` if you'd rather use
-# `claude-sonnet-5` or another id from `kiro-cli chat --list-models`.
-# WARNING: kiro-native is affected by omnigent issue #3011 (interactive TUI
-# fails on Linux, racy on macOS). This worker will only run on a macOS host, and
-# even there may hit "TUI input prompt was not ready" — retry the dispatch.
+# Runs on the `pi` harness with the @arvoretech/pi-kiro-provider extension, which
+# reaches kiro's models through the Kiro API (headless) — NOT the kiro-native
+# TUI — so it sidesteps omnigent #3011 entirely. `kiro/claude-opus-4-8` is the
+# top Opus the provider exposes (there is no opus-5; ids are dash-form).
+# Host requirements: the `pi` CLI on PATH, the kiro extension installed
+# (`pi install npm:@arvoretech/pi-kiro-provider`), and a one-time `/login kiro`
+# in pi (reuses your kiro-cli identity).
 executor:
   type: omnigent
   config:
-    harness: kiro-native
-    model: claude-opus-4.8
+    harness: pi
+    model: kiro/claude-opus-4-8
 
 prompt: |
   You are the planner sub-agent for the gopo-kiro orchestrator. Your task prompt

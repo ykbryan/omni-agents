@@ -2,18 +2,19 @@ spec_version: 1
 name: verify
 description: >-
   The independent REVIEWER. Judges the implementer's diff against its acceptance
-  contract and reports issues. A different vendor from the implementer, so review
-  stays cross-vendor. Never edits code.
+  contract and reports issues. A different model line from the implementer, so
+  review stays cross-check. Never edits code.
 
-# Requested: kiro + gpt-5.6-sol (valid kiro model).
-# WARNING: kiro-native is affected by omnigent issue #3011 (interactive TUI
-# fails on Linux, racy on macOS). This worker will only run on a macOS host, and
-# even there may hit "TUI input prompt was not ready" — retry the dispatch.
+# Runs on the `pi` harness with the @arvoretech/pi-kiro-provider extension, which
+# reaches kiro's models through the Kiro API (headless) — NOT the kiro-native
+# TUI — so it sidesteps omnigent #3011. `kiro/gpt-5-6-sol` (dash form) is the
+# provider's GPT-5.6 Sol id. Host requirements: the `pi` CLI on PATH, the kiro
+# extension installed, and a one-time `/login kiro` in pi.
 executor:
   type: omnigent
   config:
-    harness: kiro-native
-    model: gpt-5.6-sol
+    harness: pi
+    model: kiro/gpt-5-6-sol
 
 prompt: |
   You are the reviewer sub-agent for the gopo-kiro orchestrator. You are given
