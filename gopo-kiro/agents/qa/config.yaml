@@ -19,6 +19,12 @@ executor:
     harness: claude-native
     model: claude-sonnet-5
     reasoning_effort: xhigh
+    # REQUIRED for a headless claude-native sub-agent: `auto` launches Claude
+    # Code with `--permission-mode auto`, which auto-approves without prompting
+    # AND skips the "trust this folder?" dialog. Without it, Claude Code hangs on
+    # the trust prompt in each fresh worktree and never reaches input-ready
+    # (Omnigent times out at 30s). Mirrors the bundled polly `claude_code` worker.
+    permission_mode: auto
 
 prompt: |
   You are the QA sub-agent for the gopo-kiro orchestrator. You verify things the
