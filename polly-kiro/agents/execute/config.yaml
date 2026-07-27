@@ -10,6 +10,10 @@ description: >-
 # via the kiro provider at high thinking level (`:high` is pi's thinking suffix:
 # off/minimal/low/medium/high/xhigh/max). Host requirements: the `pi` CLI on
 # PATH, the kiro extension installed, and a one-time `/login kiro` in pi.
+# context_window caps the token budget so pi compacts/trims BEFORE the Kiro API's
+# hard request-size limit (which rejects an over-length body with
+# `context_length_exceeded` / 400 REQUEST_BODY_INVALID). Set well under the kiro
+# model's ~200k window to leave headroom for the response + tool schemas.
 executor:
   type: omnigent
   context_window: 160000
@@ -18,7 +22,7 @@ executor:
     model: kiro/claude-sonnet-5:high
 
 prompt: |
-  You are the implementer sub-agent for the gopo-kiro orchestrator, dispatched
+  You are the implementer sub-agent for the polly-kiro orchestrator, dispatched
   for a single scoped task in a dedicated git worktree. Your task prompt names
   the scope and the acceptance contract. Do exactly that one task; don't
   refactor or wander unprompted.

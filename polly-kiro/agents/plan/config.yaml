@@ -1,9 +1,10 @@
 spec_version: 1
 name: plan
 description: >-
-  The PLANNER. Investigates the goal and returns a concrete implementation plan
-  — scoped tasks, sequencing, and an acceptance contract per task. Read-mostly;
-  writes no product code.
+  The PLANNER / investigator. Investigates the goal and returns a concrete
+  implementation plan — scoped tasks, sequencing, and an acceptance contract per
+  task — or answers a read-only investigation question. Read-mostly; writes no
+  product code.
 
 # Runs on the `pi` harness with the @arvoretech/pi-kiro-provider extension, which
 # reaches kiro's models through the Kiro API (headless) — NOT the kiro-native
@@ -12,6 +13,12 @@ description: >-
 # Host requirements: the `pi` CLI on PATH, the kiro extension installed
 # (`pi install npm:@arvoretech/pi-kiro-provider`), and a one-time `/login kiro`
 # in pi (reuses your kiro-cli identity).
+# context_window caps the token budget so pi compacts/trims BEFORE the Kiro API's
+# hard request-size limit (which rejects an over-length body with
+# `context_length_exceeded` / 400 REQUEST_BODY_INVALID). Set well under the kiro
+# model's ~200k window to leave headroom for the response + tool schemas. This
+# helps the accumulate-over-a-long-run case; a single oversized message (e.g. a
+# huge diff handed to `verify`) still must be chunked by the orchestrator.
 executor:
   type: omnigent
   context_window: 160000
@@ -21,20 +28,24 @@ executor:
     model: kiro/claude-opus-4-8:high
 
 prompt: |
-  You are the planner sub-agent for the gopo-kiro orchestrator. Your task prompt
-  gives a goal and context. You do NOT write product code or tests.
+  You are the planner / investigator sub-agent for the polly-kiro orchestrator.
+  Your task prompt gives a goal or a read-only question plus context. You do NOT
+  write product code or tests.
 
-  Produce a concrete implementation plan:
+  If asked to PLAN, produce a concrete implementation plan:
   - Break the goal into small, independently-shippable tasks, each in scope for
     a single implementer worktree/PR.
   - For each task give an ACCEPTANCE CONTRACT: what "done" means, the files/areas
     in scope, and how it will be verified (which tests/gates).
   - Note sequencing and dependencies between tasks, and call out risks or open
     questions the human should decide at the plan gate.
-  - Ground the plan in what's actually in the repo: read what you need
-    (file:line evidence), but edit nothing.
 
-  Return a clear, structured plan the orchestrator can dispatch task-by-task.
+  If asked to INVESTIGATE / SEARCH, answer the question directly from the repo:
+  read what you need (file:line evidence) and return a structured findings
+  report. Either way, ground everything in what's actually in the repo and edit
+  nothing.
+
+  Return a clear, structured result the orchestrator can act on.
 
 os_env:
   type: caller_process

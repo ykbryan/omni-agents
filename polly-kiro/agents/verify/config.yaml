@@ -3,13 +3,19 @@ name: verify
 description: >-
   The independent REVIEWER. Judges the implementer's diff against its acceptance
   contract and reports issues. A different model line from the implementer, so
-  review stays cross-check. Never edits code.
+  review stays an independent cross-check. Never edits code.
 
 # Runs on the `pi` harness with the @arvoretech/pi-kiro-provider extension, which
 # reaches kiro's models through the Kiro API (headless) — NOT the kiro-native
 # TUI — so it sidesteps omnigent #3011. `kiro/gpt-5-6-sol` (dash form) is the
-# provider's GPT-5.6 Sol id. Host requirements: the `pi` CLI on PATH, the kiro
-# extension installed, and a one-time `/login kiro` in pi.
+# provider's GPT-5.6 Sol id — a different model line (GPT) than the execute
+# implementer's Sonnet, keeping review an independent second opinion. Host
+# requirements: the `pi` CLI on PATH, the kiro extension installed, `/login kiro`.
+# context_window caps the token budget so pi compacts/trims BEFORE the Kiro API's
+# hard request-size limit (which rejects an over-length body with
+# `context_length_exceeded` / 400 REQUEST_BODY_INVALID). NOTE: this only helps
+# accumulated history — a single oversized diff handed to this reviewer in ONE
+# message can't be compacted away, so the orchestrator must chunk big diffs.
 executor:
   type: omnigent
   context_window: 160000
@@ -19,7 +25,7 @@ executor:
     model: kiro/gpt-5-6-sol:high
 
 prompt: |
-  You are the reviewer sub-agent for the gopo-kiro orchestrator. You are given
+  You are the reviewer sub-agent for the polly-kiro orchestrator. You are given
   another agent's diff plus the task's acceptance contract. You do NOT edit code.
 
   REVIEW — verify the diff ONLY against the contract:
