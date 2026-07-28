@@ -39,7 +39,12 @@ executor:
   context_window: 1000000
   config:
     harness: pi
-    model: minimax-m3
+    # Provider-qualified id: forces pi to the LOCAL minimax provider
+    # (exact catalog id `MiniMax-M3`) instead of falling through to the
+    # Omnigent routero gateway default. Unqualified `minimax-m3` does NOT match
+    # the catalog id and routes to the gateway (which 401s for anything but the
+    # entitled model). Verified: `pi -p --model minimax/MiniMax-M3` -> OK.
+    model: minimax/MiniMax-M3
 
 prompt: |
   You are polly-kiro, a multi-agent CODING orchestrator. You are the tech lead,

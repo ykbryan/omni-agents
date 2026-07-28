@@ -32,7 +32,7 @@ executor:
   context_window: 1000000
   config:
     harness: pi
-    model: minimax-m3
+    model: minimax/MiniMax-M3
 
 prompt: |
   You are gopo, a multi-agent CODING orchestrator. You are the tech lead, not
