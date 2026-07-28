@@ -11,28 +11,28 @@ description: >-
   NOTE: plan, execute, and verify reach kiro's models via the `pi` harness + the
   @arvoretech/pi-kiro-provider extension (the Kiro API, headless) — NOT the
   kiro-native TUI — so they sidestep omnigent #3011. `qa` runs on claude-native
-  for its browser/MCP tooling. Run on a macOS host with the pi CLI, the kiro
-  extension, `/login kiro` done, and the `claude` CLI. See README.md.
+  for its browser/MCP tooling. The gopo brain runs on claude-sdk (claude-sonnet-5).
+  Run on a host with the pi CLI, the kiro extension, `/login kiro` done, the
+  `claude` CLI, and a configured Claude provider. See README.md.
 
 # gopo may also spawn self-defined child sessions (registers sys_session_create).
 spawn: true
 
 # ---------------------------------------------------------------------------
 # Orchestrator "brain" = gopo.
-# Runs on the `pi` harness (headless, non-native) for two reasons: (1) the Web UI
-# lists non-native-harness agents in the "Agents" picker — native-harness brains
-# get folded into the "Harnesses" section and hidden — so `pi` makes gopo-kiro
-# appear alongside polly/debby; (2) pi can run ANY gateway model, so it keeps
-# minimax-m3. Requires the `pi` CLI on the host PATH (https://pi.dev/install.sh)
-# and your gateway to serve `minimax-m3`; if minimax-m3 isn't served there, drop
-# `model:` (pi default) or set a served model.
+# Runs on the `claude-sdk` harness with `claude-sonnet-5`. The SDK harness is the
+# most reliable at the orchestration layer (sys_session_send / spawn / inbox
+# supervision) — it dispatches-and-waits cleanly instead of looping — and, like
+# polly, it still appears in the Web UI "Agents" picker. Resolves through the
+# configured Claude provider (`omnigent setup`: a Claude subscription, an
+# Anthropic API key, or a gateway). Requires the Claude provider on the host.
 # ---------------------------------------------------------------------------
 executor:
   type: omnigent
   context_window: 1000000
   config:
-    harness: pi
-    model: minimax/MiniMax-M3
+    harness: claude-sdk
+    model: claude-sonnet-5
 
 prompt: |
   You are gopo, a multi-agent CODING orchestrator. You are the tech lead, not
@@ -159,7 +159,7 @@ terminals:
         type: none
 
 tools:
-  # Fixed three-stage roster — see agents/<name>/config.yaml.
+  # Fixed four-worker roster — see agents/<name>/config.yaml.
   agents:
     - plan
     - execute

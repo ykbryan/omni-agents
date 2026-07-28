@@ -1,15 +1,16 @@
 # gopo-kiro
 
 A polly-style coding orchestrator with a fixed four-worker pipeline. The
-orchestrator and the three kiro-backed workers (`plan`/`execute`/`verify`) run
-headless on the **`pi`** harness (no kiro-native TUI); a claude-native `qa`
-worker adds browser/MCP verification.
+orchestrator (`gopo`) runs on the **`claude-sdk`** harness (`claude-sonnet-5`);
+the three kiro-backed workers (`plan`/`execute`/`verify`) run headless on the
+**`pi`** harness (no kiro-native TUI); a claude-native `qa` worker adds
+browser/MCP verification.
 
 ## Pipeline
 
 | Stage | Worker | Harness | Model | Purpose |
 |---|---|---|---|---|
-| **gopo** (brain) | orchestrator | `pi` | `minimax-m3` | plans, delegates, verifies; writes no code |
+| **gopo** (brain) | orchestrator | `claude-sdk` | `claude-sonnet-5` | plans, delegates, verifies; writes no code |
 | **plan** | planner | `pi` (kiro provider) | `kiro/claude-opus-4-8:high` | investigate + produce plan/acceptance contracts (`explore`) |
 | **execute** | implementer | `pi` (kiro provider) | `kiro/claude-sonnet-5:high` | make code/test changes, open PR (`implement`) |
 | **verify** | code reviewer | `pi` (kiro provider) | `kiro/gpt-5-6-sol:high` | independent review of the diff (`review`) |
@@ -40,27 +41,29 @@ drive the `kiro-native` TUI, so they completely sidestep omnigent
 bug). Model ids use the provider's dash-form (`kiro/claude-opus-4-8`,
 `kiro/gpt-5-6-sol`).
 
-The `gopo` brain runs on `pi` too (headless, non-native) so gopo-kiro lists in
-the Web UI **Agents** picker alongside polly/debby (native-harness brains get
-hidden under "Harnesses"), and pi can run any provider — here a direct MiniMax
-provider for `minimax-m3`.
+The `gopo` brain runs on `claude-sdk` (`claude-sonnet-5`) — the SDK harness is
+the most reliable at orchestration (dispatch-and-wait, no looping) and still
+lists in the Web UI **Agents** picker alongside polly/debby. It resolves through
+whatever Claude provider `omnigent setup` configured (subscription / API key /
+gateway).
 
-## Host setup (macOS host — the runner)
+## Host setup (the runner)
 
-1. **pi CLI** on PATH:
+1. **pi CLI** on PATH (for plan/execute/verify):
    ```bash
    curl -fsSL https://pi.dev/install.sh | sh
    # ensure it's on the daemon's PATH (e.g. symlink into ~/.local/bin)
    ```
-2. **kiro provider extension** (for plan/verify):
+2. **kiro provider extension** (for plan/execute/verify):
    ```bash
    pi install npm:@arvoretech/pi-kiro-provider@0.8.5
    pi   # then run: /login kiro   (reuses your kiro-cli identity)
    ```
-3. **MiniMax provider** for the `minimax-m3` brain — configure pi with your
-   direct MiniMax API key (the model selector is `minimax-m3`). If a provider
-   that serves `minimax-m3` isn't configured, the brain won't boot.
-4. **claude** CLI on PATH for the `execute` worker.
+3. **Claude provider** for the `claude-sdk` brain — a Claude subscription,
+   Anthropic API key, or gateway configured via `omnigent setup`. (The brain
+   runs `claude-sonnet-5`.)
+4. **claude** CLI / Claude provider on PATH for the `gopo` brain (claude-sdk) and
+   the `qa` worker (claude-native).
 
 `omni config list` / a quick `pi --provider kiro --model claude-sonnet-4-6 -p hi`
 confirm auth before launching.
@@ -72,8 +75,9 @@ confirm auth before launching.
   `claude-sonnet-5/4-6/4-5/4`, `claude-fable-5`, `claude-haiku-4-5`,
   `deepseek-3-2`, `glm-5`, `qwen3-coder-next`, `gpt-5-6-sol/terra/luna`,
   `minimax-m2/m2-1/m2-5`, `auto`.
-- `minimax-m3` is **not** in the kiro provider (its MiniMax tops out at `m2-5`),
-  which is why the brain uses a **direct** MiniMax provider instead.
+- The `gopo` brain runs on `claude-sdk` / `claude-sonnet-5` (via the configured
+  Claude provider), chosen for reliable orchestration; the kiro-backed workers
+  are unaffected.
 
 ## Install (server side) / run
 
@@ -82,11 +86,10 @@ gopo-kiro is seeded as a persistent built-in on the server via
 mounted repo), so it appears in the app's **Agents** picker. To refresh after
 editing: `git pull` in the mounted checkout, then restart the server container.
 
-Launch on the **macOS host** (kiro auth + pi extension live there):
+Launch from the app's **Agents** picker, or:
 
 ```bash
 omni run ~/omni-agents/gopo-kiro --server http://<your-omnigent-server>:8000
-# or pick "Gopo-kiro" from the app's Agents picker, host = <your-macos-host>
 ```
 
 gopo runs a one-shot preflight (`command -v pi claude`) and routes only to
