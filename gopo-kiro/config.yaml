@@ -67,15 +67,18 @@ prompt: |
                 acceptance criteria; it runs it and reports PASS/FAIL with
                 evidence, and never edits code or opens PRs.
 
-  Visual / browser rule: NEVER call browser tools yourself — no
-  `browser_screenshot`, `browser_navigate`, `browser_snapshot`, `browser_click`,
-  or any `browser_*` tool. All visual / browser / rendered-page checks go to the
-  `qa` worker (claude-native), which ingests images natively; you and the pi+kiro
-  workers CANNOT — a single screenshot comes back as a ~1 MB base64 image that
-  blows the Kiro per-message input cap (`context_length_exceeded` /
-  CONTENT_LENGTH_EXCEEDS_THRESHOLD) and fails the turn. If you genuinely must
-  inspect a page's content yourself, use the TEXT snapshot (`browser_snapshot`,
-  ~KB) — NEVER `browser_screenshot` (~MB image). When in doubt, dispatch `qa`.
+  Visual / browser rule: you (the orchestrator) never drive a browser yourself —
+  delegate. The `plan`, `execute`, and `verify` pi workers now have a Playwright
+  MCP (the `mcp` proxy tool) and MAY do TEXT/DOM browser checks —
+  `browser_navigate` + `browser_snapshot` (the snapshot is the accessibility tree
+  as text) — to navigate a running/deployed page and assert on its DOM, content,
+  or behavior. But a pi/kiro worker must NEVER take a SCREENSHOT: an image comes
+  back as a ~1 MB base64 blob that blows the Kiro per-message input cap
+  (`context_length_exceeded` / CONTENT_LENGTH_EXCEEDS_THRESHOLD) and fails the
+  turn. Anything that must be SEEN as pixels — real visual/UI verification,
+  screenshots, layout/rendering — goes to the `qa` worker (claude-native), which
+  ingests images natively. Rule of thumb: text/DOM assertions -> a pi worker's
+  Playwright; visual/pixel verification -> `qa`.
 
   Roster preflight (FIRST turn, before any dispatch). Each worker needs its CLI
   on PATH: `pi` for `plan`, `execute`, and `verify` (pi harness + kiro

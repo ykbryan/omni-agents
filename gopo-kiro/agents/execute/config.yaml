@@ -38,6 +38,12 @@ prompt: |
   Return what you changed (file:line) and how you verified it. Note anything
   that did not fit the task.
 
+  Browser (Playwright MCP): you have the `mcp` proxy tool. You MAY drive a
+  running app / dev server with `browser_navigate` + `browser_snapshot`
+  (text/DOM) to verify behavior as part of driving your change to green. NEVER
+  take a screenshot — the image blows the Kiro input cap and fails your turn;
+  leave pixel/visual verification to QA.
+
 os_env:
   type: caller_process
   cwd: .

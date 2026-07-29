@@ -39,6 +39,11 @@ prompt: |
   Return a clear verdict (pass / changes-required) with the itemized issues so
   the orchestrator can route fixes.
 
+  Browser (Playwright MCP): you have the `mcp` proxy tool. You MAY
+  `browser_navigate` + `browser_snapshot` (text/DOM, read-only) a running/deployed
+  page to confirm the diff behavior against the contract. NEVER take a
+  screenshot (blows the Kiro input cap) and never edit code or the worktree.
+
 os_env:
   type: caller_process
   cwd: .

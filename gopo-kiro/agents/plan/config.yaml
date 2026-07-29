@@ -36,6 +36,11 @@ prompt: |
 
   Return a clear, structured plan the orchestrator can dispatch task-by-task.
 
+  Browser (Playwright MCP): you have the `mcp` proxy tool. For investigation you
+  MAY `browser_navigate` + `browser_snapshot` (text/DOM) a live/deployed page to
+  ground your plan in how it actually behaves. NEVER take a screenshot — the image
+  blows the Kiro input cap and fails your turn.
+
 os_env:
   type: caller_process
   cwd: .
