@@ -11,12 +11,20 @@ merges the PRs. **No kiro dependency.**
 |---|---|---|---|---|---|
 | **brain** | dev-swarm | `claude-sdk` | `claude-sonnet-5` | medium | takes the goal, fans out, orchestrates |
 | **research** | researcher | `pi` (minimax) | `minimax/MiniMax-M3` | — | online / local research (`explore`) |
-| **plan** | planner | `claude-sdk` | `claude-opus-5` | high | PRD + clarifying questions (`explore`) |
-| **implement** | implementer | `claude-sdk` | `claude-sonnet-5` | high | review PRD, code + tests, open PR (`implement`) |
+| **plan** | planner | `claude-sdk` | `claude-opus-5` | xhigh | PRD + clarifying questions (`explore`) |
+| **implement** | implementer | `claude-native` | `claude-sonnet-5` | high | review PRD, code + tests, open PR; browser + preview for diagnosis (`implement`) |
 | **review** | code reviewer | `codex-native` | `gpt-5.6-sol` | high | cross-vendor diff review (`review`) |
-| **qa** | QA / visual-check | `claude-sdk` | `claude-opus-5` | high | run & see: browser/visual (`review`) |
+| **qa** | QA / visual-check | `claude-native` | `claude-opus-5` | high | run & see: browser/visual (`review`) |
 | **docs** | document writer | `pi` (minimax) | `minimax/MiniMax-M3` | — | README + LEARNING (`implement`) |
 | **host** | host / preview | `pi` (minimax) | `minimax/MiniMax-M2.7` | — | serve latest on an unused port + Tailscale URL (`implement`) |
+
+**Permissions:** the entire swarm runs **`bypassPermissions`** — no per-action
+approval prompts, so it works fully headless. For the Claude harnesses Omnigent
+translates this to `--dangerously-skip-permissions` (which also clears the
+trust-folder dialog); codex bypasses via `yolo: true`. Safety does **not** come
+from prompting — it comes from the `blast_radius` guardrail every worker carries:
+the catastrophic set (force-push, `rm -rf /`, hard-reset to a remote ref) stays
+denied regardless.
 
 ## Pipeline (per task; independent tasks may fan out in parallel)
 
@@ -61,14 +69,13 @@ never edits; only the implementer opens a PR.
 (which start with no memory of this run) can read what already failed and worked.
 Point future dev-swarm runs at it.
 
-## Visual QA note
+## Visual QA & browser access
 
-`qa` runs on `claude-sdk`; its visual/browser checks need a browser MCP
-(Playwright) reachable by the worker. The Playwright MCP is configured for **Claude
-Code (`claude-native`)** on the host and verified working. If `claude-sdk` doesn't
-inherit that MCP, either expose it to the SDK or switch the `qa` worker's harness
-to `claude-native` (add `permission_mode: auto`). `research` and `host` (pi) also
-have the Playwright MCP available.
+`qa` and `implement` run on **`claude-native`** (Claude Code), which has the
+Playwright/browser MCP configured (`~/.claude.json`) and verified working — so
+visual/UI checks and browser-based diagnosis work out of the box, no extra wiring.
+`research` and `host` (pi) also have the Playwright MCP available. Screenshots are
+fine on Claude models; use `browser_snapshot` (text/DOM) when that's enough.
 
 ## Host requirements (the runner)
 
@@ -87,10 +94,10 @@ dev-swarm/
   config.yaml                # brain (claude-sdk sonnet-5, medium) + full pipeline
   agents/
     research/config.yaml     # pi minimax/MiniMax-M3 — online/local research
-    plan/config.yaml         # claude-sdk opus-5 (high) — PRD + questions
-    implement/config.yaml    # claude-sdk sonnet-5 (high) — implementer, opens PR
+    plan/config.yaml         # claude-sdk opus-5 (xhigh) — PRD + questions
+    implement/config.yaml    # claude-native sonnet-5 (high) — implementer, opens PR
     review/config.yaml       # codex-native gpt-5.6-sol (high) — cross-vendor review
-    qa/config.yaml           # claude-sdk opus-5 (high) — QA / visual
+    qa/config.yaml           # claude-native opus-5 (high) — QA / visual
     docs/config.yaml         # pi minimax/MiniMax-M3 — README + LEARNING
     host/config.yaml         # pi minimax/MiniMax-M2.7 — serve (unused port) + Tailscale URL
   README.md

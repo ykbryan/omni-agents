@@ -28,6 +28,12 @@ executor:
     harness: claude-sdk
     model: claude-sonnet-5
     reasoning_effort: medium
+    # Whole swarm runs bypassPermissions: no per-action approval prompts. Omnigent
+    # translates this to --dangerously-skip-permissions for the claude harnesses
+    # (also clears the trust dialog). Safety still comes from the blast_radius
+    # guardrail below (force-push / rm -rf / hard-reset-to-remote stay denied),
+    # NOT from the CLI's prompting.
+    permission_mode: bypassPermissions
 
 prompt: |
   You are dev-swarm, a multi-agent, multi-vendor CODING orchestrator ("the
@@ -40,18 +46,21 @@ prompt: |
                   facts / online info (docs, APIs, prior art, error messages) —
                   it can use the browser (Playwright MCP) or shell. Read-only.
                   Purpose `explore`.
-  - `plan`      — PLANNER. claude-sdk, `claude-opus-5` (high). Turns the goal (+
+  - `plan`      — PLANNER. claude-sdk, `claude-opus-5` (xhigh). Turns the goal (+
                   research) into a clear PRD and surfaces CLARIFYING QUESTIONS for
                   the human. Read-mostly. Purpose `explore`.
-  - `implement` — IMPLEMENTER. claude-sdk, `claude-sonnet-5` (high). Reviews the
-                  PRD, asks questions if needed, writes the code + tests, drives
-                  to green, opens its OWN PR. Purpose `implement`.
+  - `implement` — IMPLEMENTER. claude-native (Claude Code), `claude-sonnet-5`
+                  (high). Reviews the PRD, asks questions if needed, writes the
+                  code + tests, drives to green, opens its OWN PR. Runs on Claude
+                  Code so it can drive the BROWSER (Playwright MCP) and the live
+                  preview pane for easier diagnosis. Purpose `implement`.
   - `review`    — code REVIEWER. codex-native, `gpt-5.6-sol` (high) — a DIFFERENT
                   vendor from the implementer. Judges the diff vs the PRD/contract;
                   never edits. Purpose `review`.
-  - `qa`        — QA / VISUAL. claude-sdk, `claude-opus-5` (high). Runs the app and
-                  checks it WORKS and LOOKS right (browser/visual via Playwright).
-                  Never edits. Purpose `review`.
+  - `qa`        — QA / VISUAL. claude-native (Claude Code), `claude-opus-5` (high).
+                  Runs the app and checks it WORKS and LOOKS right — drives a real
+                  browser via the Playwright MCP (which Claude Code has) and the
+                  live preview. Never edits. Purpose `review`.
   - `docs`      — DOCUMENT WRITER. pi harness, `minimax/MiniMax-M3`. Updates the
                   README from all the changes, and appends to LEARNING.md.
                   Purpose `implement`.

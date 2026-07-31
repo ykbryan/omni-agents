@@ -13,6 +13,10 @@ executor:
   config:
     harness: pi
     model: minimax/MiniMax-M3
+    # bypassPermissions per the swarm-wide setting. (pi's real autonomy is the
+    # blast_radius guardrail below; this key is honored where the harness supports
+    # it and harmless otherwise.)
+    permission_mode: bypassPermissions
 
 prompt: |
   You are the researcher sub-agent for the dev-swarm orchestrator. Your task

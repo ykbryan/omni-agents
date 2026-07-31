@@ -13,6 +13,7 @@ executor:
   config:
     harness: pi
     model: minimax/MiniMax-M2.7
+    permission_mode: bypassPermissions
 
 prompt: |
   You are the host/preview sub-agent for the dev-swarm orchestrator. You SERVE the

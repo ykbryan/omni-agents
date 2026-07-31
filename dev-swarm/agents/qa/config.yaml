@@ -6,20 +6,20 @@ description: >-
   the app, inspects the result, and reports pass/fail with evidence. Does not open
   PRs or edit code.
 
-# claude-sdk harness, claude-opus-5 at high effort. Opus for careful judgment on
-# whether the running result actually meets the acceptance criteria.
-# VISUAL CHECKS need a browser MCP (e.g. Playwright) reachable by this worker. The
-# Playwright MCP is configured for Claude Code (claude-native) on the host; if the
-# claude-sdk harness does not inherit that MCP, either (a) expose the Playwright
-# MCP to the SDK, or (b) switch this worker's harness to `claude-native`
-# (add `permission_mode: auto`), which has the Playwright MCP verified working.
-# Prefer `browser_snapshot` (text/DOM); screenshots are fine on Claude models.
+# claude-native (Claude Code) harness, claude-opus-5 at high effort. Runs on
+# Claude Code specifically so it HAS the Playwright/browser MCP (configured in
+# ~/.claude.json and verified working on this host) for real visual/UI checks,
+# plus the live preview pane. bypassPermissions -> Omnigent launches it with
+# --dangerously-skip-permissions (which also clears the trust dialog), so it runs
+# headless without stalling. Screenshots are fine on Claude models; prefer
+# browser_snapshot (text/DOM) when that's enough.
 executor:
   type: omnigent
   config:
-    harness: claude-sdk
+    harness: claude-native
     model: claude-opus-5
     reasoning_effort: high
+    permission_mode: bypassPermissions
 
 prompt: |
   You are the QA sub-agent for the dev-swarm orchestrator. You verify things the

@@ -5,13 +5,20 @@ description: >-
   the real code + test changes for a scoped task in its own git worktree, drives
   them to green, and opens its own PR.
 
-# claude-sdk harness, claude-sonnet-5 at high effort.
+# claude-native (Claude Code) harness, claude-sonnet-5 at high effort. Runs on
+# Claude Code (not the SDK) so it has the Playwright/browser MCP and a live
+# terminal/preview pane (openable/takeover-able in the Subagents panel) for
+# easier diagnosis. bypassPermissions -> Omnigent launches it with
+# --dangerously-skip-permissions (which also clears the trust-folder dialog), so
+# it runs headless without stalling on prompts. Safety = the blast_radius
+# guardrail below.
 executor:
   type: omnigent
   config:
-    harness: claude-sdk
+    harness: claude-native
     model: claude-sonnet-5
     reasoning_effort: high
+    permission_mode: bypassPermissions
 
 prompt: |
   You are the implementer sub-agent for the dev-swarm orchestrator, dispatched for
@@ -30,6 +37,11 @@ prompt: |
   - Make the change, then drive it to green: run the relevant tests, lint, and
     typecheck for the code you touched. Report the exact commands + file set
     (distinguish collected test cases from functions).
+  - For UI or hard-to-diagnose behavior you MAY use the browser to SEE what the
+    app does while you fix it: the Playwright MCP (the `mcp` proxy tool →
+    `browser_navigate` + `browser_snapshot`; screenshots are fine on Claude) and
+    any live preview URL the `host` worker provides. This is for diagnosis — the
+    fix still lands as code + tests.
   - Co-sign every commit: end each message with a blank line then this exact
     trailer as its final line — `Co-authored-by: omnigent <noreply@omnigent.ai>`
   - When green, push your task branch and open a PR with `gh pr create` (clear

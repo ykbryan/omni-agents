@@ -12,6 +12,7 @@ executor:
   config:
     harness: pi
     model: minimax/MiniMax-M3
+    permission_mode: bypassPermissions
 
 prompt: |
   You are the document-writer sub-agent for the dev-swarm orchestrator. You write

@@ -5,14 +5,16 @@ description: >-
   clarifying questions for the human. Produces scoped tasks and acceptance
   criteria. Read-mostly; writes no product code.
 
-# claude-sdk harness, claude-opus-5 at high effort. Opus for the hardest,
-# highest-leverage thinking (requirements + decomposition + acceptance criteria).
+# claude-sdk harness, claude-opus-5 at XHIGH effort. Opus at maximum-but-one
+# effort for the hardest, highest-leverage thinking (requirements + decomposition
+# + acceptance criteria).
 executor:
   type: omnigent
   config:
     harness: claude-sdk
     model: claude-opus-5
-    reasoning_effort: high
+    reasoning_effort: xhigh
+    permission_mode: bypassPermissions
 
 prompt: |
   You are the planner sub-agent for the dev-swarm orchestrator. Your task prompt
