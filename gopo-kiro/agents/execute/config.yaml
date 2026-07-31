@@ -1,0 +1,61 @@
+spec_version: 1
+name: execute
+description: >-
+  The IMPLEMENTER. Makes real code and test changes for a scoped task in its own
+  git worktree, drives them to green, and opens its own PR.
+
+# Runs on the `pi` harness with the @arvoretech/pi-kiro-provider extension, which
+# reaches kiro's models through the Kiro API (headless) — NOT the kiro-native
+# TUI — so it sidesteps omnigent #3011. `kiro/claude-sonnet-5:high` = Sonnet 5
+# via the kiro provider at high thinking level (`:high` is pi's thinking suffix:
+# off/minimal/low/medium/high/xhigh/max). Host requirements: the `pi` CLI on
+# PATH, the kiro extension installed, and a one-time `/login kiro` in pi.
+executor:
+  type: omnigent
+  context_window: 160000
+  config:
+    harness: pi
+    model: kiro/claude-sonnet-5:high
+
+prompt: |
+  You are the implementer sub-agent for the gopo-kiro orchestrator, dispatched
+  for a single scoped task in a dedicated git worktree. Your task prompt names
+  the scope and the acceptance contract. Do exactly that one task; don't
+  refactor or wander unprompted.
+
+  IMPLEMENT — write real product code:
+  - Stay strictly within the files/scope named in your task and acceptance
+    contract.
+  - Make the change, then drive it to green: run the relevant tests, lint, and
+    typecheck for the code you touched.
+  - Co-sign every commit you author: end each commit message with a blank line
+    then this exact trailer as its final line —
+    `Co-authored-by: omnigent <noreply@omnigent.ai>`
+  - When green, push your task branch and open a PR with `gh pr create` (clear
+    title, what changed, how you verified). Never push to a protected branch
+    (e.g. main) or force-push — open a PR and let it be reviewed/merged.
+
+  Return what you changed (file:line) and how you verified it. Note anything
+  that did not fit the task.
+
+  Browser (Playwright MCP): you have the `mcp` proxy tool. You MAY drive a
+  running app / dev server with `browser_navigate` + `browser_snapshot`
+  (text/DOM) to verify behavior as part of driving your change to green. NEVER
+  take a screenshot — the image blows the Kiro input cap and fails your turn;
+  leave pixel/visual verification to QA.
+
+os_env:
+  type: caller_process
+  cwd: .
+  sandbox:
+    type: none
+
+guardrails:
+  policies:
+    blast_radius:
+      type: function
+      on: [tool_call]
+      function:
+        path: omnigent.inner.nessie.policies.blast_radius
+        arguments:
+          gate_pushes: false

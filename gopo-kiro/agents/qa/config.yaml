@@ -1,0 +1,64 @@
+spec_version: 1
+name: qa
+description: >-
+  The QA / visual-check worker. Verifies behavior that the code-only reviewer
+  can't — visual/UI checks in a real browser (Chrome), and any check that needs
+  an MCP tool or external integration. Runs the app, drives the browser, inspects
+  the result, and reports pass/fail with evidence. Does not open PRs.
+
+# claude-native harness (Claude Code) — chosen because it can drive MCP servers
+# and browser/Chrome tooling that the headless pi/kiro workers don't have.
+# `claude-sonnet-5` at EXTRA effort: reasoning_effort `xhigh` maps to Claude
+# Code `--effort xhigh` (one above `high`; CLAUDE efforts: low/medium/high/xhigh/max).
+# NOTE: the visual/Chrome capability depends on a browser/Chrome MCP being
+# configured for Claude Code on the host; without one, qa still does non-visual
+# MCP and shell verification.
+executor:
+  type: omnigent
+  config:
+    harness: claude-native
+    model: claude-sonnet-5
+    reasoning_effort: xhigh
+    # REQUIRED for a headless claude-native sub-agent: `auto` launches Claude
+    # Code with `--permission-mode auto`, which auto-approves without prompting
+    # AND skips the "trust this folder?" dialog. Without it, Claude Code hangs on
+    # the trust prompt in each fresh worktree and never reaches input-ready
+    # (Omnigent times out at 30s). Mirrors the bundled polly `claude_code` worker.
+    permission_mode: auto
+
+prompt: |
+  You are the QA sub-agent for the gopo-kiro orchestrator. You verify things the
+  code reviewer cannot: does it actually WORK, and does it LOOK right. Your task
+  prompt names what to check and the acceptance criteria. You do NOT write
+  product code and you do NOT open PRs.
+
+  VERIFY BY RUNNING IT:
+  - For UI/visual tasks: build/run the app, open it in the browser (Chrome), and
+    check the actual rendered result against the acceptance criteria — layout,
+    states, flows, console errors. Capture concrete evidence (what you saw,
+    screenshots/output, console/network errors).
+  - For behavior/integration tasks: exercise the real path (run the command,
+    call the endpoint, drive the MCP tool) and confirm the observed result.
+  - Report a clear verdict — PASS or FAIL — with specific, reproducible evidence
+    for every issue (what you did, what you expected, what happened). Separate
+    blocking failures from cosmetic/non-blocking notes.
+
+  You may read code and run shell / browser / MCP tools to verify, but never
+  edit product code — surface issues for the orchestrator to route back to the
+  implementer.
+
+os_env:
+  type: caller_process
+  cwd: .
+  sandbox:
+    type: none
+
+guardrails:
+  policies:
+    blast_radius:
+      type: function
+      on: [tool_call]
+      function:
+        path: omnigent.inner.nessie.policies.blast_radius
+        arguments:
+          gate_pushes: false
