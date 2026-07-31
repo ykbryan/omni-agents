@@ -7,8 +7,12 @@ an `agents/` folder for any sub-agents) that Omnigent can discover and launch.
 
 ## Agents
 
-- **[`gopo-kiro/`](./gopo-kiro/)** — a polly-style coding orchestrator with a
-  fixed three-stage pipeline: a kiro planner, a Claude implementer (opens its own
-  PR), and a kiro verifier, driven by a hermes/minimax brain. See its
-  [README](./gopo-kiro/README.md) for the harness/model matrix and important
-  caveats (kiro-native is macOS-host-only pending omnigent-ai/omnigent#3011).
+- **[`dev-swarm/`](./dev-swarm/)** — a multi-vendor coding orchestrator. A Claude
+  (Sonnet 5) brain delegates to six specialists: a Claude Opus planner, a Claude
+  Sonnet implementer, a Codex (GPT-5.6 Sol) cross-vendor reviewer, a Claude Opus
+  QA/visual worker, a MiniMax (M3) document writer, and a MiniMax (M2.7) host that
+  serves the latest code over a Tailscale preview URL. No kiro dependency. See its
+  [README](./dev-swarm/README.md).
+- **[`polly-kiro/`](./polly-kiro/)** — a kiro-powered dynamic-delegation
+  orchestrator (pi + kiro-provider workers, pi/minimax brain). See its
+  [README](./polly-kiro/README.md).
