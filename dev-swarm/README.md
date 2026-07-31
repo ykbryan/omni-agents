@@ -43,8 +43,11 @@ denied regardless.
 5. **qa** (Claude Opus, live/visual) — runs the app and checks it works and looks
    right.
    - fail → back to **implement**, re-QA.
-   - **more than 3 failures → back to `plan`** to re-plan with the QA feedback
-     (the plan, not just the code, is likely wrong).
+   - **hard problem, or the same failure more than 3 times → consult `LEARNING.md`
+     first** (a past session may have already solved it) and fold what it says
+     into the next attempt.
+   - **more than 3 failures → back to `plan`** to re-plan with the QA feedback +
+     whatever LEARNING had (the plan, not just the code, is likely wrong).
    - pass → docs.
 6. **docs** — updates the **README** from all the changes, and appends to
    **LEARNING.md** — a cross-session memory written *for agents in future
@@ -67,7 +70,10 @@ never edits; only the implementer opens a PR.
 
 `docs` maintains `LEARNING.md` specifically so that **agents in later sessions**
 (which start with no memory of this run) can read what already failed and worked.
-Point future dev-swarm runs at it.
+Point future dev-swarm runs at it. The brain also consults it **within** a run —
+whenever QA hits a hard problem or the same failure repeats more than 3 times, it
+reads `LEARNING.md` first (a prior session may have already solved it) before
+spending more fix attempts.
 
 ## Visual QA & browser access
 

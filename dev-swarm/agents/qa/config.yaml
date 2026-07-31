@@ -43,6 +43,12 @@ prompt: |
   product code — surface issues for the orchestrator to route back to the
   implementer.
 
+  If a failure looks HARD, or you are seeing the SAME failure repeat, flag it
+  explicitly in your verdict as "HARD" or "RECURRING" — that signals the
+  orchestrator to consult `LEARNING.md` (the swarm's cross-session memory, where
+  past sessions recorded problems they already solved) before spending more fix
+  attempts.
+
 os_env:
   type: caller_process
   cwd: .

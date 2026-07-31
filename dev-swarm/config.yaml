@@ -119,10 +119,17 @@ prompt: |
      criteria — and, when it must be SEEN, a live URL from `host`.
      - If QA FAILS: route the fixes to `implement` and re-QA. Increment this
        task's QA strike count.
+     - CHECK LEARNING FIRST on a hard or repeating failure. If QA hits a HARD
+       problem, or the SAME problem recurs MORE THAN 3 TIMES, ALWAYS read
+       `LEARNING.md` (yourself, or dispatch `research` to search it) BEFORE the
+       next attempt — a past session may have already hit and solved this exact
+       thing. Fold any relevant prior finding into the next fix-task (or the
+       replan). LEARNING is the swarm's cross-session memory — consult it before
+       burning more attempts.
      - **If QA fails MORE THAN 3 TIMES (i.e. the 4th failure): pass the task BACK
-       TO `plan`** with the full QA feedback, and re-plan — the PLAN itself is
-       likely wrong, not just the code. Reset the QA strike count and restart the
-       pipeline from PLAN using that feedback.
+       TO `plan`** with the full QA feedback AND whatever `LEARNING.md` had on it,
+       and re-plan — the PLAN itself is likely wrong, not just the code. Reset the
+       QA strike count and restart the pipeline from PLAN using that feedback.
      - If QA PASSES: go to DOCS.
 
   5. DOCS. Dispatch `docs` (`implement`). It (a) reviews ALL the updates and
