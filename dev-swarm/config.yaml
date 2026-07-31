@@ -57,7 +57,7 @@ prompt: |
     whole swarm starts from a clear brief, not a guess.)
   Then run the pipeline below, always delegating from the ENRICHED brief.
 
-  You have exactly SEVEN sub-agents:
+  You have exactly EIGHT sub-agents:
   - `research`  — RESEARCHER. pi harness, `minimax/MiniMax-M3`. Gathers external
                   facts / online info (docs, APIs, prior art, error messages) —
                   it can use the browser (Playwright MCP) or shell. Read-only.
@@ -69,7 +69,15 @@ prompt: |
                   (high). Reviews the PRD, asks questions if needed, writes the
                   code + tests, drives to green, opens its OWN PR. Runs on Claude
                   Code so it can drive the BROWSER (Playwright MCP) and the live
-                  preview pane for easier diagnosis. Purpose `implement`.
+                  preview pane for easier diagnosis. Purpose `implement`. Use for
+                  NORMAL tasks.
+  - `expert`    — EXPERT IMPLEMENTER. claude-native (Claude Code), `claude-opus-5`
+                  (high). Same job as `implement` (code + tests + own PR) but ONLY
+                  for DIFFICULT work — hard/complex tasks, subtle bugs, or a fix
+                  the normal implementer couldn't land after repeated review/QA
+                  failures. Give it the FULL history (prior attempts, review/QA
+                  feedback, relevant LEARNING). Also uses browser/preview for deep
+                  diagnosis. Purpose `implement`.
   - `review`    — code REVIEWER. codex-native, `gpt-5.6-sol` (high) — a DIFFERENT
                   vendor from the implementer. Judges the diff vs the PRD/contract;
                   never edits. Purpose `review`.
@@ -98,10 +106,19 @@ prompt: |
      Feed the answers back so `plan` finalizes a CLEAR PRD (scope, acceptance
      criteria, out-of-scope, how it's verified). Only then proceed.
 
-  2. IMPLEMENT. Dispatch `implement` (`implement`) with the finalized PRD. The
-     implementer reviews the PRD and, if it has blocking questions, surfaces them
-     — relay to the human (or back to `plan`) and resolve before it continues. It
-     implements, drives to green, and opens its PR. Then go to REVIEW.
+  2. IMPLEMENT — TRIAGE first, then route by DIFFICULTY. Both implementers read
+     the PRD and figure out who should do what: dispatch `implement` and `expert`
+     to look at the PRD's tasks (`explore`) and each report which tasks it should
+     own — they self-assess difficulty (normal vs hard/complex/high-risk). Their
+     read of "who does what" is your PRIMARY input; combine it with your judgment,
+     then YOU delegate each task by difficulty — NORMAL → `implement` (Sonnet),
+     DIFFICULT → `expert` (Opus). Dispatch the chosen worker (`implement`) with the
+     PRD; it reviews the PRD and, if it has blocking questions, surfaces them
+     (relay to the human or `plan`) before continuing, then implements, drives to
+     green, and opens its PR. Then go to REVIEW. Same rule for FIX-tasks: the
+     first fix can go to `implement`, but a fix it couldn't land — repeated
+     review/QA failures, or anything flagged HARD/RECURRING — ESCALATES to
+     `expert` with the full history (prior attempts, feedback, and LEARNING).
 
   3. REVIEW (with a hard 3-strike limit). Dispatch `review` (`review`) with the
      diff + PRD.
@@ -197,11 +214,12 @@ terminals:
         type: none
 
 tools:
-  # Seven specialists — see agents/<name>/config.yaml.
+  # Eight specialists — see agents/<name>/config.yaml.
   agents:
     - research
     - plan
     - implement
+    - expert
     - review
     - qa
     - docs

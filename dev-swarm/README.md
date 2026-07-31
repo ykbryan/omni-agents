@@ -1,9 +1,9 @@
 # dev-swarm
 
-A multi-vendor coding **swarm**. A Claude (Sonnet 5) brain takes a goal, fans it
-out into tasks, and drives each through a bounded pipeline of seven specialists —
-Claude, Codex, and MiniMax. The brain writes no code and never merges; the human
-merges the PRs. **No kiro dependency.**
+A multi-vendor coding **swarm**. A Claude (Sonnet 5) brain takes your prompt,
+enriches it, fans it out into tasks, and drives each through a bounded pipeline of
+eight specialists — Claude, Codex, and MiniMax. The brain writes no code and never
+merges; the human merges the PRs. **No kiro dependency.**
 
 ## Roster
 
@@ -12,7 +12,8 @@ merges the PRs. **No kiro dependency.**
 | **brain** | dev-swarm | `claude-sdk` | `claude-sonnet-5` | medium | takes the goal, fans out, orchestrates |
 | **research** | researcher | `pi` (minimax) | `minimax/MiniMax-M3` | — | online / local research (`explore`) |
 | **plan** | planner | `claude-sdk` | `claude-opus-5` | xhigh | PRD + clarifying questions (`explore`) |
-| **implement** | implementer | `claude-native` | `claude-sonnet-5` | high | review PRD, code + tests, open PR; browser + preview for diagnosis (`implement`) |
+| **implement** | implementer | `claude-native` | `claude-sonnet-5` | high | NORMAL tasks: review PRD, code + tests, open PR; browser + preview (`implement`) |
+| **expert** | expert implementer | `claude-native` | `claude-opus-5` | high | DIFFICULT tasks only: hard bugs / failed fixes; browser + preview (`implement`) |
 | **review** | code reviewer | `codex-native` | `gpt-5.6-sol` | high | cross-vendor diff review (`review`) |
 | **qa** | QA / visual-check | `claude-native` | `claude-opus-5` | high | run & see: browser/visual (`review`) |
 | **docs** | document writer | `pi` (minimax) | `minimax/MiniMax-M3` | — | README + LEARNING (`implement`) |
@@ -33,8 +34,13 @@ denied regardless.
 2. **plan → PRD gate** — the planner drafts a PRD and asks the **human**
    clarifying questions; the brain relays them and waits. Once answered, the plan
    is finalized into a clear PRD (scope, acceptance criteria, verification).
-3. **implement** — reviews the PRD (asks blocking questions if needed), writes the
-   code + tests, drives to green, opens its own PR.
+3. **triage → implement / expert** — both implementers read the PRD and
+   self-assess who should own each task; the brain then delegates by **difficulty**:
+   **normal → `implement` (Sonnet)**, **difficult → `expert` (Opus)**. The chosen
+   worker reviews the PRD (asks blocking questions if needed), writes code + tests,
+   drives to green, opens its own PR. A fix a normal implementer can't land
+   (repeated review/QA failures, HARD flags) escalates to `expert` with the full
+   history.
 4. **review** (Codex/GPT, cross-vendor) — judges the diff vs the PRD.
    - fail → back to **implement**, retry.
    - **3 failures → STOP the whole swarm and alert the human** (with the review
@@ -101,7 +107,8 @@ dev-swarm/
   agents/
     research/config.yaml     # pi minimax/MiniMax-M3 — online/local research
     plan/config.yaml         # claude-sdk opus-5 (xhigh) — PRD + questions
-    implement/config.yaml    # claude-native sonnet-5 (high) — implementer, opens PR
+    implement/config.yaml    # claude-native sonnet-5 (high) — normal implementer
+    expert/config.yaml       # claude-native opus-5 (high) — expert implementer (hard tasks)
     review/config.yaml       # codex-native gpt-5.6-sol (high) — cross-vendor review
     qa/config.yaml           # claude-native opus-5 (high) — QA / visual
     docs/config.yaml         # pi minimax/MiniMax-M3 — README + LEARNING
