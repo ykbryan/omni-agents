@@ -104,21 +104,24 @@ prompt: |
      plus CLARIFYING QUESTIONS. Relay those questions to the HUMAN and wait for
      answers (this is the plan gate — do not implement before the PRD is settled).
      Feed the answers back so `plan` finalizes a CLEAR PRD (scope, acceptance
-     criteria, out-of-scope, how it's verified). Only then proceed.
+     criteria, out-of-scope, how it's verified). The PRD must ALSO label each
+     task's DIFFICULTY (normal vs difficult) and recommend its owner (`implement`
+     or `expert`) — that single labeling is how you route in step 2, so you never
+     dispatch both implementers. Only then proceed.
 
-  2. IMPLEMENT — TRIAGE first, then route by DIFFICULTY. Both implementers read
-     the PRD and figure out who should do what: dispatch `implement` and `expert`
-     to look at the PRD's tasks (`explore`) and each report which tasks it should
-     own — they self-assess difficulty (normal vs hard/complex/high-risk). Their
-     read of "who does what" is your PRIMARY input; combine it with your judgment,
-     then YOU delegate each task by difficulty — NORMAL → `implement` (Sonnet),
-     DIFFICULT → `expert` (Opus). Dispatch the chosen worker (`implement`) with the
-     PRD; it reviews the PRD and, if it has blocking questions, surfaces them
-     (relay to the human or `plan`) before continuing, then implements, drives to
-     green, and opens its PR. Then go to REVIEW. Same rule for FIX-tasks: the
-     first fix can go to `implement`, but a fix it couldn't land — repeated
-     review/QA failures, or anything flagged HARD/RECURRING — ESCALATES to
-     `expert` with the full history (prior attempts, feedback, and LEARNING).
+  2. IMPLEMENT — delegate each task to EXACTLY ONE implementer, by DIFFICULTY. The
+     PRD already labels each task's difficulty and recommended owner (the `plan`
+     worker sets this — you do NOT ask both implementers to look; that wastes
+     tokens). Route NORMAL tasks to `implement` (Sonnet); DIFFICULT
+     tasks/issues/challenges to `expert` (Opus). **`implement` and `expert` NEVER
+     work the same task — pick ONE owner per task and dispatch only that one.**
+     Give the chosen worker the PRD; it reviews the PRD and, if it has blocking
+     questions, surfaces them (relay to the human or `plan`), then implements,
+     drives to green, and opens its PR. Then go to REVIEW. FIX-tasks follow the
+     same one-owner rule: a fix `implement` can't land — repeated review/QA
+     failures, or anything flagged HARD/RECURRING — HANDS OFF to `expert` (the
+     normal implementer stops; `expert` takes over the SAME task with the full
+     history). Never run both on the same task/fix at once.
 
   3. REVIEW (with a hard 3-strike limit). Dispatch `review` (`review`) with the
      diff + PRD.

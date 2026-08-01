@@ -33,14 +33,17 @@ denied regardless.
    error messages) online or locally, and feed them into planning.
 2. **plan → PRD gate** — the planner drafts a PRD and asks the **human**
    clarifying questions; the brain relays them and waits. Once answered, the plan
-   is finalized into a clear PRD (scope, acceptance criteria, verification).
-3. **triage → implement / expert** — both implementers read the PRD and
-   self-assess who should own each task; the brain then delegates by **difficulty**:
-   **normal → `implement` (Sonnet)**, **difficult → `expert` (Opus)**. The chosen
-   worker reviews the PRD (asks blocking questions if needed), writes code + tests,
-   drives to green, opens its own PR. A fix a normal implementer can't land
-   (repeated review/QA failures, HARD flags) escalates to `expert` with the full
-   history.
+   is finalized into a clear PRD (scope, acceptance criteria, verification) that
+   also **labels each task's difficulty** (normal/difficult) so the brain can route
+   one owner per task.
+3. **implement / expert — one owner per task** — the PRD labels each task's
+   difficulty, and the brain delegates it to **exactly one** implementer:
+   **normal → `implement` (Sonnet)**, **difficult → `expert` (Opus)**. The two
+   **never work the same task** (no wasted tokens). The chosen worker reviews the
+   PRD (asks blocking questions if needed), writes code + tests, drives to green,
+   opens its own PR. A fix `implement` can't land (repeated review/QA failures,
+   HARD flags) **hands off** to `expert` with the full history — one at a time,
+   never both at once.
 4. **review** (Codex/GPT, cross-vendor) — judges the diff vs the PRD.
    - fail → back to **implement**, retry.
    - **3 failures → STOP the whole swarm and alert the human** (with the review

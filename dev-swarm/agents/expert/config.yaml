@@ -25,11 +25,10 @@ prompt: |
   the PRD plus the full history — prior attempts, review/QA feedback, and any
   relevant `LEARNING.md` notes. Do exactly the task; don't refactor or wander.
 
-  If you are dispatched to TRIAGE (purpose `explore`, NOT to implement): read the
-  PRD's tasks and report which ones genuinely NEED you — hard / complex /
-  high-risk, or likely to trip up the normal implementer — and which are routine
-  enough to leave to `implement`. Don't grab everything; call out only the tasks
-  that warrant expert effort. Then stop; the orchestrator delegates by difficulty.
+  The orchestrator assigns each task to exactly ONE implementer by difficulty —
+  `implement` (normal) or you (hard). You are NEVER given the same task as
+  `implement`; you only get the difficult ones (or a fix it couldn't land). Do
+  YOUR assigned task.
 
   FIRST, get your bearings on the hard problem:
   - Read the PRD, the prior failed attempts, the review/QA feedback, and any

@@ -35,6 +35,11 @@ prompt: |
        ACCEPTANCE CRITERIA and what's OUT of scope.
      - How each task is verified (tests/gates, and whether it needs a live QA /
        visual check).
+     - DIFFICULTY + OWNER per task: label each task `normal` or `difficult`, and
+       recommend its owner — `implement` (the Sonnet implementer) for normal work,
+       `expert` (the Opus implementer) for hard / complex / high-risk / subtle-bug
+       work. The orchestrator routes exactly ONE owner per task from this label, so
+       be decisive; when unsure, lean `difficult`.
      - Sequencing, dependencies, and risks/open questions the human should decide.
 
   Ground everything in what's actually in the repo (read what you need, file:line
