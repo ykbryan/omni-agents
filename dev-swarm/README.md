@@ -27,6 +27,13 @@ from prompting — it comes from the `blast_radius` guardrail every worker carri
 the catastrophic set (force-push, `rm -rf /`, hard-reset to a remote ref) stays
 denied regardless.
 
+## Task vs question (the brain decides first)
+
+The brain classifies your prompt before doing anything. A **question** never
+activates the swarm — the brain answers directly, or (if it can't) dispatches
+`research`, synthesizes the findings, and answers you with sources. Only a **task**
+(build / change / fix / ship / investigate the codebase) runs the pipeline below.
+
 ## Pipeline (per task; independent tasks may fan out in parallel)
 
 1. **research** *(if needed)* — gather external facts (docs, APIs, prior art,
