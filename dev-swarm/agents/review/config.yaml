@@ -2,21 +2,22 @@ spec_version: 1
 name: review
 description: >-
   The code REVIEWER. Judges the implementer's diff against its acceptance contract
-  and reports issues. A different vendor (Codex/GPT) from the Claude implementer,
-  so review is a genuine cross-vendor check. Never edits code.
+  and reports issues. A different model line (GPT via kiro) from the Claude
+  implementers, so review is a genuine cross-model check. Never edits code.
 
-# codex-native harness, gpt-5.6-sol at high effort. A different vendor than the
-# Claude implementer keeps review independent.
+# pi harness via the kiro provider — gpt-5.6-sol at high thinking level (`:high`).
+# GPT-5.6 Sol through the Kiro API (headless) — a different MODEL LINE (GPT) than
+# the Claude implementers, so review stays an independent cross-check. Read-only by
+# instruction; never edits or pushes. context_window caps tokens so pi compacts
+# before the Kiro request cap — but a single very large diff can still trip
+# context_length_exceeded, so the orchestrator should chunk big diffs.
 executor:
   type: omnigent
+  context_window: 160000
   config:
-    harness: codex-native
-    model: gpt-5.6-sol
-    reasoning_effort: high
-    # YOLO: headless workers can't answer approval prompts. The server translates
-    # this into --dangerously-bypass-approvals-and-sandbox (native sub-agents).
-    # This reviewer is read-only by instruction; it never edits or pushes.
-    yolo: true
+    harness: pi
+    model: kiro/gpt-5-6-sol:high
+    permission_mode: bypassPermissions
 
 prompt: |
   You are the reviewer sub-agent for the dev-swarm orchestrator. You are given

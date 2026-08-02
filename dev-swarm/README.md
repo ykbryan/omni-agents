@@ -2,19 +2,19 @@
 
 A multi-vendor coding **swarm**. A Claude (Sonnet 5) brain takes your prompt,
 enriches it, fans it out into tasks, and drives each through a bounded pipeline of
-eight specialists — Claude, Codex, and MiniMax. The brain writes no code and never
-merges; the human merges the PRs. **No kiro dependency.**
+eight specialists — Claude (direct SDK + via kiro on pi) and MiniMax. The brain
+writes no code and never merges; the human merges the PRs.
 
 ## Roster
 
 | Role | Worker | Harness | Model | Effort | Purpose |
 |---|---|---|---|---|---|
 | **brain** | dev-swarm | `claude-sdk` | `claude-sonnet-5` | medium | takes the goal, fans out, orchestrates |
-| **research** | researcher | `pi` (minimax) | `minimax/MiniMax-M3` | — | online / local research (`explore`) |
-| **plan** | planner | `claude-sdk` | `claude-opus-5` | xhigh | PRD + clarifying questions (`explore`) |
-| **implement** | implementer | `claude-native` | `claude-sonnet-5` | high | NORMAL tasks: review PRD, code + tests, open PR; browser + preview (`implement`) |
-| **expert** | expert implementer | `claude-native` | `claude-opus-5` | high | DIFFICULT tasks only: hard bugs / failed fixes; browser + preview (`implement`) |
-| **review** | code reviewer | `codex-native` | `gpt-5.6-sol` | high | cross-vendor diff review (`review`) |
+| **research** | researcher | `hermes` (minimax) | `minimax/MiniMax-M3` | — | online / local research (`explore`) |
+| **plan** | planner | `pi` (kiro) | `kiro/claude-opus-5:xhigh` | xhigh | PRD + clarifying questions (`explore`) |
+| **implement** | implementer | `pi` (kiro) | `kiro/claude-sonnet-5:high` | high | NORMAL tasks: review PRD, code + tests, open PR; text/DOM browser (`implement`) |
+| **expert** | expert implementer | `pi` (kiro) | `kiro/claude-opus-5:high` | high | DIFFICULT tasks only: hard bugs / failed fixes; text/DOM browser (`implement`) |
+| **review** | code reviewer | `pi` (kiro) | `kiro/gpt-5-6-sol:high` | high | cross-model diff review (`review`) |
 | **qa** | QA / visual-check | `claude-native` | `claude-opus-5` | high | run & see: browser/visual (`review`) |
 | **docs** | document writer | `pi` (minimax) | `minimax/MiniMax-M3` | — | README + LEARNING (`implement`) |
 | **host** | host / preview | `pi` (minimax) | `minimax/MiniMax-M2.7` | — | serve latest on an unused port + Tailscale URL (`implement`) |
@@ -22,10 +22,10 @@ merges; the human merges the PRs. **No kiro dependency.**
 **Permissions:** the entire swarm runs **`bypassPermissions`** — no per-action
 approval prompts, so it works fully headless. For the Claude harnesses Omnigent
 translates this to `--dangerously-skip-permissions` (which also clears the
-trust-folder dialog); codex bypasses via `yolo: true`. Safety does **not** come
-from prompting — it comes from the `blast_radius` guardrail every worker carries:
-the catastrophic set (force-push, `rm -rf /`, hard-reset to a remote ref) stays
-denied regardless.
+trust-folder dialog); the kiro-on-pi workers get uninterrupted headless autonomy
+directly. Safety does **not** come from prompting — it comes from the
+`blast_radius` guardrail every worker carries: the catastrophic set (force-push,
+`rm -rf /`, hard-reset to a remote ref) stays denied regardless.
 
 ## Task vs question (the brain decides first)
 
@@ -51,7 +51,7 @@ activates the swarm — the brain answers directly, or (if it can't) dispatches
    opens its own PR. A fix `implement` can't land (repeated review/QA failures,
    HARD flags) **hands off** to `expert` with the full history — one at a time,
    never both at once.
-4. **review** (Codex/GPT, cross-vendor) — judges the diff vs the PRD.
+4. **review** (GPT via kiro, cross-model) — judges the diff vs the PRD.
    - fail → back to **implement**, retry.
    - **3 failures → STOP the whole swarm and alert the human** (with the review
      history). No silent looping.
@@ -75,12 +75,13 @@ activates the swarm — the brain answers directly, or (if it can't) dispatches
 running app and wait, then runs the new task's pipeline and re-hosts — so the
 preview never shows stale code.
 
-## Cross-vendor by design
+## Independent review
 
-Implementer = **Claude Sonnet 5**; code reviewer = **Codex / GPT-5.6 Sol** (a
-different vendor — real independent review); planning and run-and-see QA use
-**Claude Opus 5**. The reviewer gets only the diff + PRD (never the worktree) and
-never edits; only the implementer opens a PR.
+Implementers run **Claude (Sonnet 5 normal / Opus 5 expert) via kiro on pi**; the
+reviewer runs **GPT-5.6 Sol via kiro on pi** — a different model line, so review is
+an independent cross-check, not the same model grading its own work. The reviewer
+gets only the diff + PRD (never the worktree) and never edits; only the implementer
+opens a PR. Planning and run-and-see QA use **Claude Opus 5**.
 
 ## LEARNING.md — cross-session memory
 
@@ -93,19 +94,24 @@ spending more fix attempts.
 
 ## Visual QA & browser access
 
-`qa` and `implement` run on **`claude-native`** (Claude Code), which has the
-Playwright/browser MCP configured (`~/.claude.json`) and verified working — so
-visual/UI checks and browser-based diagnosis work out of the box, no extra wiring.
-`research` and `host` (pi) also have the Playwright MCP available. Screenshots are
-fine on Claude models; use `browser_snapshot` (text/DOM) when that's enough.
+Only `qa` runs on **`claude-native`** (Claude Code), which has the Playwright/
+browser MCP configured (`~/.claude.json`) and verified working — so real
+screenshots and live visual/UI checks work out of the box. Everyone else with
+browser access — `implement`, `expert`, `review` (kiro on pi), `research`
+(minimax on hermes), and `host` (minimax on pi) — has the Playwright MCP too,
+but is **text/DOM only** (`browser_navigate` + `browser_snapshot`). They must
+NOT take screenshots: a screenshot is a large image and kiro models reject it
+with `context_length_exceeded`. Pixel/visual verification is `qa`'s job alone.
 
 ## Host requirements (the runner)
 
-- A **Claude provider** (`omnigent setup`) — for the brain, `plan`, `implement`,
-  `qa`.
-- **`codex`** on PATH — for `review` (able to serve `gpt-5.6-sol`).
-- **`pi`** + the **minimax** provider — for `research`, `docs`, `host`
+- A **Claude provider** (`omnigent setup`) — for the brain and `qa`.
+- **`pi`** + the **kiro provider** — for `plan`, `implement`, `expert`, `review`
+  (`kiro/claude-opus-5:xhigh`, `kiro/claude-sonnet-5:high`,
+  `kiro/claude-opus-5:high`, `kiro/gpt-5-6-sol:high`, provider-qualified).
+- **`pi`** + the **minimax** provider — for `docs`, `host`
   (`minimax/MiniMax-M3`, `minimax/MiniMax-M2.7`, provider-qualified).
+- **`hermes`** — for `research` (`minimax/MiniMax-M3`, provider-qualified).
 - **`tailscale`** on PATH + host on the tailnet — for `host` preview URLs.
 - A browser MCP (Playwright) for `qa` visual checks and `research` browsing.
 
@@ -115,11 +121,11 @@ fine on Claude models; use `browser_snapshot` (text/DOM) when that's enough.
 dev-swarm/
   config.yaml                # brain (claude-sdk sonnet-5, medium) + full pipeline
   agents/
-    research/config.yaml     # pi minimax/MiniMax-M3 — online/local research
-    plan/config.yaml         # claude-sdk opus-5 (xhigh) — PRD + questions
-    implement/config.yaml    # claude-native sonnet-5 (high) — normal implementer
-    expert/config.yaml       # claude-native opus-5 (high) — expert implementer (hard tasks)
-    review/config.yaml       # codex-native gpt-5.6-sol (high) — cross-vendor review
+    research/config.yaml     # hermes minimax/MiniMax-M3 — online/local research
+    plan/config.yaml         # pi kiro/claude-opus-5:xhigh — PRD + questions
+    implement/config.yaml    # pi kiro/claude-sonnet-5:high — normal implementer
+    expert/config.yaml       # pi kiro/claude-opus-5:high — expert implementer (hard tasks)
+    review/config.yaml       # pi kiro/gpt-5-6-sol:high — cross-model review
     qa/config.yaml           # claude-native opus-5 (high) — QA / visual
     docs/config.yaml         # pi minimax/MiniMax-M3 — README + LEARNING
     host/config.yaml         # pi minimax/MiniMax-M2.7 — serve (unused port) + Tailscale URL
