@@ -5,16 +5,15 @@ description: >-
   prior art, standards, unfamiliar error messages, comparisons — from online
   sources or the local environment. Read-only; writes no product code.
 
-# hermes harness (headless — mirrors pi's env/config flow), minimax/MiniMax-M3
-# (provider-qualified so it uses the local minimax provider, not a gateway
-# default). Large context for digesting sources; can browse via the Playwright
-# MCP or fetch via shell.
+# pi harness, minimax/MiniMax-M3 (provider-qualified so it uses the local minimax
+# provider, not a gateway default). Large context for digesting sources; can
+# browse via the Playwright MCP or fetch via shell.
 executor:
   type: omnigent
   config:
-    harness: hermes
+    harness: pi
     model: minimax/MiniMax-M3
-    # bypassPermissions per the swarm-wide setting. (hermes's real autonomy is the
+    # bypassPermissions per the swarm-wide setting. (pi's real autonomy is the
     # blast_radius guardrail below; this key is honored where the harness supports
     # it and harmless otherwise.)
     permission_mode: bypassPermissions

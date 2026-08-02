@@ -10,7 +10,7 @@ writes no code and never merges; the human merges the PRs.
 | Role | Worker | Harness | Model | Effort | Purpose |
 |---|---|---|---|---|---|
 | **brain** | dev-swarm | `claude-sdk` | `claude-sonnet-5` | medium | takes the goal, fans out, orchestrates |
-| **research** | researcher | `hermes` (minimax) | `minimax/MiniMax-M3` | — | online / local research (`explore`) |
+| **research** | researcher | `pi` (minimax) | `minimax/MiniMax-M3` | — | online / local research (`explore`) |
 | **plan** | planner | `pi` (kiro) | `kiro/claude-opus-5:xhigh` | xhigh | PRD + clarifying questions (`explore`) |
 | **implement** | implementer | `pi` (kiro) | `kiro/claude-sonnet-5:high` | high | NORMAL tasks: review PRD, code + tests, open PR; text/DOM browser (`implement`) |
 | **expert** | expert implementer | `pi` (kiro) | `kiro/claude-opus-5:high` | high | DIFFICULT tasks only: hard bugs / failed fixes; text/DOM browser (`implement`) |
@@ -97,11 +97,11 @@ spending more fix attempts.
 Only `qa` runs on **`claude-native`** (Claude Code), which has the Playwright/
 browser MCP configured (`~/.claude.json`) and verified working — so real
 screenshots and live visual/UI checks work out of the box. Everyone else with
-browser access — `implement`, `expert`, `review` (kiro on pi), `research`
-(minimax on hermes), and `host` (minimax on pi) — has the Playwright MCP too,
-but is **text/DOM only** (`browser_navigate` + `browser_snapshot`). They must
-NOT take screenshots: a screenshot is a large image and kiro models reject it
-with `context_length_exceeded`. Pixel/visual verification is `qa`'s job alone.
+browser access — `implement`, `expert`, `review` (kiro on pi) and `research`,
+`host` (minimax on pi) — has the Playwright MCP too, but is **text/DOM only**
+(`browser_navigate` + `browser_snapshot`). They must NOT take screenshots: a
+screenshot is a large image and kiro models reject it with
+`context_length_exceeded`. Pixel/visual verification is `qa`'s job alone.
 
 ## Host requirements (the runner)
 
@@ -109,9 +109,8 @@ with `context_length_exceeded`. Pixel/visual verification is `qa`'s job alone.
 - **`pi`** + the **kiro provider** — for `plan`, `implement`, `expert`, `review`
   (`kiro/claude-opus-5:xhigh`, `kiro/claude-sonnet-5:high`,
   `kiro/claude-opus-5:high`, `kiro/gpt-5-6-sol:high`, provider-qualified).
-- **`pi`** + the **minimax** provider — for `docs`, `host`
+- **`pi`** + the **minimax** provider — for `research`, `docs`, `host`
   (`minimax/MiniMax-M3`, `minimax/MiniMax-M2.7`, provider-qualified).
-- **`hermes`** — for `research` (`minimax/MiniMax-M3`, provider-qualified).
 - **`tailscale`** on PATH + host on the tailnet — for `host` preview URLs.
 - A browser MCP (Playwright) for `qa` visual checks and `research` browsing.
 
@@ -121,7 +120,7 @@ with `context_length_exceeded`. Pixel/visual verification is `qa`'s job alone.
 dev-swarm/
   config.yaml                # brain (claude-sdk sonnet-5, medium) + full pipeline
   agents/
-    research/config.yaml     # hermes minimax/MiniMax-M3 — online/local research
+    research/config.yaml     # pi minimax/MiniMax-M3 — online/local research
     plan/config.yaml         # pi kiro/claude-opus-5:xhigh — PRD + questions
     implement/config.yaml    # pi kiro/claude-sonnet-5:high — normal implementer
     expert/config.yaml       # pi kiro/claude-opus-5:high — expert implementer (hard tasks)
