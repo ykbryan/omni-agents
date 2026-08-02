@@ -19,13 +19,16 @@ writes no code and never merges; the human merges the PRs.
 | **docs** | document writer | `pi` (minimax) | `minimax/MiniMax-M3` | — | README + LEARNING (`implement`) |
 | **host** | host / preview | `pi` (minimax) | `minimax/MiniMax-M2.7` | — | serve latest on an unused port + Tailscale URL (`implement`) |
 
-**Permissions:** the entire swarm runs **`bypassPermissions`** — no per-action
-approval prompts, so it works fully headless. For the Claude harnesses Omnigent
-translates this to `--dangerously-skip-permissions` (which also clears the
-trust-folder dialog); the kiro-on-pi workers get uninterrupted headless autonomy
-directly. Safety does **not** come from prompting — it comes from the
-`blast_radius` guardrail every worker carries: the catastrophic set (force-push,
-`rm -rf /`, hard-reset to a remote ref) stays denied regardless.
+**Permissions:** the swarm runs headless, no per-action approval prompts. Every
+worker except `qa` uses **`bypassPermissions`** (for Claude harnesses, Omnigent
+translates this to `--dangerously-skip-permissions`; the kiro-on-pi workers get
+uninterrupted headless autonomy directly). `qa` (`claude-native`) uses
+**`auto`** instead — `bypassPermissions` does not reliably clear Claude Code's
+per-worktree "trust this folder?" dialog for a headless claude-native sub-agent
+(confirmed: it hung on boot), while `auto` both auto-approves tool calls and
+skips that trust dialog. Safety does **not** come from prompting — it comes
+from the `blast_radius` guardrail every worker carries: the catastrophic set
+(force-push, `rm -rf /`, hard-reset to a remote ref) stays denied regardless.
 
 ## Task vs question (the brain decides first)
 

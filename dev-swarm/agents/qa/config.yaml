@@ -9,17 +9,22 @@ description: >-
 # claude-native (Claude Code) harness, claude-opus-5 at high effort. Runs on
 # Claude Code specifically so it HAS the Playwright/browser MCP (configured in
 # ~/.claude.json and verified working on this host) for real visual/UI checks,
-# plus the live preview pane. bypassPermissions -> Omnigent launches it with
-# --dangerously-skip-permissions (which also clears the trust dialog), so it runs
-# headless without stalling. Screenshots are fine on Claude models; prefer
+# plus the live preview pane. Screenshots are fine on Claude models; prefer
 # browser_snapshot (text/DOM) when that's enough.
+# REQUIRED for a headless claude-native sub-agent in a fresh per-task git
+# worktree: `auto` launches Claude Code with `--permission-mode auto`, which
+# auto-approves tool calls WITHOUT prompting AND skips the "trust this folder?"
+# dialog. `bypassPermissions` (`--dangerously-skip-permissions`) does NOT
+# reliably clear that trust dialog for claude-native here — confirmed the hard
+# way: qa hung twice waiting on it and never reached input-ready (Omnigent's
+# 30s boot timeout). Same root cause + fix as gopo-kiro's qa worker.
 executor:
   type: omnigent
   config:
     harness: claude-native
     model: claude-opus-5
     reasoning_effort: high
-    permission_mode: bypassPermissions
+    permission_mode: auto
 
 prompt: |
   You are the QA sub-agent for the dev-swarm orchestrator. You verify things the
