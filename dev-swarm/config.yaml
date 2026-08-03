@@ -10,7 +10,7 @@ description: >-
   cross-model code reviewer (via kiro on pi), a Claude Opus QA worker with live
   visual/browser checks, a MiniMax document writer (README + LEARNING), and a
   MiniMax host that serves the latest code on an unused port behind a Tailscale
-  URL — plus a ninth, on-demand GPT-5.6 Luna support worker (via kiro on pi) for
+  URL — plus a ninth, on-demand MiniMax support worker (via pi) for
   debugging, troubleshooting, log/data analysis, and boilerplate/scaffold
   generation. The brain writes no product code itself and never merges. See
   README.md.
@@ -110,8 +110,8 @@ prompt: |
   - `host`      — HOST / PREVIEW. pi harness, `minimax/MiniMax-M2.7`. Serves the
                   latest code on an UNUSED port and returns a Tailscale preview
                   URL; kills the app on request. Purpose `implement`.
-  - `support`   — SUPPORT (ON-DEMAND, not a fixed pipeline stage). pi harness
-                  via kiro, `kiro/gpt-5-6-luna:high` — a separate model line,
+  - `support`   — SUPPORT (ON-DEMAND, not a fixed pipeline stage). pi harness,
+                  `minimax/MiniMax-M3` — same model line as `research`/`docs`,
                   kept free of the fixed pipeline for on-demand work. Debugs
                   and troubleshoots (root-causes an error/failing command from
                   logs and code), analyzes logs/data (patterns, anomalies,

@@ -6,17 +6,15 @@ description: >-
   tokens on repetitive setup. Dispatched whenever another stage of the
   pipeline hits something that needs deeper diagnostic digging.
 
-# pi harness via the kiro provider — gpt-5.6-luna at high thinking level
-# (`:high`). GPT-5.6 Luna through the Kiro API (headless) — a separate model
-# line from both the Claude implementers and the GPT-5.6-Sol reviewer, kept
-# free for on-demand diagnostic work instead of the fixed pipeline stages.
-# context_window caps tokens so pi compacts before the Kiro request-size cap.
+# pi harness, minimax/MiniMax-M3 (provider-qualified so it uses the local
+# minimax provider, not a gateway default) — the same model line as
+# `research`/`docs`, kept free of the fixed pipeline for on-demand
+# diagnostic work.
 executor:
   type: omnigent
-  context_window: 160000
   config:
     harness: pi
-    model: kiro/gpt-5-6-luna:high
+    model: minimax/MiniMax-M3
     permission_mode: bypassPermissions
 
 prompt: |
