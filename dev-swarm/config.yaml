@@ -6,7 +6,7 @@ description: >-
   bounded pipeline of eight specialists: a MiniMax researcher, a Claude Opus
   planner (via kiro on pi — writes the PRD, asks the human clarifying
   questions), a Claude Sonnet implementer and a Claude Opus expert implementer
-  (both via kiro on pi, one owner per task by difficulty), a GPT-5.6 Sol
+  (both claude-native, one owner per task by difficulty), a GPT-5.6 Sol
   cross-model code reviewer (via kiro on pi), a Claude Opus QA worker with live
   visual/browser checks, a MiniMax document writer (README + LEARNING), and a
   MiniMax host that serves the latest code on an unused port behind a Tailscale
@@ -83,19 +83,18 @@ prompt: |
   - `plan`      — PLANNER. pi harness via kiro, `kiro/claude-opus-5:xhigh`. Turns
                   the goal (+ research) into a clear PRD and surfaces CLARIFYING
                   QUESTIONS for the human. Read-mostly. Purpose `explore`.
-  - `implement` — IMPLEMENTER. pi harness via kiro, `kiro/claude-sonnet-5:high`.
-                  Reviews the PRD, asks questions if needed, writes the code +
-                  tests, drives to green, opens its OWN PR. Has the Playwright MCP
-                  for TEXT/DOM diagnosis (browser_snapshot) against a `host` preview
-                  URL — NO screenshots (kiro image cap). Purpose `implement`. Use
-                  for NORMAL tasks.
-  - `expert`    — EXPERT IMPLEMENTER. pi harness via kiro, `kiro/claude-opus-5:high`.
-                  Same job as `implement` (code + tests + own PR) but ONLY for
-                  DIFFICULT work — hard/complex tasks, subtle bugs, or a fix the
-                  normal implementer couldn't land after repeated review/QA
+  - `implement` — IMPLEMENTER. claude-native (Claude Code), `claude-sonnet-5`
+                  (high). Reviews the PRD, asks questions if needed, writes the
+                  code + tests, drives to green, opens its OWN PR. Has the native
+                  Playwright MCP for TEXT/DOM diagnosis or real screenshots when
+                  useful. Purpose `implement`. Use for NORMAL tasks.
+  - `expert`    — EXPERT IMPLEMENTER. claude-native (Claude Code), `claude-opus-5`
+                  (high). Same job as `implement` (code + tests + own PR) but ONLY
+                  for DIFFICULT work — hard/complex tasks, subtle bugs, or a fix
+                  the normal implementer couldn't land after repeated review/QA
                   failures. Give it the FULL history (prior attempts, review/QA
-                  feedback, relevant LEARNING). Also uses text/DOM browser
-                  diagnosis (no screenshots). Purpose `implement`.
+                  feedback, relevant LEARNING). Also has native browser access
+                  (TEXT/DOM or screenshots). Purpose `implement`.
   - `review`    — code REVIEWER. pi harness via kiro, `kiro/gpt-5-6-sol:high` — a
                   DIFFERENT model line (GPT) than the Claude implementers, so review
                   stays an independent cross-check. Judges the diff vs the
@@ -230,8 +229,8 @@ prompt: |
   - Distinguish a BOOT failure (missing CLI — drop that worker for the run) from a
     task failure (which the strike rules above govern).
 
-  Roster preflight (FIRST turn, before any dispatch): a Claude provider for you
-  and `qa`; `pi` (with the kiro provider) for `plan`, `implement`, `expert`,
+  Roster preflight (FIRST turn, before any dispatch): a Claude provider for you,
+  `qa`, `implement`, and `expert`; `pi` (with the kiro provider) for `plan`,
   `review`, `support`, `research`, `docs`, and `host`; `tailscale` for `host`.
   Run ONE `sys_os_shell("command -v claude pi tailscale || true")`, record what
   resolved, and route only to available workers. This is silent plumbing — only

@@ -5,20 +5,22 @@ description: >-
   the real code + test changes for a scoped task in its own git worktree, drives
   them to green, and opens its own PR.
 
-# pi harness via the kiro provider — claude-sonnet-5 at high thinking level
-# (`:high`). Reaches Claude Sonnet 5 through the Kiro API (headless). Has the
-# Playwright/browser MCP (pi-mcp-adapter) for TEXT/DOM diagnosis (browser_navigate
-# + browser_snapshot) — but NO screenshots (a screenshot is a large image and kiro
-# models reject it with context_length_exceeded). context_window caps tokens so pi
-# compacts before the Kiro request-size cap. permission_mode is kept for the
-# swarm-wide bypass setting; pi's real autonomy is the blast_radius guardrail.
+# claude-native (Claude Code) harness, claude-sonnet-5 at high effort. Runs on
+# Claude Code directly (not via kiro) so it has the Playwright/browser MCP
+# natively for both TEXT/DOM diagnosis and real screenshots when useful — no
+# kiro image-size cap to work around here.
+# REQUIRED for a headless claude-native sub-agent in a fresh per-task git
+# worktree: `auto` launches Claude Code with `--permission-mode auto`, which
+# auto-approves tool calls WITHOUT prompting AND skips the "trust this folder?"
+# dialog. `bypassPermissions` does NOT reliably clear that trust dialog for
+# claude-native here — same gotcha `qa` hit (hung on boot twice before this fix).
 executor:
   type: omnigent
-  context_window: 160000
   config:
-    harness: pi
-    model: kiro/claude-sonnet-5:high
-    permission_mode: bypassPermissions
+    harness: claude-native
+    model: claude-sonnet-5
+    reasoning_effort: high
+    permission_mode: auto
 
 prompt: |
   You are the implementer sub-agent for the dev-swarm orchestrator, dispatched
@@ -43,12 +45,11 @@ prompt: |
     typecheck for the code you touched. Report the exact commands + file set
     (distinguish collected test cases from functions).
   - For UI or hard-to-diagnose behavior you MAY use the browser to inspect what the
-    app does while you fix it: the Playwright MCP (the `mcp` proxy tool →
-    `browser_navigate` + `browser_snapshot` for TEXT/DOM) against any live preview
-    URL the `host` worker provides. Do NOT take screenshots — you run on a kiro
-    model and a screenshot's image blows the input cap; use text snapshots and
-    leave pixel/visual verification to `qa`. Diagnosis only — the fix lands as
-    code + tests.
+    app does while you fix it: the Playwright MCP against any live preview URL the
+    `host` worker provides. Prefer browser_navigate + browser_snapshot (TEXT/DOM)
+    when that's enough; screenshots are fine here if you genuinely need to see it —
+    leave the systematic pixel/visual pass to `qa`. Diagnosis only — the fix lands
+    as code + tests.
   - Co-sign every commit: end each message with a blank line then this exact
     trailer as its final line — `Co-authored-by: omnigent <noreply@omnigent.ai>`
   - When green, push your task branch and open a PR with `gh pr create` (clear

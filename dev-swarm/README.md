@@ -2,7 +2,8 @@
 
 A multi-vendor coding **swarm**. A Claude (Sonnet 5) brain takes your prompt,
 enriches it, fans it out into tasks, and drives each through a bounded pipeline of
-eight specialists — Claude (direct SDK + via kiro on pi), GPT, and MiniMax —
+eight specialists — Claude (direct SDK, claude-native, and via kiro on pi), GPT,
+and MiniMax —
 plus a ninth, on-demand MiniMax `support` worker for debugging,
 troubleshooting, log/data analysis, and boilerplate. The brain writes no code
 and never merges; the human merges the PRs.
@@ -14,24 +15,25 @@ and never merges; the human merges the PRs.
 | **brain** | dev-swarm | `claude-sdk` | `claude-sonnet-5` | medium | takes the goal, fans out, orchestrates |
 | **research** | researcher | `pi` (minimax) | `minimax/MiniMax-M3` | — | online / local research (`explore`) |
 | **plan** | planner | `pi` (kiro) | `kiro/claude-opus-5:xhigh` | xhigh | PRD + clarifying questions (`explore`) |
-| **implement** | implementer | `pi` (kiro) | `kiro/claude-sonnet-5:high` | high | NORMAL tasks: review PRD, code + tests, open PR; text/DOM browser (`implement`) |
-| **expert** | expert implementer | `pi` (kiro) | `kiro/claude-opus-5:high` | high | DIFFICULT tasks only: hard bugs / failed fixes; text/DOM browser (`implement`) |
+| **implement** | implementer | `claude-native` | `claude-sonnet-5` | high | NORMAL tasks: review PRD, code + tests, open PR; native browser (`implement`) |
+| **expert** | expert implementer | `claude-native` | `claude-opus-5` | high | DIFFICULT tasks only: hard bugs / failed fixes; native browser (`implement`) |
 | **review** | code reviewer | `pi` (kiro) | `kiro/gpt-5-6-sol:high` | high | cross-model diff review (`review`) |
 | **qa** | QA / visual-check | `claude-native` | `claude-opus-5` | high | run & see: browser/visual (`review`) |
 | **docs** | document writer | `pi` (minimax) | `minimax/MiniMax-M3` | — | README + LEARNING (`implement`) |
 | **host** | host / preview | `pi` (minimax) | `minimax/MiniMax-M2.7` | — | serve latest on an unused port + Tailscale URL (`implement`) |
 | **support** | support (on-demand) | `pi` (minimax) | `minimax/MiniMax-M3` | — | debug/troubleshoot, log/data analysis, boilerplate (`explore`/`implement`) |
 
-**Permissions:** the swarm runs headless, no per-action approval prompts. Every
-worker except `qa` uses **`bypassPermissions`** (for Claude harnesses, Omnigent
-translates this to `--dangerously-skip-permissions`; the kiro-on-pi workers get
-uninterrupted headless autonomy directly). `qa` (`claude-native`) uses
-**`auto`** instead — `bypassPermissions` does not reliably clear Claude Code's
-per-worktree "trust this folder?" dialog for a headless claude-native sub-agent
-(confirmed: it hung on boot), while `auto` both auto-approves tool calls and
-skips that trust dialog. Safety does **not** come from prompting — it comes
-from the `blast_radius` guardrail every worker carries: the catastrophic set
-(force-push, `rm -rf /`, hard-reset to a remote ref) stays denied regardless.
+**Permissions:** the swarm runs headless, no per-action approval prompts. The
+pi/kiro and pi/minimax workers (`plan`, `review`, `research`, `docs`, `host`,
+`support`) use **`bypassPermissions`**, which gives them uninterrupted headless
+autonomy directly. The `claude-native` workers (`qa`, `implement`, `expert`) use
+**`auto`** instead — `bypassPermissions` (`--dangerously-skip-permissions`) does
+not reliably clear Claude Code's per-worktree "trust this folder?" dialog for a
+headless claude-native sub-agent in a fresh git worktree (confirmed: it hung on
+boot), while `auto` both auto-approves tool calls and skips that trust dialog.
+Safety does **not** come from prompting — it comes from the `blast_radius`
+guardrail every worker carries: the catastrophic set (force-push, `rm -rf /`,
+hard-reset to a remote ref) stays denied regardless.
 
 ## Task vs question (the brain decides first)
 
@@ -96,7 +98,7 @@ plan, or straight to the task's owning implementer for a fix or scaffold).
 
 ## Independent review
 
-Implementers run **Claude (Sonnet 5 normal / Opus 5 expert) via kiro on pi**; the
+Implementers run **Claude (Sonnet 5 normal / Opus 5 expert) on claude-native**; the
 reviewer runs **GPT-5.6 Sol via kiro on pi** — a different model line, so review is
 an independent cross-check, not the same model grading its own work. The reviewer
 gets only the diff + PRD (never the worktree) and never edits; only the implementer
@@ -115,19 +117,20 @@ spending more fix attempts.
 
 Only `qa` runs on **`claude-native`** (Claude Code), which has the Playwright/
 browser MCP configured (`~/.claude.json`) and verified working — so real
-screenshots and live visual/UI checks work out of the box. Everyone else with
-browser access — `implement`, `expert`, `review` (kiro on pi) and `research`,
-`host` (minimax on pi) — has the Playwright MCP too, but is **text/DOM only**
-(`browser_navigate` + `browser_snapshot`). They must NOT take screenshots: a
-screenshot is a large image and kiro models reject it with
-`context_length_exceeded`. Pixel/visual verification is `qa`'s job alone.
+screenshots and live visual/UI checks work out of the box. `implement` and
+`expert` also run on **`claude-native`**, so they have the same native
+Playwright MCP access — TEXT/DOM snapshots or a real screenshot when they
+genuinely need to see something, though the systematic pixel/visual pass stays
+`qa`'s job. `review` (kiro on pi) and `research`, `host` (minimax on pi) have
+the Playwright MCP too, but are **text/DOM only** (`browser_navigate` +
+`browser_snapshot`) — a screenshot is a large image and kiro/minimax models
+reject it with `context_length_exceeded`.
 
 ## Host requirements (the runner)
 
 - A **Claude provider** (`omnigent setup`) — for the brain and `qa`.
-- **`pi`** + the **kiro provider** — for `plan`, `implement`, `expert`, `review`
-  (`kiro/claude-opus-5:xhigh`, `kiro/claude-sonnet-5:high`,
-  `kiro/claude-opus-5:high`, `kiro/gpt-5-6-sol:high`, provider-qualified).
+- **`pi`** + the **kiro provider** — for `plan`, `review`
+  (`kiro/claude-opus-5:xhigh`, `kiro/gpt-5-6-sol:high`, provider-qualified).
 - **`pi`** + the **minimax** provider — for `research`, `docs`, `host`, `support`
   (`minimax/MiniMax-M3`, `minimax/MiniMax-M2.7`, provider-qualified).
 - **`tailscale`** on PATH + host on the tailnet — for `host` preview URLs.
@@ -141,8 +144,8 @@ dev-swarm/
   agents/
     research/config.yaml     # pi minimax/MiniMax-M3 — online/local research
     plan/config.yaml         # pi kiro/claude-opus-5:xhigh — PRD + questions
-    implement/config.yaml    # pi kiro/claude-sonnet-5:high — normal implementer
-    expert/config.yaml       # pi kiro/claude-opus-5:high — expert implementer (hard tasks)
+    implement/config.yaml    # claude-native claude-sonnet-5 (high) — normal implementer
+    expert/config.yaml       # claude-native claude-opus-5 (high) — expert implementer (hard tasks)
     review/config.yaml       # pi kiro/gpt-5-6-sol:high — cross-model review
     qa/config.yaml           # claude-native opus-5 (high) — QA / visual
     docs/config.yaml         # pi minimax/MiniMax-M3 — README + LEARNING
