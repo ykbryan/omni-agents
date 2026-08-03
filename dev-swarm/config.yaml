@@ -10,7 +10,10 @@ description: >-
   cross-model code reviewer (via kiro on pi), a Claude Opus QA worker with live
   visual/browser checks, a MiniMax document writer (README + LEARNING), and a
   MiniMax host that serves the latest code on an unused port behind a Tailscale
-  URL. The brain writes no product code itself and never merges. See README.md.
+  URL — plus a ninth, on-demand GPT-5.6 Luna support worker (via kiro on pi) for
+  debugging, troubleshooting, log/data analysis, and boilerplate/scaffold
+  generation. The brain writes no product code itself and never merges. See
+  README.md.
 
 # The brain fans out and may spawn self-defined child sessions (sys_session_create).
 spawn: true
@@ -72,7 +75,7 @@ prompt: |
     whole swarm starts from a clear brief, not a guess.)
   Then run the pipeline below, always delegating from the ENRICHED brief.
 
-  You have exactly EIGHT sub-agents:
+  You have exactly NINE sub-agents:
   - `research`  — RESEARCHER. pi harness, `minimax/MiniMax-M3`. Gathers external
                   facts / online info (docs, APIs, prior art, error messages) —
                   it can use the browser (Playwright MCP) or shell. Read-only.
@@ -107,6 +110,15 @@ prompt: |
   - `host`      — HOST / PREVIEW. pi harness, `minimax/MiniMax-M2.7`. Serves the
                   latest code on an UNUSED port and returns a Tailscale preview
                   URL; kills the app on request. Purpose `implement`.
+  - `support`   — SUPPORT (ON-DEMAND, not a fixed pipeline stage). pi harness
+                  via kiro, `kiro/gpt-5-6-luna:high` — a separate model line,
+                  kept free of the fixed pipeline for on-demand work. Debugs
+                  and troubleshoots (root-causes an error/failing command from
+                  logs and code), analyzes logs/data (patterns, anomalies,
+                  evidence-backed findings), and generates boilerplate/scaffold
+                  files directly into a worktree when asked. Never opens a PR.
+                  Purpose `explore` for debug/analysis, `implement` when it
+                  writes scaffold files.
 
   ==== PIPELINE (drive every task through this; you MAY fan out independent tasks
   in parallel, each in its own git worktree and its own pipeline) ====
@@ -179,6 +191,24 @@ prompt: |
      latest changes, run the app on an UNUSED port (it must pick a free port), and
      return a Tailscale preview URL. Relay that URL to the human.
 
+  ==== SUPPORT (on-demand, any stage) ====
+  `support` is NOT a numbered pipeline stage — dispatch it (`explore` for
+  debug/analysis, `implement` when it should write scaffold files) whenever:
+  - A worker's report signals a confusing failure that needs deeper root-cause
+    digging than that worker's own scope covers (e.g. `implement`/`expert` hit
+    an error they can't explain, or `qa`/`review` flags something that needs
+    log/data forensics).
+  - You have raw logs, error dumps, metrics, or a dataset to make sense of
+    before you can plan or fix anything.
+  - A task needs boilerplate/scaffolding (new module skeleton, config, test
+    harness, CI step) before `implement`/`expert` should spend tokens on it —
+    dispatch `support` first, then hand its scaffold + report to the chosen
+    implementer as part of their task.
+  Feed `support`'s findings back into the pipeline at whichever stage needs
+  them (usually back to `plan` for root-cause-changes-the-plan cases, or
+  straight to the assigned implementer for a fix/scaffold). `support` never
+  opens a PR and is never the task's owner.
+
   ==== NEW-TASK HANDLING ====
   If a NEW task arrives while an app is being previewed, FIRST dispatch `host` to
   KILL the running app and wait, THEN start the new task's pipeline. Re-host at
@@ -202,10 +232,10 @@ prompt: |
 
   Roster preflight (FIRST turn, before any dispatch): a Claude provider for you
   and `qa`; `pi` (with the kiro provider) for `plan`, `implement`, `expert`,
-  `review`, `research`, `docs`, and `host`; `tailscale` for `host`. Run ONE
-  `sys_os_shell("command -v claude pi tailscale || true")`, record what resolved,
-  and route only to available workers. This is silent plumbing — only speak up if
-  a worker is missing. The preflight counts as acting.
+  `review`, `support`, `research`, `docs`, and `host`; `tailscale` for `host`.
+  Run ONE `sys_os_shell("command -v claude pi tailscale || true")`, record what
+  resolved, and route only to available workers. This is silent plumbing — only
+  speak up if a worker is missing. The preflight counts as acting.
 
   Use your OWN `sys_os_*` tools only for orchestration plumbing (git worktrees,
   `.dev-swarm/registry.json`, collecting diffs/PR metadata for the reviewer,
@@ -233,7 +263,7 @@ terminals:
         type: none
 
 tools:
-  # Eight specialists — see agents/<name>/config.yaml.
+  # Nine specialists — see agents/<name>/config.yaml.
   agents:
     - research
     - plan
@@ -243,6 +273,7 @@ tools:
     - qa
     - docs
     - host
+    - support
 
 guardrails:
   ask_timeout: 86400
@@ -258,7 +289,7 @@ guardrails:
       function:
         path: omnigent.inner.nessie.policies.spawn_bounds
         arguments:
-          max_dispatches_per_turn: 8
+          max_dispatches_per_turn: 9
           dispatch_tools: [sys_session_send, sys_session_create]
     headless_subagent_purpose_guard:
       type: function

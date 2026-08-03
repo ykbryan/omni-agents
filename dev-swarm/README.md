@@ -2,8 +2,10 @@
 
 A multi-vendor coding **swarm**. A Claude (Sonnet 5) brain takes your prompt,
 enriches it, fans it out into tasks, and drives each through a bounded pipeline of
-eight specialists — Claude (direct SDK + via kiro on pi) and MiniMax. The brain
-writes no code and never merges; the human merges the PRs.
+eight specialists — Claude (direct SDK + via kiro on pi), GPT, and MiniMax —
+plus a ninth, on-demand GPT-5.6 Luna `support` worker for debugging,
+troubleshooting, log/data analysis, and boilerplate. The brain writes no code
+and never merges; the human merges the PRs.
 
 ## Roster
 
@@ -18,6 +20,7 @@ writes no code and never merges; the human merges the PRs.
 | **qa** | QA / visual-check | `claude-native` | `claude-opus-5` | high | run & see: browser/visual (`review`) |
 | **docs** | document writer | `pi` (minimax) | `minimax/MiniMax-M3` | — | README + LEARNING (`implement`) |
 | **host** | host / preview | `pi` (minimax) | `minimax/MiniMax-M2.7` | — | serve latest on an unused port + Tailscale URL (`implement`) |
+| **support** | support (on-demand) | `pi` (kiro) | `kiro/gpt-5-6-luna:high` | high | debug/troubleshoot, log/data analysis, boilerplate (`explore`/`implement`) |
 
 **Permissions:** the swarm runs headless, no per-action approval prompts. Every
 worker except `qa` uses **`bypassPermissions`** (for Claude harnesses, Omnigent
@@ -78,6 +81,19 @@ activates the swarm — the brain answers directly, or (if it can't) dispatches
 running app and wait, then runs the new task's pipeline and re-hosts — so the
 preview never shows stale code.
 
+## Support (on-demand, any stage)
+
+`support` isn't a numbered pipeline stage — the brain dispatches it whenever a
+worker's report needs deeper diagnostic digging, raw logs/data need making
+sense of before planning or fixing anything, or a task needs
+boilerplate/scaffolding generated before an implementer should spend tokens on
+it. It runs on **GPT-5.6 Luna via kiro on pi** — a separate model line kept
+free of the fixed pipeline — and returns root-cause findings, log/data
+analysis, or scaffold files (written directly into the worktree when asked).
+It never opens a PR; the brain routes its output back into the pipeline at
+whichever stage needs it (usually `plan` for a root-cause that changes the
+plan, or straight to the task's owning implementer for a fix or scaffold).
+
 ## Independent review
 
 Implementers run **Claude (Sonnet 5 normal / Opus 5 expert) via kiro on pi**; the
@@ -109,9 +125,10 @@ screenshot is a large image and kiro models reject it with
 ## Host requirements (the runner)
 
 - A **Claude provider** (`omnigent setup`) — for the brain and `qa`.
-- **`pi`** + the **kiro provider** — for `plan`, `implement`, `expert`, `review`
-  (`kiro/claude-opus-5:xhigh`, `kiro/claude-sonnet-5:high`,
-  `kiro/claude-opus-5:high`, `kiro/gpt-5-6-sol:high`, provider-qualified).
+- **`pi`** + the **kiro provider** — for `plan`, `implement`, `expert`, `review`,
+  `support` (`kiro/claude-opus-5:xhigh`, `kiro/claude-sonnet-5:high`,
+  `kiro/claude-opus-5:high`, `kiro/gpt-5-6-sol:high`, `kiro/gpt-5-6-luna:high`,
+  provider-qualified).
 - **`pi`** + the **minimax** provider — for `research`, `docs`, `host`
   (`minimax/MiniMax-M3`, `minimax/MiniMax-M2.7`, provider-qualified).
 - **`tailscale`** on PATH + host on the tailnet — for `host` preview URLs.
@@ -131,6 +148,7 @@ dev-swarm/
     qa/config.yaml           # claude-native opus-5 (high) — QA / visual
     docs/config.yaml         # pi minimax/MiniMax-M3 — README + LEARNING
     host/config.yaml         # pi minimax/MiniMax-M2.7 — serve (unused port) + Tailscale URL
+    support/config.yaml      # pi kiro/gpt-5-6-luna:high — on-demand debug/log-data/boilerplate
   README.md
 ```
 
