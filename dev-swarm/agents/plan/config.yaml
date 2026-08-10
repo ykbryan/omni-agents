@@ -5,17 +5,21 @@ description: >-
   clarifying questions for the human. Produces scoped tasks and acceptance
   criteria. Read-mostly; writes no product code.
 
-# pi harness via the kiro provider — claude-opus-5 at xhigh thinking level
-# (`:xhigh`). Opus 5 through the Kiro API (headless) for the hardest,
-# highest-leverage thinking (requirements + decomposition + acceptance criteria).
-# context_window caps tokens so pi compacts before the Kiro request-size cap.
+# claude-native (Claude Code) harness, claude-opus-5 at xhigh reasoning effort.
+# MOVED OFF KIRO (kiro provider is down) — same model line as before
+# (claude-opus-5 at xhigh), now resolved through the local Claude provider
+# instead of the Kiro API. The Kiro request-size cap no longer applies, so the
+# `context_window: 160000` compaction cap it needed has been dropped.
+# `permission_mode: auto` (not bypassPermissions) is REQUIRED for headless
+# claude-native — it clears the "trust this folder?" dialog that hung `qa` and
+# `implement` on boot.
 executor:
   type: omnigent
-  context_window: 160000
   config:
-    harness: pi
-    model: kiro/claude-opus-5:xhigh
-    permission_mode: bypassPermissions
+    harness: claude-native
+    model: claude-opus-5
+    reasoning_effort: xhigh
+    permission_mode: auto
 
 prompt: |
   You are the planner sub-agent for the dev-swarm orchestrator. Your task prompt
