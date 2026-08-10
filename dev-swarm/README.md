@@ -35,6 +35,19 @@ Safety does **not** come from prompting — it comes from the `blast_radius`
 guardrail every worker carries: the catastrophic set (force-push, `rm -rf /`,
 hard-reset to a remote ref) stays denied regardless.
 
+**Roster discipline:** the brain has exactly these nine sub-agents and no
+others. It must never dispatch to an `agent_id` outside this roster (via
+`sys_session_create`, `sys_session_send`, or any other path), and never
+improvise a substitute when a roster worker's provider is down — a provider
+outage means drop that worker, tell the human exactly what's blocked, and
+stop. Any one-off deviation requires the human's explicit, in-the-moment
+sign-off, never an inference from something said earlier. (This is a
+hardened rule, not a suggestion: a previous session's brain went off-roster
+to an ad-hoc Codex session during a `pi` outage to keep a task moving: then
+the brain itself got stuck before it could relay a follow-up correction
+narrowing that session's role, and the unsupervised session kept going and
+self-merged a PR with no review/QA gate.)
+
 ## Task vs question (the brain decides first)
 
 The brain classifies your prompt before doing anything. A **question** never
