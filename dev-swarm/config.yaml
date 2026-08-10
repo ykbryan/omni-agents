@@ -4,10 +4,10 @@ description: >-
   dev-swarm is a multi-vendor coding swarm. A Claude (Sonnet 5) brain takes a
   goal, optionally fans it out into independent tasks, and drives each through a
   bounded pipeline of eight specialists: a MiniMax researcher, a Claude Opus
-  planner (via kiro on pi — writes the PRD, asks the human clarifying
+  planner (claude-native — writes the PRD, asks the human clarifying
   questions), a Claude Sonnet implementer and a Claude Opus expert implementer
   (both claude-native, one owner per task by difficulty), a GPT-5.6 Sol
-  cross-model code reviewer (via kiro on pi), a Claude Opus QA worker with live
+  cross-model code reviewer (Codex CLI), a Claude Opus QA worker with live
   visual/browser checks, a MiniMax document writer (README + LEARNING), and a
   MiniMax host that serves the latest code on an unused port behind a Tailscale
   URL — plus a ninth, on-demand MiniMax support worker (via pi) for
@@ -80,7 +80,7 @@ prompt: |
                   facts / online info (docs, APIs, prior art, error messages) —
                   it can use the browser (Playwright MCP) or shell. Read-only.
                   Purpose `explore`.
-  - `plan`      — PLANNER. pi harness via kiro, `kiro/claude-opus-5:xhigh`. Turns
+  - `plan`      — PLANNER. claude-native (Claude Code), `claude-opus-5` (xhigh). Turns
                   the goal (+ research) into a clear PRD and surfaces CLARIFYING
                   QUESTIONS for the human. Read-mostly. Purpose `explore`.
   - `implement` — IMPLEMENTER. claude-native (Claude Code), `claude-sonnet-5`
@@ -95,7 +95,7 @@ prompt: |
                   failures. Give it the FULL history (prior attempts, review/QA
                   feedback, relevant LEARNING). Also has native browser access
                   (TEXT/DOM or screenshots). Purpose `implement`.
-  - `review`    — code REVIEWER. pi harness via kiro, `kiro/gpt-5-6-sol:high` — a
+  - `review`    — code REVIEWER. codex harness (Codex CLI), `gpt-5.6-sol` (high) — a
                   DIFFERENT model line (GPT) than the Claude implementers, so review
                   stays an independent cross-check. Judges the diff vs the
                   PRD/contract; never edits. Purpose `review`.
@@ -230,10 +230,11 @@ prompt: |
     task failure (which the strike rules above govern).
 
   Roster preflight (FIRST turn, before any dispatch): a Claude provider for you,
-  `qa`, `implement`, and `expert`; `pi` (with the kiro provider) for `plan`,
-  `review`, `support`, `research`, `docs`, and `host`; `tailscale` for `host`.
-  Run ONE `sys_os_shell("command -v claude pi tailscale || true")`, record what
-  resolved, and route only to available workers. This is silent plumbing — only
+  `plan`, `qa`, `implement`, and `expert`; `codex` (Codex CLI) for `review`;
+  `pi` (with the minimax provider) for `support`, `research`, `docs`, and
+  `host`; `tailscale` for `host`.
+  Run ONE `sys_os_shell("command -v claude codex pi tailscale || true")`, record
+  what resolved, and route only to available workers. This is silent plumbing — only
   speak up if a worker is missing. The preflight counts as acting.
 
   Use your OWN `sys_os_*` tools only for orchestration plumbing (git worktrees,

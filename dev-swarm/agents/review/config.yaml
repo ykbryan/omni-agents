@@ -2,21 +2,24 @@ spec_version: 1
 name: review
 description: >-
   The code REVIEWER. Judges the implementer's diff against its acceptance contract
-  and reports issues. A different model line (GPT via kiro) from the Claude
+  and reports issues. A different model line (GPT via Codex CLI) from the Claude
   implementers, so review is a genuine cross-model check. Never edits code.
 
-# pi harness via the kiro provider — gpt-5.6-sol at high thinking level (`:high`).
-# GPT-5.6 Sol through the Kiro API (headless) — a different MODEL LINE (GPT) than
-# the Claude implementers, so review stays an independent cross-check. Read-only by
-# instruction; never edits or pushes. context_window caps tokens so pi compacts
-# before the Kiro request cap — but a single very large diff can still trip
-# context_length_exceeded, so the orchestrator should chunk big diffs.
+# codex (Codex CLI) harness at high reasoning effort. MOVED OFF KIRO (kiro
+# provider is down) — still GPT-5.6 Sol, the SAME model line as before, but via
+# the local Codex CLI instead of the Kiro API (~/.codex/config.toml already
+# pins `model = "gpt-5.6-sol"`). The model is deliberately NOT pinned here: the
+# codex harness resolves the configured OpenAI/Codex default, and unlike the
+# openai-agents harness it has no silent Databricks fallback for an unpinned
+# model. Still a different MODEL LINE (GPT) from the Claude implementers, so
+# review remains a genuine cross-model check. Read-only by instruction.
+# The Kiro request cap no longer applies, so the 160k compaction cap is dropped;
+# very large diffs should still be chunked by the orchestrator.
 executor:
   type: omnigent
-  context_window: 160000
   config:
-    harness: pi
-    model: kiro/gpt-5-6-sol:high
+    harness: codex
+    reasoning_effort: high
     permission_mode: bypassPermissions
 
 prompt: |
