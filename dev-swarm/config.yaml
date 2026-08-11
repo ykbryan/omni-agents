@@ -3,8 +3,8 @@ name: dev-swarm
 description: >-
   dev-swarm is a multi-vendor coding swarm. A Claude (Sonnet 5) brain takes a
   goal, optionally fans it out into independent tasks, and drives each through a
-  bounded pipeline of eight specialists: a MiniMax researcher, a Claude Opus
-  planner (claude-native — writes the PRD, asks the human clarifying
+  bounded pipeline of eight specialists: a MiniMax researcher, a GPT-5.6 Sol
+  planner (Codex CLI — writes the PRD, asks the human clarifying
   questions), a Claude Sonnet implementer and a Claude Opus expert implementer
   (both claude-native, one owner per task by difficulty), a GPT-5.6 Sol
   cross-model code reviewer (Codex CLI), a Claude Opus QA worker with live
@@ -80,7 +80,7 @@ prompt: |
                   facts / online info (docs, APIs, prior art, error messages) —
                   it can use the browser (Playwright MCP) or shell. Read-only.
                   Purpose `explore`.
-  - `plan`      — PLANNER. claude-native (Claude Code), `claude-opus-5` (xhigh). Turns
+  - `plan`      — PLANNER. codex harness (Codex CLI), `gpt-5.6-sol` (xhigh). Turns
                   the goal (+ research) into a clear PRD and surfaces CLARIFYING
                   QUESTIONS for the human. Read-mostly. Purpose `explore`.
   - `implement` — IMPLEMENTER. claude-native (Claude Code), `claude-sonnet-5`
@@ -244,7 +244,7 @@ prompt: |
     task failure (which the strike rules above govern).
 
   Roster preflight (FIRST turn, before any dispatch): a Claude provider for you,
-  `plan`, `qa`, `implement`, and `expert`; `codex` (Codex CLI) for `review`;
+  `qa`, `implement`, and `expert`; `codex` (Codex CLI) for `plan` and `review`;
   `pi` (with the minimax provider) for `support`, `research`, `docs`, and
   `host`; `tailscale` for `host`.
   Run ONE `sys_os_shell("command -v claude codex pi tailscale || true")`, record

@@ -5,21 +5,20 @@ description: >-
   clarifying questions for the human. Produces scoped tasks and acceptance
   criteria. Read-mostly; writes no product code.
 
-# claude-native (Claude Code) harness, claude-opus-5 at xhigh reasoning effort.
-# MOVED OFF KIRO (kiro provider is down) — same model line as before
-# (claude-opus-5 at xhigh), now resolved through the local Claude provider
-# instead of the Kiro API. The Kiro request-size cap no longer applies, so the
-# `context_window: 160000` compaction cap it needed has been dropped.
-# `permission_mode: auto` (not bypassPermissions) is REQUIRED for headless
-# claude-native — it clears the "trust this folder?" dialog that hung `qa` and
-# `implement` on boot.
+# codex (Codex CLI) harness at xhigh reasoning effort, GPT-5.6 Sol. Same Codex
+# CLI path as `review` (~/.codex/config.toml pins `model = "gpt-5.6-sol"`), so
+# the model is deliberately NOT pinned here either — the codex harness
+# resolves the configured OpenAI/Codex default, and unlike the openai-agents
+# harness it has no silent Databricks fallback for an unpinned model.
+# `reasoning_effort: xhigh` IS pinned explicitly (unlike `review`'s `high`) so
+# the planner's effort level is self-documenting in git, not just inherited
+# from a local dotfile default.
 executor:
   type: omnigent
   config:
-    harness: claude-native
-    model: claude-opus-5
+    harness: codex
     reasoning_effort: xhigh
-    permission_mode: auto
+    permission_mode: bypassPermissions
 
 prompt: |
   You are the planner sub-agent for the dev-swarm orchestrator. Your task prompt
