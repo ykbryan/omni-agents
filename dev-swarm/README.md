@@ -2,9 +2,9 @@
 
 A multi-vendor coding **swarm**. A Claude (Sonnet 5) brain takes your prompt,
 enriches it, fans it out into tasks, and drives each through a bounded pipeline of
-eight specialists — Claude (direct SDK and claude-native), GPT (Codex CLI),
+nine specialists — Claude (direct SDK and claude-native), GPT (Codex CLI),
 and MiniMax —
-plus a ninth, on-demand MiniMax `support` worker for debugging,
+plus a tenth, on-demand MiniMax `support` worker for debugging,
 troubleshooting, log/data analysis, and boilerplate. The brain writes no code
 and never merges; the human merges the PRs.
 
@@ -19,13 +19,14 @@ and never merges; the human merges the PRs.
 | **expert** | expert implementer | `claude-native` | `claude-opus-5` | high | DIFFICULT tasks only: hard bugs / failed fixes; native browser (`implement`) |
 | **review** | code reviewer | `codex` | `gpt-5.6-sol` | high | cross-model diff review (`review`) |
 | **qa** | QA / visual-check | `claude-native` | `claude-opus-5` | high | run & see: browser/visual (`review`) |
+| **sanitize** | sanitizer / content-integrity | `pi` (minimax) | `minimax/MiniMax-M3` | — | scan diff for invisible/anomalous Unicode; flag possible disclosure signals to the human (`implement`) |
 | **docs** | document writer | `pi` (minimax) | `minimax/MiniMax-M3` | — | README + LEARNING (`implement`) |
 | **host** | host / preview | `pi` (minimax) | `minimax/MiniMax-M2.7` | — | serve latest on an unused port + Tailscale URL (`implement`) |
 | **support** | support (on-demand) | `pi` (minimax) | `minimax/MiniMax-M3` | — | debug/troubleshoot, log/data analysis, boilerplate (`explore`/`implement`) |
 
 **Permissions:** the swarm runs headless, no per-action approval prompts. The
-pi/minimax workers (`research`, `docs`, `host`, `support`) and the `codex`
-planner and reviewer use **`bypassPermissions`**, which gives them
+pi/minimax workers (`research`, `docs`, `host`, `support`, `sanitize`) and the
+`codex` planner and reviewer use **`bypassPermissions`**, which gives them
 uninterrupted headless autonomy directly. The `claude-native` workers (`qa`,
 `implement`, `expert`) use **`auto`** instead — `bypassPermissions`
 (`--dangerously-skip-permissions`) does
@@ -36,7 +37,7 @@ Safety does **not** come from prompting — it comes from the `blast_radius`
 guardrail every worker carries: the catastrophic set (force-push, `rm -rf /`,
 hard-reset to a remote ref) stays denied regardless.
 
-**Roster discipline:** the brain has exactly these nine sub-agents and no
+**Roster discipline:** the brain has exactly these ten sub-agents and no
 others. It must never dispatch to an `agent_id` outside this roster (via
 `sys_session_create`, `sys_session_send`, or any other path), and never
 improvise a substitute when a roster worker's provider is down — a provider
@@ -86,11 +87,19 @@ activates the swarm — the brain answers directly, or (if it can't) dispatches
      into the next attempt.
    - **more than 3 failures → back to `plan`** to re-plan with the QA feedback +
      whatever LEARNING had (the plan, not just the code, is likely wrong).
-   - pass → docs.
-6. **docs** — updates the **README** from all the changes, and appends to
+   - pass → sanitize.
+6. **sanitize** (MiniMax M3 via pi) — scans the final diff for invisible or
+   anomalous Unicode (zero-width characters, bidi control characters — the
+   Trojan Source class, CVE-2021-42574, homoglyphs). Cleans unambiguous noise
+   directly; anything that could be an intentional signal — an
+   attribution/disclosure marker, a watermark, a license notice — gets
+   reported to the human, never silently stripped. This is a content-integrity
+   and security check, not a tool for hiding that a change is AI-generated:
+   `Co-authored-by:` trailers and any AI-authorship attribution stay untouched.
+7. **docs** — updates the **README** from all the changes, and appends to
    **LEARNING.md** — a cross-session memory written *for agents in future
    sessions*: what was tried, what failed and why, what worked, and the gotchas.
-7. **host** — pulls the latest changes and serves the app on an **unused port**,
+8. **host** — pulls the latest changes and serves the app on an **unused port**,
    returning a **Tailscale preview URL** for the human.
 
 **New task while a preview is up:** the brain first tells `host` to **kill** the
@@ -149,8 +158,9 @@ reject it with `context_length_exceeded`.
   (`gpt-5.6-sol`) is taken from your `~/.codex/config.toml` default, not
   pinned in either agent config; reasoning effort IS pinned per-agent
   (`plan` xhigh, `review` high).
-- **`pi`** + the **minimax** provider — for `research`, `docs`, `host`, `support`
-  (`minimax/MiniMax-M3`, `minimax/MiniMax-M2.7`, provider-qualified).
+- **`pi`** + the **minimax** provider — for `research`, `docs`, `host`,
+  `support`, `sanitize` (`minimax/MiniMax-M3`, `minimax/MiniMax-M2.7`,
+  provider-qualified).
 - **`tailscale`** on PATH + host on the tailnet — for `host` preview URLs.
 - A browser MCP (Playwright) for `qa` visual checks and `research` browsing.
 
@@ -166,6 +176,7 @@ dev-swarm/
     expert/config.yaml       # claude-native claude-opus-5 (high) — expert implementer (hard tasks)
     review/config.yaml       # codex gpt-5.6-sol (high) — cross-model review
     qa/config.yaml           # claude-native opus-5 (high) — QA / visual
+    sanitize/config.yaml     # pi minimax/MiniMax-M3 — invisible-Unicode / integrity scan
     docs/config.yaml         # pi minimax/MiniMax-M3 — README + LEARNING
     host/config.yaml         # pi minimax/MiniMax-M2.7 — serve (unused port) + Tailscale URL
     support/config.yaml      # pi minimax/MiniMax-M3 — on-demand debug/log-data/boilerplate
