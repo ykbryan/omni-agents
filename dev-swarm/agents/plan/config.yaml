@@ -5,19 +5,26 @@ description: >-
   clarifying questions for the human. Produces scoped tasks and acceptance
   criteria. Read-mostly; writes no product code.
 
-# codex (Codex CLI) harness at xhigh reasoning effort, GPT-5.6 Sol. Same Codex
-# CLI path as `review` (~/.codex/config.toml pins `model = "gpt-5.6-sol"`), so
-# the model is deliberately NOT pinned here either — the codex harness
-# resolves the configured OpenAI/Codex default, and unlike the openai-agents
-# harness it has no silent Databricks fallback for an unpinned model.
-# `reasoning_effort: xhigh` IS pinned explicitly (unlike `review`'s `high`) so
-# the planner's effort level is self-documenting in git, not just inherited
-# from a local dotfile default.
+# kiro-native harness, still GPT-5.6 Sol (~/.kiro/settings/cli.json pins
+# chat.defaultModel = "gpt-5.6-sol" on Bryan's Mac, so the model is unchanged
+# from the prior codex setup) — pinned explicitly below anyway so this doesn't
+# silently drift. kiro-native has NO reasoning-effort concept at all (own-auth,
+# own model selection, no Omnigent-passed config beyond harness/model), so the
+# prior `reasoning_effort: xhigh` is dropped, not replaced.
+#
+# KNOWN GAP (as of this commit): VM 110's omnigent server container has no
+# `kiro` binary on PATH, so this worker currently only boots on hosts that have
+# kiro-cli installed and logged in with chat.defaultModel set (verified working
+# on Bryan's Mac). Do not reseed/restart VM 110 onto this commit until kiro is
+# installed + configured there, or `plan` will fail to launch on that host.
+# This worker also previously moved OFF kiro once already (see
+# review/config.yaml history) specifically because the kiro provider went down
+# mid-run with no fallback — that single-point-of-failure risk applies again.
 executor:
   type: omnigent
   config:
-    harness: codex
-    reasoning_effort: xhigh
+    harness: kiro-native
+    model: gpt-5.6-sol
     permission_mode: bypassPermissions
 
 prompt: |

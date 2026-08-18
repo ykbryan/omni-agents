@@ -2,24 +2,30 @@ spec_version: 1
 name: review
 description: >-
   The code REVIEWER. Judges the implementer's diff against its acceptance contract
-  and reports issues. A different model line (GPT via Codex CLI) from the Claude
+  and reports issues. A different model line (GPT via Kiro) from the Claude
   implementers, so review is a genuine cross-model check. Never edits code.
 
-# codex (Codex CLI) harness at high reasoning effort. MOVED OFF KIRO (kiro
-# provider is down) — still GPT-5.6 Sol, the SAME model line as before, but via
-# the local Codex CLI instead of the Kiro API (~/.codex/config.toml already
-# pins `model = "gpt-5.6-sol"`). The model is deliberately NOT pinned here: the
-# codex harness resolves the configured OpenAI/Codex default, and unlike the
-# openai-agents harness it has no silent Databricks fallback for an unpinned
-# model. Still a different MODEL LINE (GPT) from the Claude implementers, so
-# review remains a genuine cross-model check. Read-only by instruction.
-# The Kiro request cap no longer applies, so the 160k compaction cap is dropped;
-# very large diffs should still be chunked by the orchestrator.
+# Back on kiro-native, still GPT-5.6 Sol (~/.kiro/settings/cli.json pins
+# chat.defaultModel = "gpt-5.6-sol" on Bryan's Mac, so the model is unchanged
+# from the codex setup) — pinned explicitly below so it doesn't silently
+# drift. Still a different MODEL LINE (GPT) from the Claude implementers, so
+# review remains a genuine cross-model check. kiro-native has no
+# reasoning-effort concept, so the prior `high` is dropped, not replaced. The
+# Kiro request cap doesn't apply here either; very large diffs should still be
+# chunked by the orchestrator.
+#
+# KNOWN GAP (as of this commit): VM 110's omnigent server container has no
+# `kiro` binary on PATH, so this worker currently only boots on hosts that have
+# kiro-cli installed and logged in with chat.defaultModel set (verified working
+# on Bryan's Mac). Do not reseed/restart VM 110 onto this commit until kiro is
+# installed + configured there, or `review` will fail to launch on that host.
+# This worker was moved OFF kiro once already, specifically because the kiro
+# provider went down mid-run with no fallback — that risk applies again.
 executor:
   type: omnigent
   config:
-    harness: codex
-    reasoning_effort: high
+    harness: kiro-native
+    model: gpt-5.6-sol
     permission_mode: bypassPermissions
 
 prompt: |
