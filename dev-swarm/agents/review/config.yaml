@@ -5,27 +5,42 @@ description: >-
   and reports issues. A different model line (GPT via Kiro) from the Claude
   implementers, so review is a genuine cross-model check. Never edits code.
 
-# Back on kiro-native, still GPT-5.6 Sol (~/.kiro/settings/cli.json pins
-# chat.defaultModel = "gpt-5.6-sol" on Bryan's Mac, so the model is unchanged
-# from the codex setup) — pinned explicitly below so it doesn't silently
-# drift. Still a different MODEL LINE (GPT) from the Claude implementers, so
-# review remains a genuine cross-model check. kiro-native has no
-# reasoning-effort concept, so the prior `high` is dropped, not replaced. The
-# Kiro request cap doesn't apply here either; very large diffs should still be
-# chunked by the orchestrator.
+# Moved OFF kiro-native onto `pi` harness talking to Kiro through the
+# `@arvoretech/pi-kiro-provider` extension (npm:@arvoretech/pi-kiro-provider,
+# a maintained fork of mikeyobrien/pi-provider-kiro). Same underlying model
+# (gpt-5.6-sol) and provider (Kiro/AWS CodeWhisperer) as the old kiro-native
+# setup — still a different MODEL LINE (GPT) from the Claude implementers, so
+# review remains a genuine cross-model check. `pi` is a plain CLI_SUBPROCESS
+# harness Omnigent can run on ANY host with `pi` on PATH — unlike kiro-native,
+# which needed a real terminal on a machine with kiro-cli installed (Mac-only;
+# VM 110's server container had no `kiro` binary on PATH at all). This fixes
+# that gap: `pi` + this extension is verified working on VM 110 (logged in
+# via `/login kiro`, reusing the host's kiro-cli OAuth session where
+# possible).
 #
-# KNOWN GAP (as of this commit): VM 110's omnigent server container has no
-# `kiro` binary on PATH, so this worker currently only boots on hosts that have
-# kiro-cli installed and logged in with chat.defaultModel set (verified working
-# on Bryan's Mac). Do not reseed/restart VM 110 onto this commit until kiro is
-# installed + configured there, or `review` will fail to launch on that host.
-# This worker was moved OFF kiro once already, specifically because the kiro
-# provider went down mid-run with no fallback — that risk applies again.
+# Effort: `pi --model` accepts an optional `:<thinking>` suffix
+# (`provider/id:level`, e.g. Pi's own `pi --model sonnet:high` example), so
+# `high` is baked directly into the `model:` string below at launch — no
+# priming-message workaround needed (unlike kiro-native, which had no
+# effort-passthrough at all and required the orchestrator to send a
+# standalone `/effort high` message; see dev-swarm/config.yaml history).
+#
+# Setup required on any host that runs this worker: `pi install
+# npm:@arvoretech/pi-kiro-provider` + `/login kiro` once (or let it reuse an
+# existing kiro-cli session). As of this commit: done on VM 110. NOT yet done
+# on Bryan's Mac — plan/review will fail to launch there until the Mac also
+# runs `/login kiro` in an interactive `pi` session (this is an OAuth login
+# step, so it has to be done by hand, not scripted).
+#
+# This worker was moved OFF kiro-native once before too, specifically because
+# the kiro provider went down mid-run with no fallback — that single-point-
+# of-failure risk still applies; the orchestrator's 3-strike review limit is
+# the safety net if it recurs.
 executor:
   type: omnigent
   config:
-    harness: kiro-native
-    model: gpt-5.6-sol
+    harness: pi
+    model: kiro/gpt-5.6-sol:high
     permission_mode: bypassPermissions
 
 prompt: |
