@@ -1,0 +1,2 @@
+[ 2297411ms] [ERROR] WebSocket connection to 'ws://100.121.209.118:6001/app/fa47bb23f09c3207b5832b806aa82696495a86ddafced77444cc5df2c3e54cac?protocol=7&client=js&version=8.3.0&flash=false' failed:  @ http://100.121.209.118:8000/js/pusher.js:8
+[ 2297411ms] [ERROR] WebSocket connection to 'ws://100.121.209.118:6002/terminal/ws' failed:  @ http://100.121.209.118:8000/build/assets/app-D1qYW0Cc.js:8

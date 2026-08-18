@@ -1,0 +1,1303 @@
+- generic [active] [ref=f7e1]:
+  - generic [ref=f7e3]:
+    - generic [ref=f7e8]:
+      - heading "No notifications enabled." [level=4] [ref=f7e9]
+      - paragraph [ref=f7e10]:
+        - text: It is highly recommended to enable at least one notification channel to receive important alerts.Visit
+        - link "/notification" [ref=f7e11] [cursor=pointer]:
+          - /url: http://100.121.209.118:8000/notifications/email
+        - text: to enable notifications.
+    - button "Accept and Close" [ref=f7e12]
+  - generic [ref=f7e13]:
+    - navigation [ref=f7e16]:
+      - generic [ref=f7e17]:
+        - generic [ref=f7e18]:
+          - link "Coolify" [ref=f7e19] [cursor=pointer]:
+            - /url: /
+          - link "v4.0.0-beta.468" [ref=f7e20] [cursor=pointer]:
+            - /url: https://github.com/coollabsio/coolify/releases/tag/v4.0.0-beta.468
+        - button / [ref=f7e22]
+        - button "Preferences 9+" [ref=f7e28] [cursor=pointer]:
+          - img "Preferences" [ref=f7e29]
+          - generic [ref=f7e31]: 9+
+      - combobox [ref=f7e34]:
+        - option "Switch team" [disabled]
+        - option "Root Team" [selected]
+      - list [ref=f7e35]:
+        - listitem [ref=f7e36]:
+          - list [ref=f7e37]:
+            - listitem [ref=f7e38]:
+              - link "Dashboard" [ref=f7e39] [cursor=pointer]:
+                - /url: /
+            - listitem [ref=f7e43]:
+              - link "Projects" [ref=f7e44] [cursor=pointer]:
+                - /url: /projects
+            - listitem [ref=f7e51]:
+              - link "Servers" [ref=f7e52] [cursor=pointer]:
+                - /url: /servers
+            - listitem [ref=f7e59]:
+              - link "Sources" [ref=f7e60] [cursor=pointer]:
+                - /url: http://100.121.209.118:8000/sources
+            - listitem [ref=f7e64]:
+              - link "Destinations" [ref=f7e65] [cursor=pointer]:
+                - /url: http://100.121.209.118:8000/destinations
+            - listitem [ref=f7e69]:
+              - link "S3 Storages" [ref=f7e70] [cursor=pointer]:
+                - /url: http://100.121.209.118:8000/storages
+            - listitem [ref=f7e77]:
+              - link "Shared Variables" [ref=f7e78] [cursor=pointer]:
+                - /url: http://100.121.209.118:8000/shared-variables
+            - listitem [ref=f7e84]:
+              - link "Notifications" [ref=f7e85] [cursor=pointer]:
+                - /url: http://100.121.209.118:8000/notifications/email
+            - listitem [ref=f7e89]:
+              - link "Keys & Tokens" [ref=f7e90] [cursor=pointer]:
+                - /url: http://100.121.209.118:8000/security/private-key
+            - listitem [ref=f7e94]:
+              - link "Tags" [ref=f7e95] [cursor=pointer]:
+                - /url: http://100.121.209.118:8000/tags
+            - listitem [ref=f7e101]:
+              - link "Terminal" [ref=f7e102] [cursor=pointer]:
+                - /url: http://100.121.209.118:8000/terminal
+            - listitem [ref=f7e107]:
+              - link "Profile" [ref=f7e108] [cursor=pointer]:
+                - /url: http://100.121.209.118:8000/profile
+            - listitem [ref=f7e115]:
+              - link "Teams" [ref=f7e116] [cursor=pointer]:
+                - /url: http://100.121.209.118:8000/team
+            - listitem [ref=f7e126]:
+              - link "Settings" [ref=f7e127] [cursor=pointer]:
+                - /url: /settings
+            - generic:
+              - listitem:
+                - generic "No upgrade available"
+            - listitem [ref=f7e134]:
+              - link "Sponsor us" [ref=f7e135] [cursor=pointer]:
+                - /url: https://coolify.io/sponsorships
+            - listitem [ref=f7e141]:
+              - generic "Send us feedback or get help!" [ref=f7e144] [cursor=pointer]: Feedback
+            - listitem [ref=f7e148]:
+              - button "Logout" [ref=f7e150]
+    - main [ref=f7e154]:
+      - generic [ref=f7e156]:
+        - heading "Configuration" [level=1] [ref=f7e157]
+        - generic [ref=f7e159]:
+          - generic [ref=f7e163]:
+            - heading "The latest configuration has not been applied" [level=4] [ref=f7e164]
+            - generic [ref=f7e165]: Please redeploy to apply the new configuration.
+          - button [ref=f7e166]
+        - navigation [ref=f7e169]:
+          - navigation [ref=f7e170]:
+            - list [ref=f7e171]:
+              - listitem [ref=f7e172]:
+                - generic [ref=f7e173]:
+                  - link "My first project" [ref=f7e174] [cursor=pointer]:
+                    - /url: http://100.121.209.118:8000/project/vga2dev4yxmql4656o3rz65i
+                  - button [ref=f7e175]
+              - listitem [ref=f7e178]:
+                - generic [ref=f7e179]:
+                  - link "production" [ref=f7e180] [cursor=pointer]:
+                    - /url: http://100.121.209.118:8000/project/vga2dev4yxmql4656o3rz65i/environment/dieewu4b7iqxoh7ifcy5lzip
+                  - button [ref=f7e181]
+              - listitem [ref=f7e184]:
+                - generic [ref=f7e185]:
+                  - link "gods-eyes (localhost)" [ref=f7e186] [cursor=pointer]:
+                    - /url: http://100.121.209.118:8000/project/vga2dev4yxmql4656o3rz65i/environment/dieewu4b7iqxoh7ifcy5lzip/application/v8ea9c0tuk3sa9xnc5vgxwke
+                  - button [ref=f7e187]
+              - generic [ref=f7e190]:
+                - link "Running" [ref=f7e193] [cursor=pointer]:
+                  - /url: https://github.com/ykbryan/gods-eyes/commit/e1dae8edc0051ce1cbd061c1f2b88c44401cc28c
+                - generic [ref=f7e194]: (healthy)
+              - button "Refresh Status" [ref=f7e195]
+          - generic [ref=f7e198]:
+            - navigation [ref=f7e199]:
+              - link "Configuration" [ref=f7e200] [cursor=pointer]:
+                - /url: http://100.121.209.118:8000/project/vga2dev4yxmql4656o3rz65i/environment/dieewu4b7iqxoh7ifcy5lzip/application/v8ea9c0tuk3sa9xnc5vgxwke
+              - link "Deployments" [ref=f7e201] [cursor=pointer]:
+                - /url: http://100.121.209.118:8000/project/vga2dev4yxmql4656o3rz65i/environment/dieewu4b7iqxoh7ifcy5lzip/application/v8ea9c0tuk3sa9xnc5vgxwke/deployment
+              - link "Logs" [ref=f7e202] [cursor=pointer]:
+                - /url: http://100.121.209.118:8000/project/vga2dev4yxmql4656o3rz65i/environment/dieewu4b7iqxoh7ifcy5lzip/application/v8ea9c0tuk3sa9xnc5vgxwke/logs
+              - link "Terminal" [ref=f7e204] [cursor=pointer]:
+                - /url: http://100.121.209.118:8000/project/vga2dev4yxmql4656o3rz65i/environment/dieewu4b7iqxoh7ifcy5lzip/application/v8ea9c0tuk3sa9xnc5vgxwke/terminal
+              - button "Links" [ref=f7e206]
+            - generic [ref=f7e210]:
+              - button "Advanced" [ref=f7e213]
+              - generic [ref=f7e217]:
+                - button "Redeploy" [ref=f7e218] [cursor=pointer]
+                - button "Restart" [ref=f7e221] [cursor=pointer]
+                - button "Stop" [ref=f7e227] [cursor=pointer]
+        - generic [ref=f7e230]:
+          - generic [ref=f7e231]:
+            - link "General" [ref=f7e232] [cursor=pointer]:
+              - /url: http://100.121.209.118:8000/project/vga2dev4yxmql4656o3rz65i/environment/dieewu4b7iqxoh7ifcy5lzip/application/v8ea9c0tuk3sa9xnc5vgxwke
+            - link "Advanced" [ref=f7e234] [cursor=pointer]:
+              - /url: http://100.121.209.118:8000/project/vga2dev4yxmql4656o3rz65i/environment/dieewu4b7iqxoh7ifcy5lzip/application/v8ea9c0tuk3sa9xnc5vgxwke/advanced
+            - link "Environment Variables" [ref=f7e236] [cursor=pointer]:
+              - /url: http://100.121.209.118:8000/project/vga2dev4yxmql4656o3rz65i/environment/dieewu4b7iqxoh7ifcy5lzip/application/v8ea9c0tuk3sa9xnc5vgxwke/environment-variables
+            - link "Persistent Storage" [ref=f7e238] [cursor=pointer]:
+              - /url: http://100.121.209.118:8000/project/vga2dev4yxmql4656o3rz65i/environment/dieewu4b7iqxoh7ifcy5lzip/application/v8ea9c0tuk3sa9xnc5vgxwke/persistent-storage
+            - link "Git Source" [ref=f7e240] [cursor=pointer]:
+              - /url: http://100.121.209.118:8000/project/vga2dev4yxmql4656o3rz65i/environment/dieewu4b7iqxoh7ifcy5lzip/application/v8ea9c0tuk3sa9xnc5vgxwke/source
+            - link "Servers" [ref=f7e242] [cursor=pointer]:
+              - /url: http://100.121.209.118:8000/project/vga2dev4yxmql4656o3rz65i/environment/dieewu4b7iqxoh7ifcy5lzip/application/v8ea9c0tuk3sa9xnc5vgxwke/servers
+            - link "Scheduled Tasks" [ref=f7e244] [cursor=pointer]:
+              - /url: http://100.121.209.118:8000/project/vga2dev4yxmql4656o3rz65i/environment/dieewu4b7iqxoh7ifcy5lzip/application/v8ea9c0tuk3sa9xnc5vgxwke/scheduled-tasks
+            - link "Webhooks" [ref=f7e246] [cursor=pointer]:
+              - /url: http://100.121.209.118:8000/project/vga2dev4yxmql4656o3rz65i/environment/dieewu4b7iqxoh7ifcy5lzip/application/v8ea9c0tuk3sa9xnc5vgxwke/webhooks
+            - link "Preview Deployments" [ref=f7e248] [cursor=pointer]:
+              - /url: http://100.121.209.118:8000/project/vga2dev4yxmql4656o3rz65i/environment/dieewu4b7iqxoh7ifcy5lzip/application/v8ea9c0tuk3sa9xnc5vgxwke/preview-deployments
+            - link "Healthcheck" [ref=f7e250] [cursor=pointer]:
+              - /url: http://100.121.209.118:8000/project/vga2dev4yxmql4656o3rz65i/environment/dieewu4b7iqxoh7ifcy5lzip/application/v8ea9c0tuk3sa9xnc5vgxwke/healthcheck
+            - link "Rollback" [ref=f7e252] [cursor=pointer]:
+              - /url: http://100.121.209.118:8000/project/vga2dev4yxmql4656o3rz65i/environment/dieewu4b7iqxoh7ifcy5lzip/application/v8ea9c0tuk3sa9xnc5vgxwke/rollback
+            - link "Resource Limits" [ref=f7e254] [cursor=pointer]:
+              - /url: http://100.121.209.118:8000/project/vga2dev4yxmql4656o3rz65i/environment/dieewu4b7iqxoh7ifcy5lzip/application/v8ea9c0tuk3sa9xnc5vgxwke/resource-limits
+            - link "Resource Operations" [ref=f7e256] [cursor=pointer]:
+              - /url: http://100.121.209.118:8000/project/vga2dev4yxmql4656o3rz65i/environment/dieewu4b7iqxoh7ifcy5lzip/application/v8ea9c0tuk3sa9xnc5vgxwke/resource-operations
+            - link "Metrics" [ref=f7e258] [cursor=pointer]:
+              - /url: http://100.121.209.118:8000/project/vga2dev4yxmql4656o3rz65i/environment/dieewu4b7iqxoh7ifcy5lzip/application/v8ea9c0tuk3sa9xnc5vgxwke/metrics
+            - link "Tags" [ref=f7e260] [cursor=pointer]:
+              - /url: http://100.121.209.118:8000/project/vga2dev4yxmql4656o3rz65i/environment/dieewu4b7iqxoh7ifcy5lzip/application/v8ea9c0tuk3sa9xnc5vgxwke/tags
+            - link "Danger Zone" [ref=f7e262] [cursor=pointer]:
+              - /url: http://100.121.209.118:8000/project/vga2dev4yxmql4656o3rz65i/environment/dieewu4b7iqxoh7ifcy5lzip/application/v8ea9c0tuk3sa9xnc5vgxwke/danger
+          - generic [ref=f7e265]:
+            - generic [ref=f7e266]:
+              - generic [ref=f7e267]:
+                - heading "Environment Variables" [level=2] [ref=f7e268]
+                - button "+ Add" [ref=f7e271] [cursor=pointer]
+                - button "Developer view" [ref=f7e272] [cursor=pointer]
+              - generic [ref=f7e273]: Environment variables (secrets) for this resource.
+              - generic [ref=f7e274]:
+                - generic [ref=f7e277]:
+                  - generic [ref=f7e278]: Sort alphabetically
+                  - checkbox "Sort alphabetically" [ref=f7e283] [cursor=pointer]
+                - generic [ref=f7e286]:
+                  - generic [ref=f7e287]: Use Docker Build Secrets
+                  - checkbox "Use Docker Build Secrets" [ref=f7e292] [cursor=pointer]
+            - generic [ref=f7e293]:
+              - heading "Production Environment Variables" [level=3] [ref=f7e294]
+              - generic [ref=f7e295]: Environment (secrets) variables for Production.
+            - generic [ref=f7e297]:
+              - generic [ref=f7e298]:
+                - generic [ref=f7e299]:
+                  - textbox [ref=f7e301]: VITE_SUPABASE_URL
+                  - generic [ref=f7e303]:
+                    - generic [ref=f7e304] [cursor=pointer]
+                    - textbox [ref=f7e309]: http://100.75.202.73:8000/
+                - generic [ref=f7e310]:
+                  - generic [ref=f7e311]:
+                    - text: Comment
+                    - generic [ref=f7e313] [cursor=pointer]
+                  - textbox [ref=f7e316]
+              - generic [ref=f7e317]:
+                - generic [ref=f7e318]:
+                  - generic [ref=f7e320]:
+                    - generic [ref=f7e321]: Available at Buildtime
+                    - checkbox "Available at Buildtime" [checked] [ref=f7e326] [cursor=pointer]
+                  - generic [ref=f7e328]:
+                    - generic [ref=f7e329]: Available at Runtime
+                    - checkbox "Available at Runtime" [checked] [ref=f7e334] [cursor=pointer]
+                  - generic [ref=f7e336]:
+                    - generic [ref=f7e337]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=f7e338] [cursor=pointer]
+                  - generic [ref=f7e340]:
+                    - generic [ref=f7e341]: Is Literal?
+                    - checkbox "Is Literal?" [ref=f7e346] [cursor=pointer]
+                - generic [ref=f7e347]:
+                  - button "Update" [ref=f7e348] [cursor=pointer]
+                  - button "Lock" [ref=f7e349] [cursor=pointer]
+                  - button "Delete" [ref=f7e351] [cursor=pointer]
+            - generic [ref=f7e353]:
+              - generic [ref=f7e354]:
+                - generic [ref=f7e355]:
+                  - textbox [ref=f7e357]: VITE_SUPABASE_ANON_KEY
+                  - generic [ref=f7e359]:
+                    - generic [ref=f7e360] [cursor=pointer]
+                    - textbox [ref=f7e365]: zegBJd0Hra8LAkTwU8vle0kuHJPruo1utFljuTwxRVNp1Ksk
+                - generic [ref=f7e366]:
+                  - generic [ref=f7e367]:
+                    - text: Comment
+                    - generic [ref=f7e369] [cursor=pointer]
+                  - textbox [ref=f7e372]
+              - generic [ref=f7e373]:
+                - generic [ref=f7e374]:
+                  - generic [ref=f7e376]:
+                    - generic [ref=f7e377]: Available at Buildtime
+                    - checkbox "Available at Buildtime" [checked] [ref=f7e382] [cursor=pointer]
+                  - generic [ref=f7e384]:
+                    - generic [ref=f7e385]: Available at Runtime
+                    - checkbox "Available at Runtime" [checked] [ref=f7e390] [cursor=pointer]
+                  - generic [ref=f7e392]:
+                    - generic [ref=f7e393]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=f7e394] [cursor=pointer]
+                  - generic [ref=f7e396]:
+                    - generic [ref=f7e397]: Is Literal?
+                    - checkbox "Is Literal?" [ref=f7e402] [cursor=pointer]
+                - generic [ref=f7e403]:
+                  - button "Update" [ref=f7e404] [cursor=pointer]
+                  - button "Lock" [ref=f7e405] [cursor=pointer]
+                  - button "Delete" [ref=f7e407] [cursor=pointer]
+            - generic [ref=f7e409]:
+              - generic [ref=f7e410]:
+                - generic [ref=f7e411]:
+                  - textbox [ref=f7e413]: SUPABASE_SERVICE_ROLE_KEY
+                  - generic [ref=f7e415]:
+                    - generic [ref=f7e416] [cursor=pointer]
+                    - textbox [ref=f7e421]: HqdoEVrZhXZ3AbLo0W7Gi9GY0PygWynDCPIHuLpc1l8fzp5H
+                - generic [ref=f7e422]:
+                  - generic [ref=f7e423]:
+                    - text: Comment
+                    - generic [ref=f7e425] [cursor=pointer]
+                  - textbox [ref=f7e428]
+              - generic [ref=f7e429]:
+                - generic [ref=f7e430]:
+                  - generic [ref=f7e432]:
+                    - generic [ref=f7e433]: Available at Buildtime
+                    - checkbox "Available at Buildtime" [checked] [ref=f7e438] [cursor=pointer]
+                  - generic [ref=f7e440]:
+                    - generic [ref=f7e441]: Available at Runtime
+                    - checkbox "Available at Runtime" [checked] [ref=f7e446] [cursor=pointer]
+                  - generic [ref=f7e448]:
+                    - generic [ref=f7e449]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=f7e450] [cursor=pointer]
+                  - generic [ref=f7e452]:
+                    - generic [ref=f7e453]: Is Literal?
+                    - checkbox "Is Literal?" [ref=f7e458] [cursor=pointer]
+                - generic [ref=f7e459]:
+                  - button "Update" [ref=f7e460] [cursor=pointer]
+                  - button "Lock" [ref=f7e461] [cursor=pointer]
+                  - button "Delete" [ref=f7e463] [cursor=pointer]
+            - generic [ref=f7e465]:
+              - generic [ref=f7e466]:
+                - generic [ref=f7e467]:
+                  - textbox [ref=f7e469]: NIXPACKS_NODE_VERSION
+                  - generic [ref=f7e471]:
+                    - generic [ref=f7e472] [cursor=pointer]
+                    - textbox [ref=f7e477]: "22"
+                - generic [ref=f7e478]:
+                  - generic [ref=f7e479]:
+                    - text: Comment
+                    - generic [ref=f7e481] [cursor=pointer]
+                  - textbox [ref=f7e484]
+              - generic [ref=f7e485]:
+                - generic [ref=f7e488]:
+                  - generic [ref=f7e489]: Available at Runtime
+                  - checkbox "Available at Runtime" [ref=f7e494] [cursor=pointer]
+                - generic [ref=f7e495]:
+                  - button "Update" [ref=f7e496] [cursor=pointer]
+                  - button "Lock" [ref=f7e497] [cursor=pointer]
+                  - button "Delete" [ref=f7e499] [cursor=pointer]
+            - generic [ref=f7e501]:
+              - generic [ref=f7e502]:
+                - generic [ref=f7e503]:
+                  - textbox [ref=f7e505]: SUPABASE_SERVICE_ROLE_JWT
+                  - generic [ref=f7e507]:
+                    - generic [ref=f7e508] [cursor=pointer]
+                    - textbox [ref=f7e513]: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoic2VydmljZV9yb2xlIiwiaXNzIjoic3VwYWJhc2UiLCJpYXQiOjE3NzYxODA4NzUsImV4cCI6MjA5MTU0MDg3NX0.K2C3UfIuqUegECzX1HDa5p56pKmFGUAdqUPf_Z3_dBI
+                - generic [ref=f7e514]:
+                  - generic [ref=f7e515]:
+                    - text: Comment
+                    - generic [ref=f7e517] [cursor=pointer]
+                  - textbox [ref=f7e520]
+              - generic [ref=f7e521]:
+                - generic [ref=f7e522]:
+                  - generic [ref=f7e524]:
+                    - generic [ref=f7e525]: Available at Buildtime
+                    - checkbox "Available at Buildtime" [checked] [ref=f7e530] [cursor=pointer]
+                  - generic [ref=f7e532]:
+                    - generic [ref=f7e533]: Available at Runtime
+                    - checkbox "Available at Runtime" [checked] [ref=f7e538] [cursor=pointer]
+                  - generic [ref=f7e540]:
+                    - generic [ref=f7e541]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=f7e542] [cursor=pointer]
+                  - generic [ref=f7e544]:
+                    - generic [ref=f7e545]: Is Literal?
+                    - checkbox "Is Literal?" [ref=f7e550] [cursor=pointer]
+                - generic [ref=f7e551]:
+                  - button "Update" [ref=f7e552] [cursor=pointer]
+                  - button "Lock" [ref=f7e553] [cursor=pointer]
+                  - button "Delete" [ref=f7e555] [cursor=pointer]
+            - generic [ref=f7e557]:
+              - generic [ref=f7e558]:
+                - generic [ref=f7e559]:
+                  - textbox [ref=f7e561]: SUPABASE_JWT_SECRET
+                  - generic [ref=f7e563]:
+                    - generic [ref=f7e564] [cursor=pointer]
+                    - textbox [ref=f7e569]: ikAWPpH2fTUxQL0IO1fhyEFjfPO9rl8p0AHsmxXp5d15zMQsaykm5tlkNyjqVUPH
+                - generic [ref=f7e570]:
+                  - generic [ref=f7e571]:
+                    - text: Comment
+                    - generic [ref=f7e573] [cursor=pointer]
+                  - textbox [ref=f7e576]
+              - generic [ref=f7e577]:
+                - generic [ref=f7e578]:
+                  - generic [ref=f7e580]:
+                    - generic [ref=f7e581]: Available at Buildtime
+                    - checkbox "Available at Buildtime" [checked] [ref=f7e586] [cursor=pointer]
+                  - generic [ref=f7e588]:
+                    - generic [ref=f7e589]: Available at Runtime
+                    - checkbox "Available at Runtime" [checked] [ref=f7e594] [cursor=pointer]
+                  - generic [ref=f7e596]:
+                    - generic [ref=f7e597]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=f7e598] [cursor=pointer]
+                  - generic [ref=f7e600]:
+                    - generic [ref=f7e601]: Is Literal?
+                    - checkbox "Is Literal?" [ref=f7e606] [cursor=pointer]
+                - generic [ref=f7e607]:
+                  - button "Update" [ref=f7e608] [cursor=pointer]
+                  - button "Lock" [ref=f7e609] [cursor=pointer]
+                  - button "Delete" [ref=f7e611] [cursor=pointer]
+            - generic [ref=f7e613]:
+              - generic [ref=f7e614]:
+                - generic [ref=f7e615]:
+                  - textbox [ref=f7e617]: VITE_AIS_API_KEY
+                  - generic [ref=f7e619]:
+                    - generic [ref=f7e620] [cursor=pointer]
+                    - textbox [ref=f7e625]: 410c67d6dd60bec37ca1a879deda6d117f83cf3d,d40baa230589abe0fb21b80c8426074ea56baf4f
+                - generic [ref=f7e626]:
+                  - generic [ref=f7e627]:
+                    - text: Comment
+                    - generic [ref=f7e629] [cursor=pointer]
+                  - textbox [ref=f7e632]
+              - generic [ref=f7e633]:
+                - generic [ref=f7e634]:
+                  - generic [ref=f7e636]:
+                    - generic [ref=f7e637]: Available at Buildtime
+                    - checkbox "Available at Buildtime" [checked] [ref=f7e642] [cursor=pointer]
+                  - generic [ref=f7e644]:
+                    - generic [ref=f7e645]: Available at Runtime
+                    - checkbox "Available at Runtime" [checked] [ref=f7e650] [cursor=pointer]
+                  - generic [ref=f7e652]:
+                    - generic [ref=f7e653]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=f7e654] [cursor=pointer]
+                  - generic [ref=f7e656]:
+                    - generic [ref=f7e657]: Is Literal?
+                    - checkbox "Is Literal?" [ref=f7e662] [cursor=pointer]
+                - generic [ref=f7e663]:
+                  - button "Update" [ref=f7e664] [cursor=pointer]
+                  - button "Lock" [ref=f7e665] [cursor=pointer]
+                  - button "Delete" [ref=f7e667] [cursor=pointer]
+            - generic [ref=f7e669]:
+              - generic [ref=f7e670]:
+                - generic [ref=f7e671]:
+                  - textbox [ref=f7e673]: VITE_LTA_API_KEY
+                  - generic [ref=f7e675]:
+                    - generic [ref=f7e676] [cursor=pointer]
+                    - textbox [ref=f7e681]: C+XBWX2XQAKLNMeCMhxaxA==
+                - generic [ref=f7e682]:
+                  - generic [ref=f7e683]:
+                    - text: Comment
+                    - generic [ref=f7e685] [cursor=pointer]
+                  - textbox [ref=f7e688]
+              - generic [ref=f7e689]:
+                - generic [ref=f7e690]:
+                  - generic [ref=f7e692]:
+                    - generic [ref=f7e693]: Available at Buildtime
+                    - checkbox "Available at Buildtime" [checked] [ref=f7e698] [cursor=pointer]
+                  - generic [ref=f7e700]:
+                    - generic [ref=f7e701]: Available at Runtime
+                    - checkbox "Available at Runtime" [checked] [ref=f7e706] [cursor=pointer]
+                  - generic [ref=f7e708]:
+                    - generic [ref=f7e709]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=f7e710] [cursor=pointer]
+                  - generic [ref=f7e712]:
+                    - generic [ref=f7e713]: Is Literal?
+                    - checkbox "Is Literal?" [ref=f7e718] [cursor=pointer]
+                - generic [ref=f7e719]:
+                  - button "Update" [ref=f7e720] [cursor=pointer]
+                  - button "Lock" [ref=f7e721] [cursor=pointer]
+                  - button "Delete" [ref=f7e723] [cursor=pointer]
+            - generic [ref=f7e725]:
+              - generic [ref=f7e726]:
+                - generic [ref=f7e727]:
+                  - textbox [ref=f7e729]: VITE_HERE_API_KEY
+                  - generic [ref=f7e731]:
+                    - generic [ref=f7e732] [cursor=pointer]
+                    - textbox [ref=f7e737]: Cs74TOi8MpzWp6LS8FhaUc5GLfMj6RormM44gIyipu8
+                - generic [ref=f7e738]:
+                  - generic [ref=f7e739]:
+                    - text: Comment
+                    - generic [ref=f7e741] [cursor=pointer]
+                  - textbox [ref=f7e744]
+              - generic [ref=f7e745]:
+                - generic [ref=f7e746]:
+                  - generic [ref=f7e748]:
+                    - generic [ref=f7e749]: Available at Buildtime
+                    - checkbox "Available at Buildtime" [checked] [ref=f7e754] [cursor=pointer]
+                  - generic [ref=f7e756]:
+                    - generic [ref=f7e757]: Available at Runtime
+                    - checkbox "Available at Runtime" [checked] [ref=f7e762] [cursor=pointer]
+                  - generic [ref=f7e764]:
+                    - generic [ref=f7e765]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=f7e766] [cursor=pointer]
+                  - generic [ref=f7e768]:
+                    - generic [ref=f7e769]: Is Literal?
+                    - checkbox "Is Literal?" [ref=f7e774] [cursor=pointer]
+                - generic [ref=f7e775]:
+                  - button "Update" [ref=f7e776] [cursor=pointer]
+                  - button "Lock" [ref=f7e777] [cursor=pointer]
+                  - button "Delete" [ref=f7e779] [cursor=pointer]
+            - generic [ref=f7e781]:
+              - generic [ref=f7e782]:
+                - generic [ref=f7e783]:
+                  - textbox [ref=f7e785]: VITE_TOMTOM_API_KEY
+                  - generic [ref=f7e787]:
+                    - generic [ref=f7e788] [cursor=pointer]
+                    - textbox [ref=f7e793]: VwXevOupN2enKV8gTTjMPgLX3c10cADW
+                - generic [ref=f7e794]:
+                  - generic [ref=f7e795]:
+                    - text: Comment
+                    - generic [ref=f7e797] [cursor=pointer]
+                  - textbox [ref=f7e800]
+              - generic [ref=f7e801]:
+                - generic [ref=f7e802]:
+                  - generic [ref=f7e804]:
+                    - generic [ref=f7e805]: Available at Buildtime
+                    - checkbox "Available at Buildtime" [checked] [ref=f7e810] [cursor=pointer]
+                  - generic [ref=f7e812]:
+                    - generic [ref=f7e813]: Available at Runtime
+                    - checkbox "Available at Runtime" [checked] [ref=f7e818] [cursor=pointer]
+                  - generic [ref=f7e820]:
+                    - generic [ref=f7e821]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=f7e822] [cursor=pointer]
+                  - generic [ref=f7e824]:
+                    - generic [ref=f7e825]: Is Literal?
+                    - checkbox "Is Literal?" [ref=f7e830] [cursor=pointer]
+                - generic [ref=f7e831]:
+                  - button "Update" [ref=f7e832] [cursor=pointer]
+                  - button "Lock" [ref=f7e833] [cursor=pointer]
+                  - button "Delete" [ref=f7e835] [cursor=pointer]
+            - generic [ref=f7e837]:
+              - generic [ref=f7e838]:
+                - generic [ref=f7e839]:
+                  - textbox [ref=f7e841]: VITE_LONGDO_API_KEY
+                  - generic [ref=f7e843]:
+                    - generic [ref=f7e844] [cursor=pointer]
+                    - textbox [ref=f7e849]: f6abbf6e89c43d25dbb37de0e0dd8a8e
+                - generic [ref=f7e850]:
+                  - generic [ref=f7e851]:
+                    - text: Comment
+                    - generic [ref=f7e853] [cursor=pointer]
+                  - textbox [ref=f7e856]
+              - generic [ref=f7e857]:
+                - generic [ref=f7e858]:
+                  - generic [ref=f7e860]:
+                    - generic [ref=f7e861]: Available at Buildtime
+                    - checkbox "Available at Buildtime" [checked] [ref=f7e866] [cursor=pointer]
+                  - generic [ref=f7e868]:
+                    - generic [ref=f7e869]: Available at Runtime
+                    - checkbox "Available at Runtime" [checked] [ref=f7e874] [cursor=pointer]
+                  - generic [ref=f7e876]:
+                    - generic [ref=f7e877]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=f7e878] [cursor=pointer]
+                  - generic [ref=f7e880]:
+                    - generic [ref=f7e881]: Is Literal?
+                    - checkbox "Is Literal?" [ref=f7e886] [cursor=pointer]
+                - generic [ref=f7e887]:
+                  - button "Update" [ref=f7e888] [cursor=pointer]
+                  - button "Lock" [ref=f7e889] [cursor=pointer]
+                  - button "Delete" [ref=f7e891] [cursor=pointer]
+            - generic [ref=f7e893]:
+              - generic [ref=f7e894]:
+                - generic [ref=f7e895]:
+                  - textbox [ref=f7e897]: VITE_SUPABASE_ANON_JWT
+                  - generic [ref=f7e899]:
+                    - generic [ref=f7e900] [cursor=pointer]
+                    - textbox [ref=f7e905]: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlzcyI6InN1cGFiYXNlIiwiaWF0IjoxNzc2MTgwODc1LCJleHAiOjIwOTE1NDA4NzV9.EAHTOOLAc61vuvyUDCMG73_zsY2aQWmaC1KvUyyVf84
+                - generic [ref=f7e906]:
+                  - generic [ref=f7e907]:
+                    - text: Comment
+                    - generic [ref=f7e909] [cursor=pointer]
+                  - textbox [ref=f7e912]
+              - generic [ref=f7e913]:
+                - generic [ref=f7e914]:
+                  - generic [ref=f7e916]:
+                    - generic [ref=f7e917]: Available at Buildtime
+                    - checkbox "Available at Buildtime" [checked] [ref=f7e922] [cursor=pointer]
+                  - generic [ref=f7e924]:
+                    - generic [ref=f7e925]: Available at Runtime
+                    - checkbox "Available at Runtime" [checked] [ref=f7e930] [cursor=pointer]
+                  - generic [ref=f7e932]:
+                    - generic [ref=f7e933]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=f7e934] [cursor=pointer]
+                  - generic [ref=f7e936]:
+                    - generic [ref=f7e937]: Is Literal?
+                    - checkbox "Is Literal?" [ref=f7e942] [cursor=pointer]
+                - generic [ref=f7e943]:
+                  - button "Update" [ref=f7e944] [cursor=pointer]
+                  - button "Lock" [ref=f7e945] [cursor=pointer]
+                  - button "Delete" [ref=f7e947] [cursor=pointer]
+            - generic [ref=f7e949]:
+              - generic [ref=f7e950]:
+                - generic [ref=f7e951]:
+                  - textbox [ref=f7e953]: OPENSKY_CREDS
+                  - generic [ref=f7e955]:
+                    - generic [ref=f7e956] [cursor=pointer]
+                    - textbox [ref=f7e961]: ic3bryan@gmail.com-api-client:cmUrEth1cLX6gKOnnK9ZDwB8EQgBEUSa,bryan@gopomelo.com-api-client:847IydLDIwPamZ8BKnu3AyIh1AE3O9Ce,anotherparents629@gmail.com-api-client:KNBP2IF3YX3WcDNZvTBK5fOrodlMZ5wl
+                - generic [ref=f7e962]:
+                  - generic [ref=f7e963]:
+                    - text: Comment
+                    - generic [ref=f7e965] [cursor=pointer]
+                  - textbox [ref=f7e968]
+              - generic [ref=f7e969]:
+                - generic [ref=f7e970]:
+                  - generic [ref=f7e972]:
+                    - generic [ref=f7e973]: Available at Buildtime
+                    - checkbox "Available at Buildtime" [checked] [ref=f7e978] [cursor=pointer]
+                  - generic [ref=f7e980]:
+                    - generic [ref=f7e981]: Available at Runtime
+                    - checkbox "Available at Runtime" [checked] [ref=f7e986] [cursor=pointer]
+                  - generic [ref=f7e988]:
+                    - generic [ref=f7e989]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=f7e990] [cursor=pointer]
+                  - generic [ref=f7e992]:
+                    - generic [ref=f7e993]: Is Literal?
+                    - checkbox "Is Literal?" [ref=f7e998] [cursor=pointer]
+                - generic [ref=f7e999]:
+                  - button "Update" [ref=f7e1000] [cursor=pointer]
+                  - button "Lock" [ref=f7e1001] [cursor=pointer]
+                  - button "Delete" [ref=f7e1003] [cursor=pointer]
+            - generic [ref=f7e1005]:
+              - generic [ref=f7e1006]:
+                - generic [ref=f7e1007]:
+                  - textbox [ref=f7e1009]: AUTH_REQUIRED
+                  - generic [ref=f7e1011]:
+                    - generic [ref=f7e1012] [cursor=pointer]
+                    - textbox [ref=f7e1017]: "false"
+                - generic [ref=f7e1018]:
+                  - generic [ref=f7e1019]:
+                    - text: Comment
+                    - generic [ref=f7e1021] [cursor=pointer]
+                  - textbox [ref=f7e1024]
+              - generic [ref=f7e1025]:
+                - generic [ref=f7e1026]:
+                  - generic [ref=f7e1028]:
+                    - generic [ref=f7e1029]: Available at Buildtime
+                    - checkbox "Available at Buildtime" [checked] [ref=f7e1034] [cursor=pointer]
+                  - generic [ref=f7e1036]:
+                    - generic [ref=f7e1037]: Available at Runtime
+                    - checkbox "Available at Runtime" [checked] [ref=f7e1042] [cursor=pointer]
+                  - generic [ref=f7e1044]:
+                    - generic [ref=f7e1045]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=f7e1046] [cursor=pointer]
+                  - generic [ref=f7e1048]:
+                    - generic [ref=f7e1049]: Is Literal?
+                    - checkbox "Is Literal?" [ref=f7e1054] [cursor=pointer]
+                - generic [ref=f7e1055]:
+                  - button "Update" [ref=f7e1056] [cursor=pointer]
+                  - button "Lock" [ref=f7e1057] [cursor=pointer]
+                  - button "Delete" [ref=f7e1059] [cursor=pointer]
+            - generic [ref=f7e1061]:
+              - generic [ref=f7e1062]:
+                - generic [ref=f7e1063]:
+                  - textbox [ref=f7e1065]: GOD_MODE_EMAILS
+                  - generic [ref=f7e1067]:
+                    - generic [ref=f7e1068] [cursor=pointer]
+                    - textbox [ref=f7e1073]: me@bryanchua.com
+                - generic [ref=f7e1074]:
+                  - generic [ref=f7e1075]:
+                    - text: Comment
+                    - generic [ref=f7e1077] [cursor=pointer]
+                  - textbox [ref=f7e1080]
+              - generic [ref=f7e1081]:
+                - generic [ref=f7e1082]:
+                  - generic [ref=f7e1084]:
+                    - generic [ref=f7e1085]: Available at Buildtime
+                    - checkbox "Available at Buildtime" [checked] [ref=f7e1090] [cursor=pointer]
+                  - generic [ref=f7e1092]:
+                    - generic [ref=f7e1093]: Available at Runtime
+                    - checkbox "Available at Runtime" [checked] [ref=f7e1098] [cursor=pointer]
+                  - generic [ref=f7e1100]:
+                    - generic [ref=f7e1101]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=f7e1102] [cursor=pointer]
+                  - generic [ref=f7e1104]:
+                    - generic [ref=f7e1105]: Is Literal?
+                    - checkbox "Is Literal?" [ref=f7e1110] [cursor=pointer]
+                - generic [ref=f7e1111]:
+                  - button "Update" [ref=f7e1112] [cursor=pointer]
+                  - button "Lock" [ref=f7e1113] [cursor=pointer]
+                  - button "Delete" [ref=f7e1115] [cursor=pointer]
+            - generic [ref=f7e1117]:
+              - generic [ref=f7e1118]:
+                - generic [ref=f7e1119]:
+                  - textbox [ref=f7e1121]: NEWSDATA_API_KEY
+                  - generic [ref=f7e1123]:
+                    - generic [ref=f7e1124] [cursor=pointer]
+                    - textbox [ref=f7e1129]: pub_ae3d306fde1347beb3f17caeba04340c
+                - generic [ref=f7e1130]:
+                  - generic [ref=f7e1131]:
+                    - text: Comment
+                    - generic [ref=f7e1133] [cursor=pointer]
+                  - textbox [ref=f7e1136]
+              - generic [ref=f7e1137]:
+                - generic [ref=f7e1138]:
+                  - generic [ref=f7e1140]:
+                    - generic [ref=f7e1141]: Available at Buildtime
+                    - checkbox "Available at Buildtime" [checked] [ref=f7e1146] [cursor=pointer]
+                  - generic [ref=f7e1148]:
+                    - generic [ref=f7e1149]: Available at Runtime
+                    - checkbox "Available at Runtime" [checked] [ref=f7e1154] [cursor=pointer]
+                  - generic [ref=f7e1156]:
+                    - generic [ref=f7e1157]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=f7e1158] [cursor=pointer]
+                  - generic [ref=f7e1160]:
+                    - generic [ref=f7e1161]: Is Literal?
+                    - checkbox "Is Literal?" [ref=f7e1166] [cursor=pointer]
+                - generic [ref=f7e1167]:
+                  - button "Update" [ref=f7e1168] [cursor=pointer]
+                  - button "Lock" [ref=f7e1169] [cursor=pointer]
+                  - button "Delete" [ref=f7e1171] [cursor=pointer]
+            - generic [ref=f7e1173]:
+              - generic [ref=f7e1174]:
+                - generic [ref=f7e1175]:
+                  - textbox [ref=f7e1177]: CORS_ALLOWED_ORIGINS
+                  - generic [ref=f7e1179]:
+                    - generic [ref=f7e1180] [cursor=pointer]
+                    - textbox [ref=f7e1185]: https://earth.bryanchua.com,https://globe.bryanchua.com,https://map.bryanchua.com,https://gods-eyes.pages.dev
+                - generic [ref=f7e1186]:
+                  - generic [ref=f7e1187]:
+                    - text: Comment
+                    - generic [ref=f7e1189] [cursor=pointer]
+                  - textbox [ref=f7e1192]
+              - generic [ref=f7e1193]:
+                - generic [ref=f7e1194]:
+                  - generic [ref=f7e1196]:
+                    - generic [ref=f7e1197]: Available at Buildtime
+                    - checkbox "Available at Buildtime" [checked] [ref=f7e1202] [cursor=pointer]
+                  - generic [ref=f7e1204]:
+                    - generic [ref=f7e1205]: Available at Runtime
+                    - checkbox "Available at Runtime" [checked] [ref=f7e1210] [cursor=pointer]
+                  - generic [ref=f7e1212]:
+                    - generic [ref=f7e1213]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=f7e1214] [cursor=pointer]
+                  - generic [ref=f7e1216]:
+                    - generic [ref=f7e1217]: Is Literal?
+                    - checkbox "Is Literal?" [ref=f7e1222] [cursor=pointer]
+                - generic [ref=f7e1223]:
+                  - button "Update" [ref=f7e1224] [cursor=pointer]
+                  - button "Lock" [ref=f7e1225] [cursor=pointer]
+                  - button "Delete" [ref=f7e1227] [cursor=pointer]
+            - generic [ref=f7e1229]:
+              - generic [ref=f7e1230]:
+                - generic [ref=f7e1231]:
+                  - textbox [ref=f7e1233]: GOD_MODE_ALL
+                  - generic [ref=f7e1235]:
+                    - generic [ref=f7e1236] [cursor=pointer]
+                    - textbox [ref=f7e1241]
+                - generic [ref=f7e1242]:
+                  - generic [ref=f7e1243]:
+                    - text: Comment
+                    - generic [ref=f7e1245] [cursor=pointer]
+                  - textbox [ref=f7e1248]
+              - generic [ref=f7e1249]:
+                - generic [ref=f7e1250]:
+                  - generic [ref=f7e1252]:
+                    - generic [ref=f7e1253]: Available at Buildtime
+                    - checkbox "Available at Buildtime" [checked] [ref=f7e1258] [cursor=pointer]
+                  - generic [ref=f7e1260]:
+                    - generic [ref=f7e1261]: Available at Runtime
+                    - checkbox "Available at Runtime" [checked] [ref=f7e1266] [cursor=pointer]
+                  - generic [ref=f7e1268]:
+                    - generic [ref=f7e1269]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=f7e1270] [cursor=pointer]
+                  - generic [ref=f7e1272]:
+                    - generic [ref=f7e1273]: Is Literal?
+                    - checkbox "Is Literal?" [ref=f7e1278] [cursor=pointer]
+                - generic [ref=f7e1279]:
+                  - button "Update" [ref=f7e1280] [cursor=pointer]
+                  - button "Lock" [ref=f7e1281] [cursor=pointer]
+                  - button "Delete" [ref=f7e1283] [cursor=pointer]
+            - generic [ref=f7e1285]:
+              - generic [ref=f7e1286]:
+                - generic [ref=f7e1287]:
+                  - textbox [ref=f7e1289]: QUOTA_TRUSTED_PROXIES
+                  - generic [ref=f7e1291]:
+                    - generic [ref=f7e1292] [cursor=pointer]
+                    - textbox [ref=f7e1297]: 10.0.1.3,10.0.1.1
+                - generic [ref=f7e1298]:
+                  - generic [ref=f7e1299]:
+                    - text: Comment
+                    - generic [ref=f7e1301] [cursor=pointer]
+                  - textbox [ref=f7e1304]
+              - generic [ref=f7e1305]:
+                - generic [ref=f7e1306]:
+                  - generic [ref=f7e1308]:
+                    - generic [ref=f7e1309]: Available at Buildtime
+                    - checkbox "Available at Buildtime" [checked] [ref=f7e1314] [cursor=pointer]
+                  - generic [ref=f7e1316]:
+                    - generic [ref=f7e1317]: Available at Runtime
+                    - checkbox "Available at Runtime" [checked] [ref=f7e1322] [cursor=pointer]
+                  - generic [ref=f7e1324]:
+                    - generic [ref=f7e1325]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=f7e1326] [cursor=pointer]
+                  - generic [ref=f7e1328]:
+                    - generic [ref=f7e1329]: Is Literal?
+                    - checkbox "Is Literal?" [ref=f7e1334] [cursor=pointer]
+                - generic [ref=f7e1335]:
+                  - button "Update" [ref=f7e1336] [cursor=pointer]
+                  - button "Lock" [ref=f7e1337] [cursor=pointer]
+                  - button "Delete" [ref=f7e1339] [cursor=pointer]
+            - generic [ref=f7e1340]:
+              - heading "Preview Deployments Environment Variables" [level=3] [ref=f7e1341]
+              - generic [ref=f7e1342]: Environment (secrets) variables for Preview Deployments.
+            - generic [ref=f7e1344]:
+              - generic [ref=f7e1345]:
+                - generic [ref=f7e1346]:
+                  - textbox [ref=f7e1348]: AUTH_REQUIRED
+                  - generic [ref=f7e1350]:
+                    - generic [ref=f7e1351] [cursor=pointer]
+                    - textbox [ref=f7e1356]: "false"
+                - generic [ref=f7e1357]:
+                  - generic [ref=f7e1358]:
+                    - text: Comment
+                    - generic [ref=f7e1360] [cursor=pointer]
+                  - textbox [ref=f7e1363]
+              - generic [ref=f7e1364]:
+                - generic [ref=f7e1365]:
+                  - generic [ref=f7e1367]:
+                    - generic [ref=f7e1368]: Available at Buildtime
+                    - checkbox "Available at Buildtime" [ref=f7e1373] [cursor=pointer]
+                  - generic [ref=f7e1375]:
+                    - generic [ref=f7e1376]: Available at Runtime
+                    - checkbox "Available at Runtime" [ref=f7e1381] [cursor=pointer]
+                  - generic [ref=f7e1383]:
+                    - generic [ref=f7e1384]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=f7e1385] [cursor=pointer]
+                  - generic [ref=f7e1387]:
+                    - generic [ref=f7e1388]: Is Literal?
+                    - checkbox "Is Literal?" [ref=f7e1393] [cursor=pointer]
+                - generic [ref=f7e1394]:
+                  - button "Update" [ref=f7e1395] [cursor=pointer]
+                  - button "Lock" [ref=f7e1396] [cursor=pointer]
+                  - button "Delete" [ref=f7e1398] [cursor=pointer]
+            - generic [ref=f7e1400]:
+              - generic [ref=f7e1401]:
+                - generic [ref=f7e1402]:
+                  - textbox [ref=f7e1404]: CORS_ALLOWED_ORIGINS
+                  - generic [ref=f7e1406]:
+                    - generic [ref=f7e1407] [cursor=pointer]
+                    - textbox [ref=f7e1412]: https://map.bryanchua.com,https://gods-eyes.pages.dev
+                - generic [ref=f7e1413]:
+                  - generic [ref=f7e1414]:
+                    - text: Comment
+                    - generic [ref=f7e1416] [cursor=pointer]
+                  - textbox [ref=f7e1419]
+              - generic [ref=f7e1420]:
+                - generic [ref=f7e1421]:
+                  - generic [ref=f7e1423]:
+                    - generic [ref=f7e1424]: Available at Buildtime
+                    - checkbox "Available at Buildtime" [checked] [ref=f7e1429] [cursor=pointer]
+                  - generic [ref=f7e1431]:
+                    - generic [ref=f7e1432]: Available at Runtime
+                    - checkbox "Available at Runtime" [checked] [ref=f7e1437] [cursor=pointer]
+                  - generic [ref=f7e1439]:
+                    - generic [ref=f7e1440]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=f7e1441] [cursor=pointer]
+                  - generic [ref=f7e1443]:
+                    - generic [ref=f7e1444]: Is Literal?
+                    - checkbox "Is Literal?" [ref=f7e1449] [cursor=pointer]
+                - generic [ref=f7e1450]:
+                  - button "Update" [ref=f7e1451] [cursor=pointer]
+                  - button "Lock" [ref=f7e1452] [cursor=pointer]
+                  - button "Delete" [ref=f7e1454] [cursor=pointer]
+            - generic [ref=f7e1456]:
+              - generic [ref=f7e1457]:
+                - generic [ref=f7e1458]:
+                  - textbox [ref=f7e1460]: GOD_MODE_ALL
+                  - generic [ref=f7e1462]:
+                    - generic [ref=f7e1463] [cursor=pointer]
+                    - textbox [ref=f7e1468]: "1"
+                - generic [ref=f7e1469]:
+                  - generic [ref=f7e1470]:
+                    - text: Comment
+                    - generic [ref=f7e1472] [cursor=pointer]
+                  - textbox [ref=f7e1475]
+              - generic [ref=f7e1476]:
+                - generic [ref=f7e1477]:
+                  - generic [ref=f7e1479]:
+                    - generic [ref=f7e1480]: Available at Buildtime
+                    - checkbox "Available at Buildtime" [checked] [ref=f7e1485] [cursor=pointer]
+                  - generic [ref=f7e1487]:
+                    - generic [ref=f7e1488]: Available at Runtime
+                    - checkbox "Available at Runtime" [checked] [ref=f7e1493] [cursor=pointer]
+                  - generic [ref=f7e1495]:
+                    - generic [ref=f7e1496]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=f7e1497] [cursor=pointer]
+                  - generic [ref=f7e1499]:
+                    - generic [ref=f7e1500]: Is Literal?
+                    - checkbox "Is Literal?" [ref=f7e1505] [cursor=pointer]
+                - generic [ref=f7e1506]:
+                  - button "Update" [ref=f7e1507] [cursor=pointer]
+                  - button "Lock" [ref=f7e1508] [cursor=pointer]
+                  - button "Delete" [ref=f7e1510] [cursor=pointer]
+            - generic [ref=f7e1512]:
+              - generic [ref=f7e1513]:
+                - generic [ref=f7e1514]:
+                  - textbox [ref=f7e1516]: GOD_MODE_EMAILS
+                  - generic [ref=f7e1518]:
+                    - generic [ref=f7e1519] [cursor=pointer]
+                    - textbox [ref=f7e1524]: me@bryanchua.com
+                - generic [ref=f7e1525]:
+                  - generic [ref=f7e1526]:
+                    - text: Comment
+                    - generic [ref=f7e1528] [cursor=pointer]
+                  - textbox [ref=f7e1531]
+              - generic [ref=f7e1532]:
+                - generic [ref=f7e1533]:
+                  - generic [ref=f7e1535]:
+                    - generic [ref=f7e1536]: Available at Buildtime
+                    - checkbox "Available at Buildtime" [ref=f7e1541] [cursor=pointer]
+                  - generic [ref=f7e1543]:
+                    - generic [ref=f7e1544]: Available at Runtime
+                    - checkbox "Available at Runtime" [ref=f7e1549] [cursor=pointer]
+                  - generic [ref=f7e1551]:
+                    - generic [ref=f7e1552]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=f7e1553] [cursor=pointer]
+                  - generic [ref=f7e1555]:
+                    - generic [ref=f7e1556]: Is Literal?
+                    - checkbox "Is Literal?" [ref=f7e1561] [cursor=pointer]
+                - generic [ref=f7e1562]:
+                  - button "Update" [ref=f7e1563] [cursor=pointer]
+                  - button "Lock" [ref=f7e1564] [cursor=pointer]
+                  - button "Delete" [ref=f7e1566] [cursor=pointer]
+            - generic [ref=f7e1568]:
+              - generic [ref=f7e1569]:
+                - generic [ref=f7e1570]:
+                  - textbox [ref=f7e1572]: NEWSDATA_API_KEY
+                  - generic [ref=f7e1574]:
+                    - generic [ref=f7e1575] [cursor=pointer]
+                    - textbox [ref=f7e1580]: pub_ae3d306fde1347beb3f17caeba04340c
+                - generic [ref=f7e1581]:
+                  - generic [ref=f7e1582]:
+                    - text: Comment
+                    - generic [ref=f7e1584] [cursor=pointer]
+                  - textbox [ref=f7e1587]
+              - generic [ref=f7e1588]:
+                - generic [ref=f7e1589]:
+                  - generic [ref=f7e1591]:
+                    - generic [ref=f7e1592]: Available at Buildtime
+                    - checkbox "Available at Buildtime" [ref=f7e1597] [cursor=pointer]
+                  - generic [ref=f7e1599]:
+                    - generic [ref=f7e1600]: Available at Runtime
+                    - checkbox "Available at Runtime" [ref=f7e1605] [cursor=pointer]
+                  - generic [ref=f7e1607]:
+                    - generic [ref=f7e1608]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=f7e1609] [cursor=pointer]
+                  - generic [ref=f7e1611]:
+                    - generic [ref=f7e1612]: Is Literal?
+                    - checkbox "Is Literal?" [ref=f7e1617] [cursor=pointer]
+                - generic [ref=f7e1618]:
+                  - button "Update" [ref=f7e1619] [cursor=pointer]
+                  - button "Lock" [ref=f7e1620] [cursor=pointer]
+                  - button "Delete" [ref=f7e1622] [cursor=pointer]
+            - generic [ref=f7e1624]:
+              - generic [ref=f7e1625]:
+                - generic [ref=f7e1626]:
+                  - textbox [ref=f7e1628]: NIXPACKS_NODE_VERSION
+                  - generic [ref=f7e1630]:
+                    - generic [ref=f7e1631] [cursor=pointer]
+                    - textbox [ref=f7e1636]: "22"
+                - generic [ref=f7e1637]:
+                  - generic [ref=f7e1638]:
+                    - text: Comment
+                    - generic [ref=f7e1640] [cursor=pointer]
+                  - textbox [ref=f7e1643]
+              - generic [ref=f7e1644]:
+                - generic [ref=f7e1647]:
+                  - generic [ref=f7e1648]: Available at Runtime
+                  - checkbox "Available at Runtime" [ref=f7e1653] [cursor=pointer]
+                - generic [ref=f7e1654]:
+                  - button "Update" [ref=f7e1655] [cursor=pointer]
+                  - button "Lock" [ref=f7e1656] [cursor=pointer]
+                  - button "Delete" [ref=f7e1658] [cursor=pointer]
+            - generic [ref=f7e1660]:
+              - generic [ref=f7e1661]:
+                - generic [ref=f7e1662]:
+                  - textbox [ref=f7e1664]: OPENSKY_CREDS
+                  - generic [ref=f7e1666]:
+                    - generic [ref=f7e1667] [cursor=pointer]
+                    - textbox [ref=f7e1672]: ic3bryan@gmail.com-api-client:cmUrEth1cLX6gKOnnK9ZDwB8EQgBEUSa,bryan@gopomelo.com-api-client:847IydLDIwPamZ8BKnu3AyIh1AE3O9Ce,anotherparents629@gmail.com-api-client:KNBP2IF3YX3WcDNZvTBK5fOrodlMZ5wl
+                - generic [ref=f7e1673]:
+                  - generic [ref=f7e1674]:
+                    - text: Comment
+                    - generic [ref=f7e1676] [cursor=pointer]
+                  - textbox [ref=f7e1679]
+              - generic [ref=f7e1680]:
+                - generic [ref=f7e1681]:
+                  - generic [ref=f7e1683]:
+                    - generic [ref=f7e1684]: Available at Buildtime
+                    - checkbox "Available at Buildtime" [ref=f7e1689] [cursor=pointer]
+                  - generic [ref=f7e1691]:
+                    - generic [ref=f7e1692]: Available at Runtime
+                    - checkbox "Available at Runtime" [ref=f7e1697] [cursor=pointer]
+                  - generic [ref=f7e1699]:
+                    - generic [ref=f7e1700]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=f7e1701] [cursor=pointer]
+                  - generic [ref=f7e1703]:
+                    - generic [ref=f7e1704]: Is Literal?
+                    - checkbox "Is Literal?" [ref=f7e1709] [cursor=pointer]
+                - generic [ref=f7e1710]:
+                  - button "Update" [ref=f7e1711] [cursor=pointer]
+                  - button "Lock" [ref=f7e1712] [cursor=pointer]
+                  - button "Delete" [ref=f7e1714] [cursor=pointer]
+            - generic [ref=f7e1716]:
+              - generic [ref=f7e1717]:
+                - generic [ref=f7e1718]:
+                  - textbox [ref=f7e1720]: QUOTA_TRUSTED_PROXIES
+                  - generic [ref=f7e1722]:
+                    - generic [ref=f7e1723] [cursor=pointer]
+                    - textbox [ref=f7e1728]: 10.0.1.3
+                - generic [ref=f7e1729]:
+                  - generic [ref=f7e1730]:
+                    - text: Comment
+                    - generic [ref=f7e1732] [cursor=pointer]
+                  - textbox [ref=f7e1735]
+              - generic [ref=f7e1736]:
+                - generic [ref=f7e1737]:
+                  - generic [ref=f7e1739]:
+                    - generic [ref=f7e1740]: Available at Buildtime
+                    - checkbox "Available at Buildtime" [checked] [ref=f7e1745] [cursor=pointer]
+                  - generic [ref=f7e1747]:
+                    - generic [ref=f7e1748]: Available at Runtime
+                    - checkbox "Available at Runtime" [checked] [ref=f7e1753] [cursor=pointer]
+                  - generic [ref=f7e1755]:
+                    - generic [ref=f7e1756]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=f7e1757] [cursor=pointer]
+                  - generic [ref=f7e1759]:
+                    - generic [ref=f7e1760]: Is Literal?
+                    - checkbox "Is Literal?" [ref=f7e1765] [cursor=pointer]
+                - generic [ref=f7e1766]:
+                  - button "Update" [ref=f7e1767] [cursor=pointer]
+                  - button "Lock" [ref=f7e1768] [cursor=pointer]
+                  - button "Delete" [ref=f7e1770] [cursor=pointer]
+            - generic [ref=f7e1772]:
+              - generic [ref=f7e1773]:
+                - generic [ref=f7e1774]:
+                  - textbox [ref=f7e1776]: SUPABASE_JWT_SECRET
+                  - generic [ref=f7e1778]:
+                    - generic [ref=f7e1779] [cursor=pointer]
+                    - textbox [ref=f7e1784]: ikAWPpH2fTUxQL0IO1fhyEFjfPO9rl8p0AHsmxXp5d15zMQsaykm5tlkNyjqVUPH
+                - generic [ref=f7e1785]:
+                  - generic [ref=f7e1786]:
+                    - text: Comment
+                    - generic [ref=f7e1788] [cursor=pointer]
+                  - textbox [ref=f7e1791]
+              - generic [ref=f7e1792]:
+                - generic [ref=f7e1793]:
+                  - generic [ref=f7e1795]:
+                    - generic [ref=f7e1796]: Available at Buildtime
+                    - checkbox "Available at Buildtime" [checked] [ref=f7e1801] [cursor=pointer]
+                  - generic [ref=f7e1803]:
+                    - generic [ref=f7e1804]: Available at Runtime
+                    - checkbox "Available at Runtime" [checked] [ref=f7e1809] [cursor=pointer]
+                  - generic [ref=f7e1811]:
+                    - generic [ref=f7e1812]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=f7e1813] [cursor=pointer]
+                  - generic [ref=f7e1815]:
+                    - generic [ref=f7e1816]: Is Literal?
+                    - checkbox "Is Literal?" [ref=f7e1821] [cursor=pointer]
+                - generic [ref=f7e1822]:
+                  - button "Update" [ref=f7e1823] [cursor=pointer]
+                  - button "Lock" [ref=f7e1824] [cursor=pointer]
+                  - button "Delete" [ref=f7e1826] [cursor=pointer]
+            - generic [ref=f7e1828]:
+              - generic [ref=f7e1829]:
+                - generic [ref=f7e1830]:
+                  - textbox [ref=f7e1832]: SUPABASE_SERVICE_ROLE_JWT
+                  - generic [ref=f7e1834]:
+                    - generic [ref=f7e1835] [cursor=pointer]
+                    - textbox [ref=f7e1840]: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoic2VydmljZV9yb2xlIiwiaXNzIjoic3VwYWJhc2UiLCJpYXQiOjE3NzYxODA4NzUsImV4cCI6MjA5MTU0MDg3NX0.K2C3UfIuqUegECzX1HDa5p56pKmFGUAdqUPf_Z3_dBI
+                - generic [ref=f7e1841]:
+                  - generic [ref=f7e1842]:
+                    - text: Comment
+                    - generic [ref=f7e1844] [cursor=pointer]
+                  - textbox [ref=f7e1847]
+              - generic [ref=f7e1848]:
+                - generic [ref=f7e1849]:
+                  - generic [ref=f7e1851]:
+                    - generic [ref=f7e1852]: Available at Buildtime
+                    - checkbox "Available at Buildtime" [checked] [ref=f7e1857] [cursor=pointer]
+                  - generic [ref=f7e1859]:
+                    - generic [ref=f7e1860]: Available at Runtime
+                    - checkbox "Available at Runtime" [checked] [ref=f7e1865] [cursor=pointer]
+                  - generic [ref=f7e1867]:
+                    - generic [ref=f7e1868]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=f7e1869] [cursor=pointer]
+                  - generic [ref=f7e1871]:
+                    - generic [ref=f7e1872]: Is Literal?
+                    - checkbox "Is Literal?" [ref=f7e1877] [cursor=pointer]
+                - generic [ref=f7e1878]:
+                  - button "Update" [ref=f7e1879] [cursor=pointer]
+                  - button "Lock" [ref=f7e1880] [cursor=pointer]
+                  - button "Delete" [ref=f7e1882] [cursor=pointer]
+            - generic [ref=f7e1884]:
+              - generic [ref=f7e1885]:
+                - generic [ref=f7e1886]:
+                  - textbox [ref=f7e1888]: SUPABASE_SERVICE_ROLE_KEY
+                  - generic [ref=f7e1890]:
+                    - generic [ref=f7e1891] [cursor=pointer]
+                    - textbox [ref=f7e1896]: HqdoEVrZhXZ3AbLo0W7Gi9GY0PygWynDCPIHuLpc1l8fzp5H
+                - generic [ref=f7e1897]:
+                  - generic [ref=f7e1898]:
+                    - text: Comment
+                    - generic [ref=f7e1900] [cursor=pointer]
+                  - textbox [ref=f7e1903]
+              - generic [ref=f7e1904]:
+                - generic [ref=f7e1905]:
+                  - generic [ref=f7e1907]:
+                    - generic [ref=f7e1908]: Available at Buildtime
+                    - checkbox "Available at Buildtime" [checked] [ref=f7e1913] [cursor=pointer]
+                  - generic [ref=f7e1915]:
+                    - generic [ref=f7e1916]: Available at Runtime
+                    - checkbox "Available at Runtime" [checked] [ref=f7e1921] [cursor=pointer]
+                  - generic [ref=f7e1923]:
+                    - generic [ref=f7e1924]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=f7e1925] [cursor=pointer]
+                  - generic [ref=f7e1927]:
+                    - generic [ref=f7e1928]: Is Literal?
+                    - checkbox "Is Literal?" [ref=f7e1933] [cursor=pointer]
+                - generic [ref=f7e1934]:
+                  - button "Update" [ref=f7e1935] [cursor=pointer]
+                  - button "Lock" [ref=f7e1936] [cursor=pointer]
+                  - button "Delete" [ref=f7e1938] [cursor=pointer]
+            - generic [ref=f7e1940]:
+              - generic [ref=f7e1941]:
+                - generic [ref=f7e1942]:
+                  - textbox [ref=f7e1944]: VITE_AIS_API_KEY
+                  - generic [ref=f7e1946]:
+                    - generic [ref=f7e1947] [cursor=pointer]
+                    - textbox [ref=f7e1952]: 410c67d6dd60bec37ca1a879deda6d117f83cf3d,d40baa230589abe0fb21b80c8426074ea56baf4f
+                - generic [ref=f7e1953]:
+                  - generic [ref=f7e1954]:
+                    - text: Comment
+                    - generic [ref=f7e1956] [cursor=pointer]
+                  - textbox [ref=f7e1959]
+              - generic [ref=f7e1960]:
+                - generic [ref=f7e1961]:
+                  - generic [ref=f7e1963]:
+                    - generic [ref=f7e1964]: Available at Buildtime
+                    - checkbox "Available at Buildtime" [checked] [ref=f7e1969] [cursor=pointer]
+                  - generic [ref=f7e1971]:
+                    - generic [ref=f7e1972]: Available at Runtime
+                    - checkbox "Available at Runtime" [checked] [ref=f7e1977] [cursor=pointer]
+                  - generic [ref=f7e1979]:
+                    - generic [ref=f7e1980]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=f7e1981] [cursor=pointer]
+                  - generic [ref=f7e1983]:
+                    - generic [ref=f7e1984]: Is Literal?
+                    - checkbox "Is Literal?" [ref=f7e1989] [cursor=pointer]
+                - generic [ref=f7e1990]:
+                  - button "Update" [ref=f7e1991] [cursor=pointer]
+                  - button "Lock" [ref=f7e1992] [cursor=pointer]
+                  - button "Delete" [ref=f7e1994] [cursor=pointer]
+            - generic [ref=f7e1996]:
+              - generic [ref=f7e1997]:
+                - generic [ref=f7e1998]:
+                  - textbox [ref=f7e2000]: VITE_HERE_API_KEY
+                  - generic [ref=f7e2002]:
+                    - generic [ref=f7e2003] [cursor=pointer]
+                    - textbox [ref=f7e2008]: Cs74TOi8MpzWp6LS8FhaUc5GLfMj6RormM44gIyipu8
+                - generic [ref=f7e2009]:
+                  - generic [ref=f7e2010]:
+                    - text: Comment
+                    - generic [ref=f7e2012] [cursor=pointer]
+                  - textbox [ref=f7e2015]
+              - generic [ref=f7e2016]:
+                - generic [ref=f7e2017]:
+                  - generic [ref=f7e2019]:
+                    - generic [ref=f7e2020]: Available at Buildtime
+                    - checkbox "Available at Buildtime" [checked] [ref=f7e2025] [cursor=pointer]
+                  - generic [ref=f7e2027]:
+                    - generic [ref=f7e2028]: Available at Runtime
+                    - checkbox "Available at Runtime" [checked] [ref=f7e2033] [cursor=pointer]
+                  - generic [ref=f7e2035]:
+                    - generic [ref=f7e2036]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=f7e2037] [cursor=pointer]
+                  - generic [ref=f7e2039]:
+                    - generic [ref=f7e2040]: Is Literal?
+                    - checkbox "Is Literal?" [ref=f7e2045] [cursor=pointer]
+                - generic [ref=f7e2046]:
+                  - button "Update" [ref=f7e2047] [cursor=pointer]
+                  - button "Lock" [ref=f7e2048] [cursor=pointer]
+                  - button "Delete" [ref=f7e2050] [cursor=pointer]
+            - generic [ref=f7e2052]:
+              - generic [ref=f7e2053]:
+                - generic [ref=f7e2054]:
+                  - textbox [ref=f7e2056]: VITE_LONGDO_API_KEY
+                  - generic [ref=f7e2058]:
+                    - generic [ref=f7e2059] [cursor=pointer]
+                    - textbox [ref=f7e2064]: f6abbf6e89c43d25dbb37de0e0dd8a8e
+                - generic [ref=f7e2065]:
+                  - generic [ref=f7e2066]:
+                    - text: Comment
+                    - generic [ref=f7e2068] [cursor=pointer]
+                  - textbox [ref=f7e2071]
+              - generic [ref=f7e2072]:
+                - generic [ref=f7e2073]:
+                  - generic [ref=f7e2075]:
+                    - generic [ref=f7e2076]: Available at Buildtime
+                    - checkbox "Available at Buildtime" [checked] [ref=f7e2081] [cursor=pointer]
+                  - generic [ref=f7e2083]:
+                    - generic [ref=f7e2084]: Available at Runtime
+                    - checkbox "Available at Runtime" [checked] [ref=f7e2089] [cursor=pointer]
+                  - generic [ref=f7e2091]:
+                    - generic [ref=f7e2092]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=f7e2093] [cursor=pointer]
+                  - generic [ref=f7e2095]:
+                    - generic [ref=f7e2096]: Is Literal?
+                    - checkbox "Is Literal?" [ref=f7e2101] [cursor=pointer]
+                - generic [ref=f7e2102]:
+                  - button "Update" [ref=f7e2103] [cursor=pointer]
+                  - button "Lock" [ref=f7e2104] [cursor=pointer]
+                  - button "Delete" [ref=f7e2106] [cursor=pointer]
+            - generic [ref=f7e2108]:
+              - generic [ref=f7e2109]:
+                - generic [ref=f7e2110]:
+                  - textbox [ref=f7e2112]: VITE_LTA_API_KEY
+                  - generic [ref=f7e2114]:
+                    - generic [ref=f7e2115] [cursor=pointer]
+                    - textbox [ref=f7e2120]: C+XBWX2XQAKLNMeCMhxaxA==
+                - generic [ref=f7e2121]:
+                  - generic [ref=f7e2122]:
+                    - text: Comment
+                    - generic [ref=f7e2124] [cursor=pointer]
+                  - textbox [ref=f7e2127]
+              - generic [ref=f7e2128]:
+                - generic [ref=f7e2129]:
+                  - generic [ref=f7e2131]:
+                    - generic [ref=f7e2132]: Available at Buildtime
+                    - checkbox "Available at Buildtime" [checked] [ref=f7e2137] [cursor=pointer]
+                  - generic [ref=f7e2139]:
+                    - generic [ref=f7e2140]: Available at Runtime
+                    - checkbox "Available at Runtime" [checked] [ref=f7e2145] [cursor=pointer]
+                  - generic [ref=f7e2147]:
+                    - generic [ref=f7e2148]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=f7e2149] [cursor=pointer]
+                  - generic [ref=f7e2151]:
+                    - generic [ref=f7e2152]: Is Literal?
+                    - checkbox "Is Literal?" [ref=f7e2157] [cursor=pointer]
+                - generic [ref=f7e2158]:
+                  - button "Update" [ref=f7e2159] [cursor=pointer]
+                  - button "Lock" [ref=f7e2160] [cursor=pointer]
+                  - button "Delete" [ref=f7e2162] [cursor=pointer]
+            - generic [ref=f7e2164]:
+              - generic [ref=f7e2165]:
+                - generic [ref=f7e2166]:
+                  - textbox [ref=f7e2168]: VITE_SUPABASE_ANON_JWT
+                  - generic [ref=f7e2170]:
+                    - generic [ref=f7e2171] [cursor=pointer]
+                    - textbox [ref=f7e2176]: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlzcyI6InN1cGFiYXNlIiwiaWF0IjoxNzc2MTgwODc1LCJleHAiOjIwOTE1NDA4NzV9.EAHTOOLAc61vuvyUDCMG73_zsY2aQWmaC1KvUyyVf84
+                - generic [ref=f7e2177]:
+                  - generic [ref=f7e2178]:
+                    - text: Comment
+                    - generic [ref=f7e2180] [cursor=pointer]
+                  - textbox [ref=f7e2183]
+              - generic [ref=f7e2184]:
+                - generic [ref=f7e2185]:
+                  - generic [ref=f7e2187]:
+                    - generic [ref=f7e2188]: Available at Buildtime
+                    - checkbox "Available at Buildtime" [checked] [ref=f7e2193] [cursor=pointer]
+                  - generic [ref=f7e2195]:
+                    - generic [ref=f7e2196]: Available at Runtime
+                    - checkbox "Available at Runtime" [checked] [ref=f7e2201] [cursor=pointer]
+                  - generic [ref=f7e2203]:
+                    - generic [ref=f7e2204]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=f7e2205] [cursor=pointer]
+                  - generic [ref=f7e2207]:
+                    - generic [ref=f7e2208]: Is Literal?
+                    - checkbox "Is Literal?" [ref=f7e2213] [cursor=pointer]
+                - generic [ref=f7e2214]:
+                  - button "Update" [ref=f7e2215] [cursor=pointer]
+                  - button "Lock" [ref=f7e2216] [cursor=pointer]
+                  - button "Delete" [ref=f7e2218] [cursor=pointer]
+            - generic [ref=f7e2220]:
+              - generic [ref=f7e2221]:
+                - generic [ref=f7e2222]:
+                  - textbox [ref=f7e2224]: VITE_SUPABASE_ANON_KEY
+                  - generic [ref=f7e2226]:
+                    - generic [ref=f7e2227] [cursor=pointer]
+                    - textbox [ref=f7e2232]: zegBJd0Hra8LAkTwU8vle0kuHJPruo1utFljuTwxRVNp1Ksk
+                - generic [ref=f7e2233]:
+                  - generic [ref=f7e2234]:
+                    - text: Comment
+                    - generic [ref=f7e2236] [cursor=pointer]
+                  - textbox [ref=f7e2239]
+              - generic [ref=f7e2240]:
+                - generic [ref=f7e2241]:
+                  - generic [ref=f7e2243]:
+                    - generic [ref=f7e2244]: Available at Buildtime
+                    - checkbox "Available at Buildtime" [checked] [ref=f7e2249] [cursor=pointer]
+                  - generic [ref=f7e2251]:
+                    - generic [ref=f7e2252]: Available at Runtime
+                    - checkbox "Available at Runtime" [checked] [ref=f7e2257] [cursor=pointer]
+                  - generic [ref=f7e2259]:
+                    - generic [ref=f7e2260]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=f7e2261] [cursor=pointer]
+                  - generic [ref=f7e2263]:
+                    - generic [ref=f7e2264]: Is Literal?
+                    - checkbox "Is Literal?" [ref=f7e2269] [cursor=pointer]
+                - generic [ref=f7e2270]:
+                  - button "Update" [ref=f7e2271] [cursor=pointer]
+                  - button "Lock" [ref=f7e2272] [cursor=pointer]
+                  - button "Delete" [ref=f7e2274] [cursor=pointer]
+            - generic [ref=f7e2276]:
+              - generic [ref=f7e2277]:
+                - generic [ref=f7e2278]:
+                  - textbox [ref=f7e2280]: VITE_SUPABASE_URL
+                  - generic [ref=f7e2282]:
+                    - generic [ref=f7e2283] [cursor=pointer]
+                    - textbox [ref=f7e2288]: http://supabase-ubuntu:8000/
+                - generic [ref=f7e2289]:
+                  - generic [ref=f7e2290]:
+                    - text: Comment
+                    - generic [ref=f7e2292] [cursor=pointer]
+                  - textbox [ref=f7e2295]
+              - generic [ref=f7e2296]:
+                - generic [ref=f7e2297]:
+                  - generic [ref=f7e2299]:
+                    - generic [ref=f7e2300]: Available at Buildtime
+                    - checkbox "Available at Buildtime" [checked] [ref=f7e2305] [cursor=pointer]
+                  - generic [ref=f7e2307]:
+                    - generic [ref=f7e2308]: Available at Runtime
+                    - checkbox "Available at Runtime" [checked] [ref=f7e2313] [cursor=pointer]
+                  - generic [ref=f7e2315]:
+                    - generic [ref=f7e2316]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=f7e2317] [cursor=pointer]
+                  - generic [ref=f7e2319]:
+                    - generic [ref=f7e2320]: Is Literal?
+                    - checkbox "Is Literal?" [ref=f7e2325] [cursor=pointer]
+                - generic [ref=f7e2326]:
+                  - button "Update" [ref=f7e2327] [cursor=pointer]
+                  - button "Lock" [ref=f7e2328] [cursor=pointer]
+                  - button "Delete" [ref=f7e2330] [cursor=pointer]
+            - generic [ref=f7e2332]:
+              - generic [ref=f7e2333]:
+                - generic [ref=f7e2334]:
+                  - textbox [ref=f7e2336]: VITE_TOMTOM_API_KEY
+                  - generic [ref=f7e2338]:
+                    - generic [ref=f7e2339] [cursor=pointer]
+                    - textbox [ref=f7e2344]: VwXevOupN2enKV8gTTjMPgLX3c10cADW
+                - generic [ref=f7e2345]:
+                  - generic [ref=f7e2346]:
+                    - text: Comment
+                    - generic [ref=f7e2348] [cursor=pointer]
+                  - textbox [ref=f7e2351]
+              - generic [ref=f7e2352]:
+                - generic [ref=f7e2353]:
+                  - generic [ref=f7e2355]:
+                    - generic [ref=f7e2356]: Available at Buildtime
+                    - checkbox "Available at Buildtime" [checked] [ref=f7e2361] [cursor=pointer]
+                  - generic [ref=f7e2363]:
+                    - generic [ref=f7e2364]: Available at Runtime
+                    - checkbox "Available at Runtime" [checked] [ref=f7e2369] [cursor=pointer]
+                  - generic [ref=f7e2371]:
+                    - generic [ref=f7e2372]: Is Multiline?
+                    - checkbox "Is Multiline?" [ref=f7e2373] [cursor=pointer]
+                  - generic [ref=f7e2375]:
+                    - generic [ref=f7e2376]: Is Literal?
+                    - checkbox "Is Literal?" [ref=f7e2381] [cursor=pointer]
+                - generic [ref=f7e2382]:
+                  - button "Update" [ref=f7e2383] [cursor=pointer]
+                  - button "Lock" [ref=f7e2384] [cursor=pointer]
+                  - button "Delete" [ref=f7e2386] [cursor=pointer]
+  - list

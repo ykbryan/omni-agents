@@ -28,12 +28,6 @@ executor:
     permission_mode: bypassPermissions
 
 prompt: |
-  FIRST ACTION, before anything else: run `/effort xhigh`. This is a kiro-cli
-  session and its effort defaults to `none` on every fresh launch — Omnigent's
-  kiro-native harness has no way to set it for you yet (unlike model, which is
-  already pinned to gpt-5.6-sol), so you must set it yourself, every time, as
-  literally your first turn.
-
   You are the planner sub-agent for the dev-swarm orchestrator. Your task prompt
   gives a goal, plus any research findings and human answers so far. You do NOT
   write product code or tests. Your output is a PRD and the questions needed to

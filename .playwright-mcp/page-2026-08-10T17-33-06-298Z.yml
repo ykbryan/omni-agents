@@ -1,0 +1,287 @@
+- generic [active] [ref=f8e1]:
+  - generic [ref=f8e2]:
+    - navigation [ref=f8e5]:
+      - generic [ref=f8e6]:
+        - generic [ref=f8e7]:
+          - link "Coolify" [ref=f8e8] [cursor=pointer]:
+            - /url: /
+          - link "v4.0.0-beta.468" [ref=f8e9] [cursor=pointer]:
+            - /url: https://github.com/coollabsio/coolify/releases/tag/v4.0.0-beta.468
+        - button / [ref=f8e11]
+        - button "Preferences 9+" [ref=f8e17] [cursor=pointer]:
+          - img "Preferences" [ref=f8e18]
+          - generic [ref=f8e20]: 9+
+      - combobox [ref=f8e23]:
+        - option "Switch team" [disabled]
+        - option "Root Team" [selected]
+      - list [ref=f8e24]:
+        - listitem [ref=f8e25]:
+          - list [ref=f8e26]:
+            - listitem [ref=f8e27]:
+              - link "Dashboard" [ref=f8e28] [cursor=pointer]:
+                - /url: /
+            - listitem [ref=f8e32]:
+              - link "Projects" [ref=f8e33] [cursor=pointer]:
+                - /url: /projects
+            - listitem [ref=f8e40]:
+              - link "Servers" [ref=f8e41] [cursor=pointer]:
+                - /url: /servers
+            - listitem [ref=f8e48]:
+              - link "Sources" [ref=f8e49] [cursor=pointer]:
+                - /url: http://100.121.209.118:8000/sources
+            - listitem [ref=f8e53]:
+              - link "Destinations" [ref=f8e54] [cursor=pointer]:
+                - /url: http://100.121.209.118:8000/destinations
+            - listitem [ref=f8e58]:
+              - link "S3 Storages" [ref=f8e59] [cursor=pointer]:
+                - /url: http://100.121.209.118:8000/storages
+            - listitem [ref=f8e66]:
+              - link "Shared Variables" [ref=f8e67] [cursor=pointer]:
+                - /url: http://100.121.209.118:8000/shared-variables
+            - listitem [ref=f8e73]:
+              - link "Notifications" [ref=f8e74] [cursor=pointer]:
+                - /url: http://100.121.209.118:8000/notifications/email
+            - listitem [ref=f8e78]:
+              - link "Keys & Tokens" [ref=f8e79] [cursor=pointer]:
+                - /url: http://100.121.209.118:8000/security/private-key
+            - listitem [ref=f8e83]:
+              - link "Tags" [ref=f8e84] [cursor=pointer]:
+                - /url: http://100.121.209.118:8000/tags
+            - listitem [ref=f8e90]:
+              - link "Terminal" [ref=f8e91] [cursor=pointer]:
+                - /url: http://100.121.209.118:8000/terminal
+            - listitem [ref=f8e96]:
+              - link "Profile" [ref=f8e97] [cursor=pointer]:
+                - /url: http://100.121.209.118:8000/profile
+            - listitem [ref=f8e104]:
+              - link "Teams" [ref=f8e105] [cursor=pointer]:
+                - /url: http://100.121.209.118:8000/team
+            - listitem [ref=f8e115]:
+              - link "Settings" [ref=f8e116] [cursor=pointer]:
+                - /url: /settings
+            - listitem [ref=f8e123]:
+              - generic "New version available" [ref=f8e124]:
+                - button "Upgrade" [ref=f8e126] [cursor=pointer]
+            - listitem [ref=f8e130]:
+              - link "Sponsor us" [ref=f8e131] [cursor=pointer]:
+                - /url: https://coolify.io/sponsorships
+            - listitem [ref=f8e137]:
+              - generic "Send us feedback or get help!" [ref=f8e140] [cursor=pointer]: Feedback
+            - listitem [ref=f8e144]:
+              - button "Logout" [ref=f8e146]
+    - main [ref=f8e150]:
+      - generic [ref=f8e152]:
+        - heading "Configuration" [level=1] [ref=f8e153]
+        - generic [ref=f8e155]:
+          - generic [ref=f8e159]:
+            - heading "The latest configuration has not been applied" [level=4] [ref=f8e160]
+            - generic [ref=f8e161]: Please redeploy to apply the new configuration.
+          - button [ref=f8e162]
+        - navigation [ref=f8e165]:
+          - navigation [ref=f8e166]:
+            - list [ref=f8e167]:
+              - listitem [ref=f8e168]:
+                - generic [ref=f8e169]:
+                  - link "My first project" [ref=f8e170] [cursor=pointer]:
+                    - /url: http://100.121.209.118:8000/project/vga2dev4yxmql4656o3rz65i
+                  - button [ref=f8e171]
+              - listitem [ref=f8e174]:
+                - generic [ref=f8e175]:
+                  - link "production" [ref=f8e176] [cursor=pointer]:
+                    - /url: http://100.121.209.118:8000/project/vga2dev4yxmql4656o3rz65i/environment/dieewu4b7iqxoh7ifcy5lzip
+                  - button [ref=f8e177]
+              - listitem [ref=f8e180]:
+                - generic [ref=f8e181]:
+                  - link "gods-eyes (localhost)" [ref=f8e182] [cursor=pointer]:
+                    - /url: http://100.121.209.118:8000/project/vga2dev4yxmql4656o3rz65i/environment/dieewu4b7iqxoh7ifcy5lzip/application/v8ea9c0tuk3sa9xnc5vgxwke
+                  - button [ref=f8e183]
+              - generic [ref=f8e186]:
+                - link "Running" [ref=f8e189] [cursor=pointer]:
+                  - /url: https://github.com/ykbryan/gods-eyes/commit/e1dae8edc0051ce1cbd061c1f2b88c44401cc28c
+                - generic [ref=f8e190]: (healthy)
+              - button "Refresh Status" [ref=f8e191]
+          - generic [ref=f8e194]:
+            - navigation [ref=f8e195]:
+              - link "Configuration" [ref=f8e196] [cursor=pointer]:
+                - /url: http://100.121.209.118:8000/project/vga2dev4yxmql4656o3rz65i/environment/dieewu4b7iqxoh7ifcy5lzip/application/v8ea9c0tuk3sa9xnc5vgxwke
+              - link "Deployments" [ref=f8e197] [cursor=pointer]:
+                - /url: http://100.121.209.118:8000/project/vga2dev4yxmql4656o3rz65i/environment/dieewu4b7iqxoh7ifcy5lzip/application/v8ea9c0tuk3sa9xnc5vgxwke/deployment
+              - link "Logs" [ref=f8e198] [cursor=pointer]:
+                - /url: http://100.121.209.118:8000/project/vga2dev4yxmql4656o3rz65i/environment/dieewu4b7iqxoh7ifcy5lzip/application/v8ea9c0tuk3sa9xnc5vgxwke/logs
+              - link "Terminal" [ref=f8e200] [cursor=pointer]:
+                - /url: http://100.121.209.118:8000/project/vga2dev4yxmql4656o3rz65i/environment/dieewu4b7iqxoh7ifcy5lzip/application/v8ea9c0tuk3sa9xnc5vgxwke/terminal
+              - button "Links" [ref=f8e202]
+            - generic [ref=f8e206]:
+              - button "Advanced" [ref=f8e209]
+              - generic [ref=f8e213]:
+                - button "Redeploy" [ref=f8e214] [cursor=pointer]
+                - button "Restart" [ref=f8e217] [cursor=pointer]
+                - button "Stop" [ref=f8e223] [cursor=pointer]
+        - generic [ref=f8e226]:
+          - generic [ref=f8e227]:
+            - link "General" [ref=f8e228] [cursor=pointer]:
+              - /url: http://100.121.209.118:8000/project/vga2dev4yxmql4656o3rz65i/environment/dieewu4b7iqxoh7ifcy5lzip/application/v8ea9c0tuk3sa9xnc5vgxwke
+            - link "Advanced" [ref=f8e230] [cursor=pointer]:
+              - /url: http://100.121.209.118:8000/project/vga2dev4yxmql4656o3rz65i/environment/dieewu4b7iqxoh7ifcy5lzip/application/v8ea9c0tuk3sa9xnc5vgxwke/advanced
+            - link "Environment Variables" [ref=f8e232] [cursor=pointer]:
+              - /url: http://100.121.209.118:8000/project/vga2dev4yxmql4656o3rz65i/environment/dieewu4b7iqxoh7ifcy5lzip/application/v8ea9c0tuk3sa9xnc5vgxwke/environment-variables
+            - link "Persistent Storage" [ref=f8e234] [cursor=pointer]:
+              - /url: http://100.121.209.118:8000/project/vga2dev4yxmql4656o3rz65i/environment/dieewu4b7iqxoh7ifcy5lzip/application/v8ea9c0tuk3sa9xnc5vgxwke/persistent-storage
+            - link "Git Source" [ref=f8e236] [cursor=pointer]:
+              - /url: http://100.121.209.118:8000/project/vga2dev4yxmql4656o3rz65i/environment/dieewu4b7iqxoh7ifcy5lzip/application/v8ea9c0tuk3sa9xnc5vgxwke/source
+            - link "Servers" [ref=f8e238] [cursor=pointer]:
+              - /url: http://100.121.209.118:8000/project/vga2dev4yxmql4656o3rz65i/environment/dieewu4b7iqxoh7ifcy5lzip/application/v8ea9c0tuk3sa9xnc5vgxwke/servers
+            - link "Scheduled Tasks" [ref=f8e240] [cursor=pointer]:
+              - /url: http://100.121.209.118:8000/project/vga2dev4yxmql4656o3rz65i/environment/dieewu4b7iqxoh7ifcy5lzip/application/v8ea9c0tuk3sa9xnc5vgxwke/scheduled-tasks
+            - link "Webhooks" [ref=f8e242] [cursor=pointer]:
+              - /url: http://100.121.209.118:8000/project/vga2dev4yxmql4656o3rz65i/environment/dieewu4b7iqxoh7ifcy5lzip/application/v8ea9c0tuk3sa9xnc5vgxwke/webhooks
+            - link "Preview Deployments" [ref=f8e244] [cursor=pointer]:
+              - /url: http://100.121.209.118:8000/project/vga2dev4yxmql4656o3rz65i/environment/dieewu4b7iqxoh7ifcy5lzip/application/v8ea9c0tuk3sa9xnc5vgxwke/preview-deployments
+            - link "Healthcheck" [ref=f8e246] [cursor=pointer]:
+              - /url: http://100.121.209.118:8000/project/vga2dev4yxmql4656o3rz65i/environment/dieewu4b7iqxoh7ifcy5lzip/application/v8ea9c0tuk3sa9xnc5vgxwke/healthcheck
+            - link "Rollback" [ref=f8e248] [cursor=pointer]:
+              - /url: http://100.121.209.118:8000/project/vga2dev4yxmql4656o3rz65i/environment/dieewu4b7iqxoh7ifcy5lzip/application/v8ea9c0tuk3sa9xnc5vgxwke/rollback
+            - link "Resource Limits" [ref=f8e250] [cursor=pointer]:
+              - /url: http://100.121.209.118:8000/project/vga2dev4yxmql4656o3rz65i/environment/dieewu4b7iqxoh7ifcy5lzip/application/v8ea9c0tuk3sa9xnc5vgxwke/resource-limits
+            - link "Resource Operations" [ref=f8e252] [cursor=pointer]:
+              - /url: http://100.121.209.118:8000/project/vga2dev4yxmql4656o3rz65i/environment/dieewu4b7iqxoh7ifcy5lzip/application/v8ea9c0tuk3sa9xnc5vgxwke/resource-operations
+            - link "Metrics" [ref=f8e254] [cursor=pointer]:
+              - /url: http://100.121.209.118:8000/project/vga2dev4yxmql4656o3rz65i/environment/dieewu4b7iqxoh7ifcy5lzip/application/v8ea9c0tuk3sa9xnc5vgxwke/metrics
+            - link "Tags" [ref=f8e256] [cursor=pointer]:
+              - /url: http://100.121.209.118:8000/project/vga2dev4yxmql4656o3rz65i/environment/dieewu4b7iqxoh7ifcy5lzip/application/v8ea9c0tuk3sa9xnc5vgxwke/tags
+            - link "Danger Zone" [ref=f8e258] [cursor=pointer]:
+              - /url: http://100.121.209.118:8000/project/vga2dev4yxmql4656o3rz65i/environment/dieewu4b7iqxoh7ifcy5lzip/application/v8ea9c0tuk3sa9xnc5vgxwke/danger
+          - generic [ref=f8e262]:
+            - generic [ref=f8e263]:
+              - heading "General" [level=2] [ref=f8e264]
+              - button "Save" [ref=f8e265] [cursor=pointer]
+            - generic [ref=f8e266]: General configuration for your application.
+            - generic [ref=f8e267]:
+              - generic [ref=f8e268]:
+                - generic [ref=f8e269]:
+                  - generic [ref=f8e270]:
+                    - text: Name
+                    - generic [ref=f8e271]: "*"
+                  - textbox [ref=f8e272]: gods-eyes
+                - generic [ref=f8e273]:
+                  - generic [ref=f8e274]: Description
+                  - textbox [ref=f8e275]
+              - generic [ref=f8e278]:
+                - generic [ref=f8e279]:
+                  - text: Build Pack
+                  - generic [ref=f8e280]: "*"
+                - combobox [ref=f8e281]:
+                  - option "Nixpacks"
+                  - option "Static"
+                  - option "Dockerfile" [selected]
+                  - option "Docker Compose"
+              - generic [ref=f8e283]:
+                - generic [ref=f8e284]:
+                  - generic [ref=f8e285]:
+                    - text: Domains
+                    - generic [ref=f8e287] [cursor=pointer]
+                  - textbox "https://coolify.io" [ref=f8e290]: http://v8ea9c0tuk3sa9xnc5vgxwke.14.100.61.124.sslip.io
+                - button "Generate Domain" [ref=f8e291] [cursor=pointer]
+              - generic [ref=f8e292]:
+                - generic [ref=f8e293]:
+                  - generic [ref=f8e294]:
+                    - text: Direction
+                    - generic [ref=f8e295]: "*"
+                    - generic [ref=f8e297] [cursor=pointer]
+                  - combobox [ref=f8e300]:
+                    - option "Allow www & non-www." [selected]
+                    - option "Redirect to www."
+                    - option "Redirect to non-www."
+                - button "Set Direction" [ref=f8e302] [cursor=pointer]
+              - generic [ref=f8e304]:
+                - heading "Docker Registry" [level=3] [ref=f8e305]
+                - generic [ref=f8e307] [cursor=pointer]
+              - generic [ref=f8e310]:
+                - generic [ref=f8e311]:
+                  - generic [ref=f8e312]:
+                    - text: Docker Image
+                    - generic [ref=f8e314] [cursor=pointer]
+                  - textbox "Empty means it won't push the image to a docker registry." [ref=f8e317]
+                - generic [ref=f8e318]:
+                  - generic [ref=f8e319]:
+                    - text: Docker Image Tag
+                    - generic [ref=f8e321] [cursor=pointer]
+                  - textbox "Empty means only push commit sha tag." [ref=f8e324]
+              - generic [ref=f8e325]:
+                - heading "Build" [level=3] [ref=f8e326]
+                - generic [ref=f8e327]:
+                  - generic [ref=f8e328]:
+                    - generic [ref=f8e329]:
+                      - generic [ref=f8e330]:
+                        - text: Base Directory
+                        - generic [ref=f8e332] [cursor=pointer]
+                      - textbox / [ref=f8e335]
+                    - generic [ref=f8e336]:
+                      - generic [ref=f8e337]:
+                        - text: Dockerfile Location
+                        - generic [ref=f8e339] [cursor=pointer]
+                      - textbox "/Dockerfile" [ref=f8e342]
+                    - generic [ref=f8e343]:
+                      - generic [ref=f8e344]:
+                        - text: Docker Build Stage Target
+                        - generic [ref=f8e346] [cursor=pointer]
+                      - textbox [ref=f8e349]
+                  - generic [ref=f8e351]:
+                    - generic [ref=f8e352]:
+                      - text: Watch Paths
+                      - generic [ref=f8e354] [cursor=pointer]
+                    - textbox "src/pages/**" [ref=f8e357]
+                  - generic [ref=f8e358]:
+                    - generic [ref=f8e359]:
+                      - text: Custom Docker Options
+                      - generic [ref=f8e361] [cursor=pointer]
+                    - textbox "--cap-add SYS_ADMIN --device=/dev/fuse --security-opt apparmor:unconfined --ulimit nofile=1024:1024 --tmpfs /run:rw,noexec,nosuid,size=65536k --hostname=myapp" [ref=f8e364]
+                  - generic [ref=f8e367]:
+                    - generic [ref=f8e368]: Use a Build Server?
+                    - checkbox "Use a Build Server?" [ref=f8e373] [cursor=pointer]
+              - heading "Network" [level=3] [ref=f8e374]
+              - generic [ref=f8e375]:
+                - generic [ref=f8e376]:
+                  - generic [ref=f8e377]:
+                    - text: Ports Exposes
+                    - generic [ref=f8e378]: "*"
+                    - generic [ref=f8e380] [cursor=pointer]
+                  - textbox "3000,3001" [ref=f8e383]: "300"
+                - generic [ref=f8e384]:
+                  - generic [ref=f8e385]:
+                    - text: Port Mappings
+                    - generic [ref=f8e387] [cursor=pointer]
+                  - textbox "3000:3000" [ref=f8e390]: 3004:3000
+                - generic [ref=f8e391]:
+                  - generic [ref=f8e392]:
+                    - text: Network Aliases
+                    - generic [ref=f8e394] [cursor=pointer]
+                  - textbox [ref=f8e397]
+              - heading "HTTP Basic Authentication" [level=3] [ref=f8e398]
+              - generic [ref=f8e402]:
+                - generic [ref=f8e403]: Enable
+                - checkbox "Enable" [ref=f8e408] [cursor=pointer]
+              - heading "Labels" [level=3] [ref=f8e409]
+              - generic [ref=f8e410]:
+                - generic [ref=f8e411]: Container Labels
+                - generic [ref=f8e412]: Start typing here
+              - generic [ref=f8e417]:
+                - generic [ref=f8e419]:
+                  - generic [ref=f8e420]: Readonly labels
+                  - checkbox "Readonly labels" [checked] [ref=f8e425] [cursor=pointer]
+                - generic [ref=f8e427]:
+                  - generic [ref=f8e428]: Escape special characters in labels?
+                  - checkbox "Escape special characters in labels?" [checked] [ref=f8e433] [cursor=pointer]
+              - button "Reset Labels to Defaults" [ref=f8e435] [cursor=pointer]
+              - heading "Pre/Post Deployment Commands" [level=3] [ref=f8e436]
+              - generic [ref=f8e438]:
+                - generic [ref=f8e439]:
+                  - text: Pre-deployment
+                  - generic [ref=f8e441] [cursor=pointer]
+                - textbox "php artisan migrate" [ref=f8e444]
+              - generic [ref=f8e446]:
+                - generic [ref=f8e447]:
+                  - text: Post-deployment
+                  - generic [ref=f8e449] [cursor=pointer]
+                - textbox "php artisan migrate" [ref=f8e452]
+  - list

@@ -1,0 +1,1427 @@
+- generic [active] [ref=f9e1]:
+  - generic [ref=f9e3]:
+    - generic [ref=f9e8]:
+      - heading "No notifications enabled." [level=4] [ref=f9e9]
+      - paragraph [ref=f9e10]:
+        - text: It is highly recommended to enable at least one notification channel to receive important alerts.Visit
+        - link "/notification" [ref=f9e11] [cursor=pointer]:
+          - /url: http://100.121.209.118:8000/notifications/email
+        - text: to enable notifications.
+    - button "Accept and Close" [ref=f9e12]
+  - generic [ref=f9e21]:
+    - navigation [ref=f9e24]:
+      - generic [ref=f9e25]:
+        - generic [ref=f9e26]:
+          - link "Coolify" [ref=f9e27] [cursor=pointer]:
+            - /url: /
+          - link "v4.0.0-beta.468" [ref=f9e28] [cursor=pointer]:
+            - /url: https://github.com/coollabsio/coolify/releases/tag/v4.0.0-beta.468
+        - button / [ref=f9e30]
+        - button "Preferences 9+" [ref=f9e36] [cursor=pointer]:
+          - img "Preferences" [ref=f9e37]
+          - generic [ref=f9e39]: 9+
+      - combobox [ref=f9e42]:
+        - option "Switch team" [disabled]
+        - option "Root Team" [selected]
+      - list [ref=f9e43]:
+        - listitem [ref=f9e44]:
+          - list [ref=f9e45]:
+            - listitem [ref=f9e46]:
+              - link "Dashboard" [ref=f9e47] [cursor=pointer]:
+                - /url: /
+            - listitem [ref=f9e51]:
+              - link "Projects" [ref=f9e52] [cursor=pointer]:
+                - /url: /projects
+            - listitem [ref=f9e59]:
+              - link "Servers" [ref=f9e60] [cursor=pointer]:
+                - /url: /servers
+            - listitem [ref=f9e67]:
+              - link "Sources" [ref=f9e68] [cursor=pointer]:
+                - /url: http://100.121.209.118:8000/sources
+            - listitem [ref=f9e72]:
+              - link "Destinations" [ref=f9e73] [cursor=pointer]:
+                - /url: http://100.121.209.118:8000/destinations
+            - listitem [ref=f9e77]:
+              - link "S3 Storages" [ref=f9e78] [cursor=pointer]:
+                - /url: http://100.121.209.118:8000/storages
+            - listitem [ref=f9e85]:
+              - link "Shared Variables" [ref=f9e86] [cursor=pointer]:
+                - /url: http://100.121.209.118:8000/shared-variables
+            - listitem [ref=f9e92]:
+              - link "Notifications" [ref=f9e93] [cursor=pointer]:
+                - /url: http://100.121.209.118:8000/notifications/email
+            - listitem [ref=f9e97]:
+              - link "Keys & Tokens" [ref=f9e98] [cursor=pointer]:
+                - /url: http://100.121.209.118:8000/security/private-key
+            - listitem [ref=f9e102]:
+              - link "Tags" [ref=f9e103] [cursor=pointer]:
+                - /url: http://100.121.209.118:8000/tags
+            - listitem [ref=f9e109]:
+              - link "Terminal" [ref=f9e110] [cursor=pointer]:
+                - /url: http://100.121.209.118:8000/terminal
+            - listitem [ref=f9e115]:
+              - link "Profile" [ref=f9e116] [cursor=pointer]:
+                - /url: http://100.121.209.118:8000/profile
+            - listitem [ref=f9e123]:
+              - link "Teams" [ref=f9e124] [cursor=pointer]:
+                - /url: http://100.121.209.118:8000/team
+            - listitem [ref=f9e134]:
+              - link "Settings" [ref=f9e135] [cursor=pointer]:
+                - /url: /settings
+            - listitem [ref=f9e142]:
+              - generic "New version available" [ref=f9e143]:
+                - button "Upgrade" [ref=f9e145] [cursor=pointer]
+            - listitem [ref=f9e149]:
+              - link "Sponsor us" [ref=f9e150] [cursor=pointer]:
+                - /url: https://coolify.io/sponsorships
+            - listitem [ref=f9e156]:
+              - generic "Send us feedback or get help!" [ref=f9e159] [cursor=pointer]: Feedback
+            - listitem [ref=f9e163]:
+              - button "Logout" [ref=f9e165]
+    - main [ref=f9e169]:
+      - generic [ref=f9e171]:
+        - heading "Deployment" [level=1] [ref=f9e172]
+        - navigation [ref=f9e184]:
+          - navigation [ref=f9e185]:
+            - list [ref=f9e186]:
+              - listitem [ref=f9e187]:
+                - generic [ref=f9e188]:
+                  - link "My first project" [ref=f9e189] [cursor=pointer]:
+                    - /url: http://100.121.209.118:8000/project/vga2dev4yxmql4656o3rz65i
+                  - button [ref=f9e190]
+              - listitem [ref=f9e193]:
+                - generic [ref=f9e194]:
+                  - link "production" [ref=f9e195] [cursor=pointer]:
+                    - /url: http://100.121.209.118:8000/project/vga2dev4yxmql4656o3rz65i/environment/dieewu4b7iqxoh7ifcy5lzip
+                  - button [ref=f9e196]
+              - listitem [ref=f9e199]:
+                - generic [ref=f9e200]:
+                  - link "gods-eyes (localhost)" [ref=f9e201] [cursor=pointer]:
+                    - /url: http://100.121.209.118:8000/project/vga2dev4yxmql4656o3rz65i/environment/dieewu4b7iqxoh7ifcy5lzip/application/v8ea9c0tuk3sa9xnc5vgxwke
+                  - button [ref=f9e202]
+              - generic [ref=f9e205]:
+                - link "Running" [ref=f9e208] [cursor=pointer]:
+                  - /url: https://github.com/ykbryan/gods-eyes/commit/e1dae8edc0051ce1cbd061c1f2b88c44401cc28c
+                - generic [ref=f9e209]: (healthy)
+              - button "Refresh Status" [ref=f9e210]
+          - generic [ref=f9e213]:
+            - navigation [ref=f9e214]:
+              - link "Configuration" [ref=f9e215] [cursor=pointer]:
+                - /url: http://100.121.209.118:8000/project/vga2dev4yxmql4656o3rz65i/environment/dieewu4b7iqxoh7ifcy5lzip/application/v8ea9c0tuk3sa9xnc5vgxwke
+              - link "Deployments" [ref=f9e216] [cursor=pointer]:
+                - /url: http://100.121.209.118:8000/project/vga2dev4yxmql4656o3rz65i/environment/dieewu4b7iqxoh7ifcy5lzip/application/v8ea9c0tuk3sa9xnc5vgxwke/deployment
+              - link "Logs" [ref=f9e217] [cursor=pointer]:
+                - /url: http://100.121.209.118:8000/project/vga2dev4yxmql4656o3rz65i/environment/dieewu4b7iqxoh7ifcy5lzip/application/v8ea9c0tuk3sa9xnc5vgxwke/logs
+              - link "Terminal" [ref=f9e219] [cursor=pointer]:
+                - /url: http://100.121.209.118:8000/project/vga2dev4yxmql4656o3rz65i/environment/dieewu4b7iqxoh7ifcy5lzip/application/v8ea9c0tuk3sa9xnc5vgxwke/terminal
+              - button "Links" [ref=f9e221]
+            - generic [ref=f9e225]:
+              - button "Advanced" [ref=f9e228]
+              - generic [ref=f9e232]:
+                - button "Redeploy" [ref=f9e233] [cursor=pointer]
+                - button "Restart" [ref=f9e236] [cursor=pointer]
+                - button "Stop" [ref=f9e242] [cursor=pointer]
+        - generic [ref=f9e245]:
+          - heading "Deployment Log" [level=2] [ref=f9e247]
+          - generic [ref=f9e250]:
+            - generic [ref=f9e251]:
+              - generic [ref=f9e253]:
+                - generic [ref=f9e254]: Deployment is
+                - generic [ref=f9e255]: Finished
+              - generic [ref=f9e259]:
+                - textbox "Find in logs" [ref=f9e263]
+                - generic [ref=f9e264]:
+                  - button "Copy Logs" [ref=f9e265]
+                  - button "Download Logs" [ref=f9e269]
+                  - button "Toggle Timestamps" [ref=f9e272]
+                  - button "Hide Debug Logs" [ref=f9e275]
+                  - button "Follow Logs" [ref=f9e278]
+                  - button "Fullscreen" [ref=f9e281]
+            - generic [ref=f9e287]:
+              - generic [ref=f9e288]:
+                - generic [ref=f9e289]: 2026-Aug-10 17:33:13.554271
+                - generic [ref=f9e290]: Docker 29.4.3 with BuildKit and Buildx detected on deployment server (localhost).
+              - generic [ref=f9e291]:
+                - generic [ref=f9e292]: 2026-Aug-10 17:33:13.558258
+                - generic [ref=f9e293]: Starting deployment of ykbryan/gods-eyes:main to localhost.
+              - generic [ref=f9e294]:
+                - generic [ref=f9e295]: 2026-Aug-10 17:33:13.690113
+                - generic [ref=f9e296]: "Preparing container with helper image: ghcr.io/coollabsio/coolify-helper:1.0.12"
+              - generic [ref=f9e297]:
+                - generic [ref=f9e298]: 2026-Aug-10 17:33:13.771612
+                - generic [ref=f9e299]: "[CMD]: docker stop -t 30 fdcjv953qz5vu8dzkbbkg7w6"
+              - generic [ref=f9e300]:
+                - generic [ref=f9e301]: 2026-Aug-10 17:33:13.771612
+                - generic [ref=f9e302]: "Error response from daemon: No such container: fdcjv953qz5vu8dzkbbkg7w6"
+              - generic [ref=f9e303]:
+                - generic [ref=f9e304]: 2026-Aug-10 17:33:13.875084
+                - generic [ref=f9e305]: "[CMD]: docker run -d --network coolify --name fdcjv953qz5vu8dzkbbkg7w6 --rm -v /var/run/docker.sock:/var/run/docker.sock ghcr.io/coollabsio/coolify-helper:1.0.12"
+              - generic [ref=f9e306]:
+                - generic [ref=f9e307]: 2026-Aug-10 17:33:13.875084
+                - generic [ref=f9e308]: 7dbe432adb5aa641a56b6c1796f8f1f48927d9bfd4e90d8f152a3b915e1993d6
+              - generic [ref=f9e309]:
+                - generic [ref=f9e310]: 2026-Aug-10 17:33:16.275042
+                - generic [ref=f9e311]: "[CMD]: docker exec fdcjv953qz5vu8dzkbbkg7w6 bash -c 'GIT_SSH_COMMAND=\"ssh -o ConnectTimeout=30 -p 22 -o Port=22 -o LogLevel=ERROR -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null\" git ls-remote https://x-access-token:<REDACTED>@github.com/ykbryan/gods-eyes.git refs/heads/main'"
+              - generic [ref=f9e312]:
+                - generic [ref=f9e313]: 2026-Aug-10 17:33:16.275042
+                - generic [ref=f9e314]: e1dae8edc0051ce1cbd061c1f2b88c44401cc28c refs/heads/main
+              - generic [ref=f9e315]:
+                - generic [ref=f9e316]: 2026-Aug-10 17:33:16.641022
+                - generic [ref=f9e317]: "----------------------------------------"
+              - generic [ref=f9e318]:
+                - generic [ref=f9e319]: 2026-Aug-10 17:33:16.645211
+                - generic [ref=f9e320]: Importing ykbryan/gods-eyes:main (commit sha e1dae8edc0051ce1cbd061c1f2b88c44401cc28c) to /artifacts/fdcjv953qz5vu8dzkbbkg7w6.
+              - generic [ref=f9e321]:
+                - generic [ref=f9e322]: 2026-Aug-10 17:33:16.766960
+                - generic [ref=f9e323]: "[CMD]: docker exec fdcjv953qz5vu8dzkbbkg7w6 bash -c 'git clone --depth=1 --recurse-submodules --shallow-submodules -b '\\''main'\\'' '\\''https://x-access-token:<REDACTED>@github.com/ykbryan/gods-eyes.git'\\'' '\\''/artifacts/fdcjv953qz5vu8dzkbbkg7w6'\\'' && cd '\\''/artifacts/fdcjv953qz5vu8dzkbbkg7w6'\\'' && GIT_SSH_COMMAND=\"ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null\" git fetch --depth=1 origin '\\''e1dae8edc0051ce1cbd061c1f2b88c44401cc28c'\\'' && git -c advice.detachedHead=false checkout '\\''e1dae8edc0051ce1cbd061c1f2b88c44401cc28c'\\'' >/dev/null 2>&1 && cd '\\''/artifacts/fdcjv953qz5vu8dzkbbkg7w6'\\'' && if [ -f .gitmodules ]; then git submodule sync && GIT_SSH_COMMAND=\"ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null\" git submodule update --init --recursive --depth=1; fi && cd '\\''/artifacts/fdcjv953qz5vu8dzkbbkg7w6'\\'' && GIT_SSH_COMMAND=\"ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null\" git lfs pull'"
+              - generic [ref=f9e324]:
+                - generic [ref=f9e325]: 2026-Aug-10 17:33:16.766960
+                - generic [ref=f9e326]: Cloning into '/artifacts/fdcjv953qz5vu8dzkbbkg7w6'...
+              - generic [ref=f9e327]:
+                - generic [ref=f9e328]: 2026-Aug-10 17:33:19.107375
+                - generic [ref=f9e329]: From https://github.com/ykbryan/gods-eyes
+              - generic [ref=f9e330]:
+                - generic [ref=f9e331]: 2026-Aug-10 17:33:19.107375
+                - generic [ref=f9e332]: "* branch e1dae8edc0051ce1cbd061c1f2b88c44401cc28c -> FETCH_HEAD"
+              - generic [ref=f9e333]:
+                - generic [ref=f9e334]: 2026-Aug-10 17:33:19.460224
+                - generic [ref=f9e335]: "[CMD]: docker exec fdcjv953qz5vu8dzkbbkg7w6 bash -c 'cd /artifacts/fdcjv953qz5vu8dzkbbkg7w6 && git log -1 '\\''e1dae8edc0051ce1cbd061c1f2b88c44401cc28c'\\'' --pretty=%B'"
+              - generic [ref=f9e336]:
+                - generic [ref=f9e337]: 2026-Aug-10 17:33:19.460224
+                - generic [ref=f9e338]: "docs(runbook): correct WebSocket quota topology to Cloudflare Tunnel"
+              - generic [ref=f9e339]: 2026-Aug-10 17:33:19.460224
+              - generic [ref=f9e341]:
+                - generic [ref=f9e342]: 2026-Aug-10 17:33:19.460224
+                - generic [ref=f9e343]: The RUNBOOK-websocket-quota runbook described the production chain as
+              - generic [ref=f9e344]:
+                - generic [ref=f9e345]: 2026-Aug-10 17:33:19.460224
+                - generic [ref=f9e346]: "`client -> Cloudflare -> Traefik -> Node` and instructed operators to"
+              - generic [ref=f9e347]:
+                - generic [ref=f9e348]: 2026-Aug-10 17:33:19.460224
+                - generic [ref=f9e349]: set QUOTA_TRUSTED_PROXIES to Traefik's container IP plus Cloudflare's
+              - generic [ref=f9e350]:
+                - generic [ref=f9e351]: 2026-Aug-10 17:33:19.460224
+                - generic [ref=f9e352]: public IPv4/IPv6 CIDRs. That topology does not match the actual
+              - generic [ref=f9e353]:
+                - generic [ref=f9e354]: 2026-Aug-10 17:33:19.460224
+                - generic [ref=f9e355]: production deployment.
+              - generic [ref=f9e356]: 2026-Aug-10 17:33:19.460224
+              - generic [ref=f9e358]:
+                - generic [ref=f9e359]: 2026-Aug-10 17:33:19.460224
+                - generic [ref=f9e360]: "Verified against the live host: there is no Traefik container. The"
+              - generic [ref=f9e361]:
+                - generic [ref=f9e362]: 2026-Aug-10 17:33:19.460224
+                - generic [ref=f9e363]: "ingress is Cloudflare Tunnel (`cloudflared-map` on the `coolify`"
+              - generic [ref=f9e364]:
+                - generic [ref=f9e365]: 2026-Aug-10 17:33:19.460224
+                - generic [ref=f9e366]: Docker network, IP 10.0.1.3) connecting directly to the Node app
+              - generic [ref=f9e367]:
+                - generic [ref=f9e368]: 2026-Aug-10 17:33:19.460224
+                - generic [ref=f9e369]: "container, i.e. `client -> Cloudflare -> Cloudflare Tunnel -> Node`"
+              - generic [ref=f9e370]:
+                - generic [ref=f9e371]: 2026-Aug-10 17:33:19.460224
+                - generic [ref=f9e372]: with no separate reverse-proxy hop. QUOTA_TRUSTED_PROXIES in production
+              - generic [ref=f9e373]:
+                - generic [ref=f9e374]: 2026-Aug-10 17:33:19.460224
+                - generic [ref=f9e375]: is correctly set to just that single container IP, not a broad CIDR
+              - generic [ref=f9e376]:
+                - generic [ref=f9e377]: 2026-Aug-10 17:33:19.460224
+                - generic [ref=f9e378]: range -- Cloudflare's public edge ranges do not apply here because the
+              - generic [ref=f9e379]:
+                - generic [ref=f9e380]: 2026-Aug-10 17:33:19.460224
+                - generic [ref=f9e381]: tunnel is an outbound connection from the container, not a second
+              - generic [ref=f9e382]:
+                - generic [ref=f9e383]: 2026-Aug-10 17:33:19.460224
+                - generic [ref=f9e384]: inbound hop that would appear in X-Forwarded-For. Live adversarial
+              - generic [ref=f9e385]:
+                - generic [ref=f9e386]: 2026-Aug-10 17:33:19.460224
+                - generic [ref=f9e387]: "testing confirmed: anonymous connections stay metered, and XFF-spoof"
+              - generic [ref=f9e388]:
+                - generic [ref=f9e389]: 2026-Aug-10 17:33:19.460224
+                - generic [ref=f9e390]: attempts that try to inject 10.0.1.3 into the chain do not get
+              - generic [ref=f9e391]:
+                - generic [ref=f9e392]: 2026-Aug-10 17:33:19.460224
+                - generic [ref=f9e393]: elevated tier (Cloudflare always appends the true client IP last, and
+              - generic [ref=f9e394]:
+                - generic [ref=f9e395]: 2026-Aug-10 17:33:19.460224
+                - generic [ref=f9e396]: the trust-walk halts there).
+              - generic [ref=f9e397]: 2026-Aug-10 17:33:19.460224
+              - generic [ref=f9e399]:
+                - generic [ref=f9e400]: 2026-Aug-10 17:33:19.460224
+                - generic [ref=f9e401]: Also documents that the Tailscale-proxy-trust admin bypass path is
+              - generic [ref=f9e402]:
+                - generic [ref=f9e403]: 2026-Aug-10 17:33:19.460224
+                - generic [ref=f9e404]: dormant by design in this topology -- Cloudflare Tunnel is outbound-
+              - generic [ref=f9e405]:
+                - generic [ref=f9e406]: 2026-Aug-10 17:33:19.460224
+                - generic [ref=f9e407]: only from the host, so there is no inbound Tailscale-reachable port
+              - generic [ref=f9e408]:
+                - generic [ref=f9e409]: 2026-Aug-10 17:33:19.460224
+                - generic [ref=f9e410]: into this service. The only god-tier path in the current architecture
+              - generic [ref=f9e411]:
+                - generic [ref=f9e412]: 2026-Aug-10 17:33:19.460224
+                - generic [ref=f9e413]: is the GOD_MODE_EMAILS JWT allow-list. The Tailscale-proxy-trust code
+              - generic [ref=f9e414]:
+                - generic [ref=f9e415]: 2026-Aug-10 17:33:19.460224
+                - generic [ref=f9e416]: path remains in place and is described so it is correct if a
+              - generic [ref=f9e417]:
+                - generic [ref=f9e418]: 2026-Aug-10 17:33:19.460224
+                - generic [ref=f9e419]: Tailscale-reachable proxy is ever re-introduced.
+              - generic [ref=f9e420]: 2026-Aug-10 17:33:19.460224
+              - generic [ref=f9e422]:
+                - generic [ref=f9e423]: 2026-Aug-10 17:33:19.460224
+                - generic [ref=f9e424]: "Co-authored-by: omnigent <<REDACTED>>"
+              - generic [ref=f9e425]:
+                - generic [ref=f9e426]: 2026-Aug-10 17:33:19.554221
+                - generic [ref=f9e427]: "[CMD]: docker images -q v8ea9c0tuk3sa9xnc5vgxwke:e1dae8edc0051ce1cbd061c1f2b88c44401cc28c 2>/dev/null"
+              - generic [ref=f9e428]:
+                - generic [ref=f9e429]: 2026-Aug-10 17:33:19.554221
+                - generic [ref=f9e430]: 5e263ad7ec2e
+              - generic [ref=f9e431]:
+                - generic [ref=f9e432]: 2026-Aug-10 17:33:19.560595
+                - generic [ref=f9e433]: Configuration changed. Rebuilding image.
+              - generic [ref=f9e434]:
+                - generic [ref=f9e435]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e436]: "[CMD]: docker exec fdcjv953qz5vu8dzkbbkg7w6 bash -c 'cat /artifacts/fdcjv953qz5vu8dzkbbkg7w6/Dockerfile'"
+              - generic [ref=f9e437]:
+                - generic [ref=f9e438]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e439]: "# syntax=docker/dockerfile:1.7"
+              - generic [ref=f9e440]:
+                - generic [ref=f9e441]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e442]: "#"
+              - generic [ref=f9e443]:
+                - generic [ref=f9e444]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e445]: "# Single-process container that serves both the React frontend (Vite build,"
+              - generic [ref=f9e446]:
+                - generic [ref=f9e447]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e448]: "# served as static files) and the proxy server (WebSocket /stream + REST"
+              - generic [ref=f9e449]:
+                - generic [ref=f9e450]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e451]: "# /health) on port 3000."
+              - generic [ref=f9e452]:
+                - generic [ref=f9e453]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e454]: "#"
+              - generic [ref=f9e455]:
+                - generic [ref=f9e456]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e457]: "# Why one process: the proxy is a tiny Node HTTP server that gains static"
+              - generic [ref=f9e458]:
+                - generic [ref=f9e459]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e460]: "# file serving via STATIC_DIR (see server/ws.ts). Bundling both into one"
+              - generic [ref=f9e461]:
+                - generic [ref=f9e462]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e463]: "# Node process means: no process manager, single log stream, single"
+              - generic [ref=f9e464]:
+                - generic [ref=f9e465]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e466]: "# health-check target, smaller image, simpler ops."
+              - generic [ref=f9e467]:
+                - generic [ref=f9e468]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e469]: "#"
+              - generic [ref=f9e470]:
+                - generic [ref=f9e471]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e472]: "# Build:"
+              - generic [ref=f9e473]:
+                - generic [ref=f9e474]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e475]: "# docker build -t gods-eye ."
+              - generic [ref=f9e476]:
+                - generic [ref=f9e477]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e478]: "#"
+              - generic [ref=f9e479]:
+                - generic [ref=f9e480]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e481]: "# Run (env vars come from your environment, NOT a baked-in .env):"
+              - generic [ref=f9e482]:
+                - generic [ref=f9e483]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e484]: "# docker run --rm -p 3000:3000 \\"
+              - generic [ref=f9e485]:
+                - generic [ref=f9e486]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e487]: "# -e VITE_SUPABASE_URL=http://100.75.202.73:8000 \\"
+              - generic [ref=f9e488]:
+                - generic [ref=f9e489]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e490]: "# -e VITE_SUPABASE_ANON_KEY=... \\"
+              - generic [ref=f9e491]:
+                - generic [ref=f9e492]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e493]: "# -e VITE_SUPABASE_ANON_JWT=... \\"
+              - generic [ref=f9e494]:
+                - generic [ref=f9e495]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e496]: "# -e SUPABASE_SERVICE_ROLE_KEY=... \\"
+              - generic [ref=f9e497]:
+                - generic [ref=f9e498]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e499]: "# -e SUPABASE_SERVICE_ROLE_JWT=... \\"
+              - generic [ref=f9e500]:
+                - generic [ref=f9e501]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e502]: "# -e VITE_AIS_API_KEY=... \\"
+              - generic [ref=f9e503]:
+                - generic [ref=f9e504]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e505]: "# gods-eye"
+              - generic [ref=f9e506]:
+                - generic [ref=f9e507]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e508]: "#"
+              - generic [ref=f9e509]:
+                - generic [ref=f9e510]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e511]: "# Then open http://localhost:3000."
+              - generic [ref=f9e512]: 2026-Aug-10 17:33:20.000125
+              - generic [ref=f9e514]:
+                - generic [ref=f9e515]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e516]: "# ─── Stage 1: build the Vite frontend ───────────────────────────────────────"
+              - generic [ref=f9e517]:
+                - generic [ref=f9e518]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e519]: "# Vite needs the VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY at *build*"
+              - generic [ref=f9e520]:
+                - generic [ref=f9e521]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e522]: "# time (they get inlined into the JS bundle). Pass them as --build-arg."
+              - generic [ref=f9e523]:
+                - generic [ref=f9e524]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e525]: "# When unset, the dashboard launches but data feeds will be empty until"
+              - generic [ref=f9e526]:
+                - generic [ref=f9e527]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e528]: "# someone fills the env at runtime + rebuilds — there's no way around this"
+              - generic [ref=f9e529]:
+                - generic [ref=f9e530]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e531]: "# with Vite's import.meta.env model."
+              - generic [ref=f9e532]:
+                - generic [ref=f9e533]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e534]: FROM node:22-alpine AS build
+              - generic [ref=f9e535]:
+                - generic [ref=f9e536]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e537]: WORKDIR /app
+              - generic [ref=f9e538]: 2026-Aug-10 17:33:20.000125
+              - generic [ref=f9e540]:
+                - generic [ref=f9e541]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e542]: ARG VITE_SUPABASE_URL
+              - generic [ref=f9e543]:
+                - generic [ref=f9e544]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e545]: ARG VITE_SUPABASE_ANON_KEY
+              - generic [ref=f9e546]:
+                - generic [ref=f9e547]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e548]: ARG VITE_SUPABASE_ANON_JWT
+              - generic [ref=f9e549]:
+                - generic [ref=f9e550]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e551]: ARG VITE_AIS_API_KEY
+              - generic [ref=f9e552]:
+                - generic [ref=f9e553]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e554]: ARG VITE_HERE_API_KEY
+              - generic [ref=f9e555]:
+                - generic [ref=f9e556]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e557]: ARG VITE_TOMTOM_API_KEY
+              - generic [ref=f9e558]:
+                - generic [ref=f9e559]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e560]: ARG VITE_LONGDO_API_KEY
+              - generic [ref=f9e561]:
+                - generic [ref=f9e562]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e563]: ARG VITE_API_BASE
+              - generic [ref=f9e564]:
+                - generic [ref=f9e565]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e566]: ENV VITE_SUPABASE_URL=$VITE_SUPABASE_URL \
+              - generic [ref=f9e567]:
+                - generic [ref=f9e568]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e569]: VITE_SUPABASE_ANON_KEY=$VITE_SUPABASE_ANON_KEY \
+              - generic [ref=f9e570]:
+                - generic [ref=f9e571]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e572]: VITE_SUPABASE_ANON_JWT=$VITE_SUPABASE_ANON_JWT \
+              - generic [ref=f9e573]:
+                - generic [ref=f9e574]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e575]: VITE_AIS_API_KEY=$VITE_AIS_API_KEY \
+              - generic [ref=f9e576]:
+                - generic [ref=f9e577]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e578]: VITE_HERE_API_KEY=$VITE_HERE_API_KEY \
+              - generic [ref=f9e579]:
+                - generic [ref=f9e580]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e581]: VITE_TOMTOM_API_KEY=$VITE_TOMTOM_API_KEY \
+              - generic [ref=f9e582]:
+                - generic [ref=f9e583]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e584]: VITE_LONGDO_API_KEY=$VITE_LONGDO_API_KEY \
+              - generic [ref=f9e585]:
+                - generic [ref=f9e586]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e587]: VITE_API_BASE=$VITE_API_BASE
+              - generic [ref=f9e588]: 2026-Aug-10 17:33:20.000125
+              - generic [ref=f9e590]:
+                - generic [ref=f9e591]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e592]: COPY package.json package-lock.json ./
+              - generic [ref=f9e593]:
+                - generic [ref=f9e594]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e595]: "# Use ci for reproducible installs; cache the npm dir between rebuilds."
+              - generic [ref=f9e596]:
+                - generic [ref=f9e597]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e598]: RUN --mount=type=cache,target=/root/.npm npm ci --ignore-scripts
+              - generic [ref=f9e599]: 2026-Aug-10 17:33:20.000125
+              - generic [ref=f9e601]:
+                - generic [ref=f9e602]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e603]: COPY . .
+              - generic [ref=f9e604]:
+                - generic [ref=f9e605]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e606]: "RUN npm run build # → dist/"
+              - generic [ref=f9e607]: 2026-Aug-10 17:33:20.000125
+              - generic [ref=f9e609]:
+                - generic [ref=f9e610]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e611]: "# ─── Stage 2: runtime ───────────────────────────────────────────────────────"
+              - generic [ref=f9e612]:
+                - generic [ref=f9e613]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e614]: "# Same Node image (smaller would mean rebuilding native deps). We keep dev"
+              - generic [ref=f9e615]:
+                - generic [ref=f9e616]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e617]: "# deps because the server runs via tsx (TypeScript loader); compiling to JS"
+              - generic [ref=f9e618]:
+                - generic [ref=f9e619]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e620]: "# would shave ~80MB but adds a build step that doesn't materially help ops."
+              - generic [ref=f9e621]:
+                - generic [ref=f9e622]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e623]: FROM node:22-alpine AS runtime
+              - generic [ref=f9e624]:
+                - generic [ref=f9e625]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e626]: WORKDIR /app
+              - generic [ref=f9e627]:
+                - generic [ref=f9e628]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e629]: ENV NODE_ENV=production \
+              - generic [ref=f9e630]:
+                - generic [ref=f9e631]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e632]: STATIC_DIR=/app/dist \
+              - generic [ref=f9e633]:
+                - generic [ref=f9e634]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e635]: WS_PORT=3000
+              - generic [ref=f9e636]: 2026-Aug-10 17:33:20.000125
+              - generic [ref=f9e638]:
+                - generic [ref=f9e639]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e640]: COPY package.json package-lock.json ./
+              - generic [ref=f9e641]:
+                - generic [ref=f9e642]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e643]: RUN --mount=type=cache,target=/root/.npm npm ci --ignore-scripts
+              - generic [ref=f9e644]: 2026-Aug-10 17:33:20.000125
+              - generic [ref=f9e646]:
+                - generic [ref=f9e647]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e648]: "# Copy the built frontend + the proxy server source. Server source ships"
+              - generic [ref=f9e649]:
+                - generic [ref=f9e650]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e651]: "# as TS — tsx loads it at runtime. server/tsconfig.json is needed for the"
+              - generic [ref=f9e652]:
+                - generic [ref=f9e653]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e654]: "# loader's type resolution."
+              - generic [ref=f9e655]:
+                - generic [ref=f9e656]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e657]: COPY --from=build /app/dist ./dist
+              - generic [ref=f9e658]:
+                - generic [ref=f9e659]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e660]: COPY server ./server
+              - generic [ref=f9e661]:
+                - generic [ref=f9e662]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e663]: COPY tsconfig.json ./
+              - generic [ref=f9e664]: 2026-Aug-10 17:33:20.000125
+              - generic [ref=f9e666]:
+                - generic [ref=f9e667]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e668]: EXPOSE 3000
+              - generic [ref=f9e669]: 2026-Aug-10 17:33:20.000125
+              - generic [ref=f9e671]:
+                - generic [ref=f9e672]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e673]: "# Healthcheck hits the same port the UI/WS use — if Node falls over, all"
+              - generic [ref=f9e674]:
+                - generic [ref=f9e675]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e676]: "# three (UI, API, WS) go down together, which matches the single-process"
+              - generic [ref=f9e677]:
+                - generic [ref=f9e678]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e679]: "# design."
+              - generic [ref=f9e680]:
+                - generic [ref=f9e681]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e682]: HEALTHCHECK --interval=30s --timeout=5s --start-period=15s --retries=3 \
+              - generic [ref=f9e683]:
+                - generic [ref=f9e684]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e685]: CMD wget -qO- http://127.0.0.1:3000/health || exit 1
+              - generic [ref=f9e686]: 2026-Aug-10 17:33:20.000125
+              - generic [ref=f9e688]:
+                - generic [ref=f9e689]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e690]: "# Run as the unprivileged `node` user that ships in node:alpine."
+              - generic [ref=f9e691]:
+                - generic [ref=f9e692]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e693]: USER node
+              - generic [ref=f9e694]: 2026-Aug-10 17:33:20.000125
+              - generic [ref=f9e696]:
+                - generic [ref=f9e697]: 2026-Aug-10 17:33:20.000125
+                - generic [ref=f9e698]: CMD ["npx", "tsx", "server/index.ts"]
+              - generic [ref=f9e699]:
+                - generic [ref=f9e700]: 2026-Aug-10 17:33:20.151765
+                - generic [ref=f9e701]: Creating build-time .env file in /artifacts (outside Docker context).
+              - generic [ref=f9e702]:
+                - generic [ref=f9e703]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e704]: "[CMD]: docker exec fdcjv953qz5vu8dzkbbkg7w6 bash -c 'cat /artifacts/fdcjv953qz5vu8dzkbbkg7w6/Dockerfile'"
+              - generic [ref=f9e705]:
+                - generic [ref=f9e706]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e707]: "# syntax=docker/dockerfile:1.7"
+              - generic [ref=f9e708]:
+                - generic [ref=f9e709]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e710]: "#"
+              - generic [ref=f9e711]:
+                - generic [ref=f9e712]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e713]: "# Single-process container that serves both the React frontend (Vite build,"
+              - generic [ref=f9e714]:
+                - generic [ref=f9e715]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e716]: "# served as static files) and the proxy server (WebSocket /stream + REST"
+              - generic [ref=f9e717]:
+                - generic [ref=f9e718]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e719]: "# /health) on port 3000."
+              - generic [ref=f9e720]:
+                - generic [ref=f9e721]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e722]: "#"
+              - generic [ref=f9e723]:
+                - generic [ref=f9e724]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e725]: "# Why one process: the proxy is a tiny Node HTTP server that gains static"
+              - generic [ref=f9e726]:
+                - generic [ref=f9e727]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e728]: "# file serving via STATIC_DIR (see server/ws.ts). Bundling both into one"
+              - generic [ref=f9e729]:
+                - generic [ref=f9e730]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e731]: "# Node process means: no process manager, single log stream, single"
+              - generic [ref=f9e732]:
+                - generic [ref=f9e733]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e734]: "# health-check target, smaller image, simpler ops."
+              - generic [ref=f9e735]:
+                - generic [ref=f9e736]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e737]: "#"
+              - generic [ref=f9e738]:
+                - generic [ref=f9e739]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e740]: "# Build:"
+              - generic [ref=f9e741]:
+                - generic [ref=f9e742]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e743]: "# docker build -t gods-eye ."
+              - generic [ref=f9e744]:
+                - generic [ref=f9e745]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e746]: "#"
+              - generic [ref=f9e747]:
+                - generic [ref=f9e748]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e749]: "# Run (env vars come from your environment, NOT a baked-in .env):"
+              - generic [ref=f9e750]:
+                - generic [ref=f9e751]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e752]: "# docker run --rm -p 3000:3000 \\"
+              - generic [ref=f9e753]:
+                - generic [ref=f9e754]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e755]: "# -e VITE_SUPABASE_URL=http://100.75.202.73:8000 \\"
+              - generic [ref=f9e756]:
+                - generic [ref=f9e757]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e758]: "# -e VITE_SUPABASE_ANON_KEY=... \\"
+              - generic [ref=f9e759]:
+                - generic [ref=f9e760]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e761]: "# -e VITE_SUPABASE_ANON_JWT=... \\"
+              - generic [ref=f9e762]:
+                - generic [ref=f9e763]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e764]: "# -e SUPABASE_SERVICE_ROLE_KEY=... \\"
+              - generic [ref=f9e765]:
+                - generic [ref=f9e766]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e767]: "# -e SUPABASE_SERVICE_ROLE_JWT=... \\"
+              - generic [ref=f9e768]:
+                - generic [ref=f9e769]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e770]: "# -e VITE_AIS_API_KEY=... \\"
+              - generic [ref=f9e771]:
+                - generic [ref=f9e772]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e773]: "# gods-eye"
+              - generic [ref=f9e774]:
+                - generic [ref=f9e775]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e776]: "#"
+              - generic [ref=f9e777]:
+                - generic [ref=f9e778]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e779]: "# Then open http://localhost:3000."
+              - generic [ref=f9e780]: 2026-Aug-10 17:33:20.414601
+              - generic [ref=f9e782]:
+                - generic [ref=f9e783]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e784]: "# ─── Stage 1: build the Vite frontend ───────────────────────────────────────"
+              - generic [ref=f9e785]:
+                - generic [ref=f9e786]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e787]: "# Vite needs the VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY at *build*"
+              - generic [ref=f9e788]:
+                - generic [ref=f9e789]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e790]: "# time (they get inlined into the JS bundle). Pass them as --build-arg."
+              - generic [ref=f9e791]:
+                - generic [ref=f9e792]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e793]: "# When unset, the dashboard launches but data feeds will be empty until"
+              - generic [ref=f9e794]:
+                - generic [ref=f9e795]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e796]: "# someone fills the env at runtime + rebuilds — there's no way around this"
+              - generic [ref=f9e797]:
+                - generic [ref=f9e798]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e799]: "# with Vite's import.meta.env model."
+              - generic [ref=f9e800]:
+                - generic [ref=f9e801]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e802]: FROM node:22-alpine AS build
+              - generic [ref=f9e803]:
+                - generic [ref=f9e804]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e805]: WORKDIR /app
+              - generic [ref=f9e806]: 2026-Aug-10 17:33:20.414601
+              - generic [ref=f9e808]:
+                - generic [ref=f9e809]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e810]: ARG VITE_SUPABASE_URL
+              - generic [ref=f9e811]:
+                - generic [ref=f9e812]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e813]: ARG VITE_SUPABASE_ANON_KEY
+              - generic [ref=f9e814]:
+                - generic [ref=f9e815]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e816]: ARG VITE_SUPABASE_ANON_JWT
+              - generic [ref=f9e817]:
+                - generic [ref=f9e818]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e819]: ARG VITE_AIS_API_KEY
+              - generic [ref=f9e820]:
+                - generic [ref=f9e821]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e822]: ARG VITE_HERE_API_KEY
+              - generic [ref=f9e823]:
+                - generic [ref=f9e824]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e825]: ARG VITE_TOMTOM_API_KEY
+              - generic [ref=f9e826]:
+                - generic [ref=f9e827]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e828]: ARG VITE_LONGDO_API_KEY
+              - generic [ref=f9e829]:
+                - generic [ref=f9e830]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e831]: ARG VITE_API_BASE
+              - generic [ref=f9e832]:
+                - generic [ref=f9e833]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e834]: ENV VITE_SUPABASE_URL=$VITE_SUPABASE_URL \
+              - generic [ref=f9e835]:
+                - generic [ref=f9e836]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e837]: VITE_SUPABASE_ANON_KEY=$VITE_SUPABASE_ANON_KEY \
+              - generic [ref=f9e838]:
+                - generic [ref=f9e839]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e840]: VITE_SUPABASE_ANON_JWT=$VITE_SUPABASE_ANON_JWT \
+              - generic [ref=f9e841]:
+                - generic [ref=f9e842]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e843]: VITE_AIS_API_KEY=$VITE_AIS_API_KEY \
+              - generic [ref=f9e844]:
+                - generic [ref=f9e845]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e846]: VITE_HERE_API_KEY=$VITE_HERE_API_KEY \
+              - generic [ref=f9e847]:
+                - generic [ref=f9e848]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e849]: VITE_TOMTOM_API_KEY=$VITE_TOMTOM_API_KEY \
+              - generic [ref=f9e850]:
+                - generic [ref=f9e851]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e852]: VITE_LONGDO_API_KEY=$VITE_LONGDO_API_KEY \
+              - generic [ref=f9e853]:
+                - generic [ref=f9e854]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e855]: VITE_API_BASE=$VITE_API_BASE
+              - generic [ref=f9e856]: 2026-Aug-10 17:33:20.414601
+              - generic [ref=f9e858]:
+                - generic [ref=f9e859]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e860]: COPY package.json package-lock.json ./
+              - generic [ref=f9e861]:
+                - generic [ref=f9e862]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e863]: "# Use ci for reproducible installs; cache the npm dir between rebuilds."
+              - generic [ref=f9e864]:
+                - generic [ref=f9e865]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e866]: RUN --mount=type=cache,target=/root/.npm npm ci --ignore-scripts
+              - generic [ref=f9e867]: 2026-Aug-10 17:33:20.414601
+              - generic [ref=f9e869]:
+                - generic [ref=f9e870]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e871]: COPY . .
+              - generic [ref=f9e872]:
+                - generic [ref=f9e873]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e874]: "RUN npm run build # → dist/"
+              - generic [ref=f9e875]: 2026-Aug-10 17:33:20.414601
+              - generic [ref=f9e877]:
+                - generic [ref=f9e878]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e879]: "# ─── Stage 2: runtime ───────────────────────────────────────────────────────"
+              - generic [ref=f9e880]:
+                - generic [ref=f9e881]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e882]: "# Same Node image (smaller would mean rebuilding native deps). We keep dev"
+              - generic [ref=f9e883]:
+                - generic [ref=f9e884]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e885]: "# deps because the server runs via tsx (TypeScript loader); compiling to JS"
+              - generic [ref=f9e886]:
+                - generic [ref=f9e887]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e888]: "# would shave ~80MB but adds a build step that doesn't materially help ops."
+              - generic [ref=f9e889]:
+                - generic [ref=f9e890]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e891]: FROM node:22-alpine AS runtime
+              - generic [ref=f9e892]:
+                - generic [ref=f9e893]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e894]: WORKDIR /app
+              - generic [ref=f9e895]:
+                - generic [ref=f9e896]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e897]: ENV NODE_ENV=production \
+              - generic [ref=f9e898]:
+                - generic [ref=f9e899]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e900]: STATIC_DIR=/app/dist \
+              - generic [ref=f9e901]:
+                - generic [ref=f9e902]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e903]: WS_PORT=3000
+              - generic [ref=f9e904]: 2026-Aug-10 17:33:20.414601
+              - generic [ref=f9e906]:
+                - generic [ref=f9e907]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e908]: COPY package.json package-lock.json ./
+              - generic [ref=f9e909]:
+                - generic [ref=f9e910]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e911]: RUN --mount=type=cache,target=/root/.npm npm ci --ignore-scripts
+              - generic [ref=f9e912]: 2026-Aug-10 17:33:20.414601
+              - generic [ref=f9e914]:
+                - generic [ref=f9e915]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e916]: "# Copy the built frontend + the proxy server source. Server source ships"
+              - generic [ref=f9e917]:
+                - generic [ref=f9e918]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e919]: "# as TS — tsx loads it at runtime. server/tsconfig.json is needed for the"
+              - generic [ref=f9e920]:
+                - generic [ref=f9e921]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e922]: "# loader's type resolution."
+              - generic [ref=f9e923]:
+                - generic [ref=f9e924]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e925]: COPY --from=build /app/dist ./dist
+              - generic [ref=f9e926]:
+                - generic [ref=f9e927]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e928]: COPY server ./server
+              - generic [ref=f9e929]:
+                - generic [ref=f9e930]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e931]: COPY tsconfig.json ./
+              - generic [ref=f9e932]: 2026-Aug-10 17:33:20.414601
+              - generic [ref=f9e934]:
+                - generic [ref=f9e935]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e936]: EXPOSE 3000
+              - generic [ref=f9e937]: 2026-Aug-10 17:33:20.414601
+              - generic [ref=f9e939]:
+                - generic [ref=f9e940]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e941]: "# Healthcheck hits the same port the UI/WS use — if Node falls over, all"
+              - generic [ref=f9e942]:
+                - generic [ref=f9e943]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e944]: "# three (UI, API, WS) go down together, which matches the single-process"
+              - generic [ref=f9e945]:
+                - generic [ref=f9e946]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e947]: "# design."
+              - generic [ref=f9e948]:
+                - generic [ref=f9e949]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e950]: HEALTHCHECK --interval=30s --timeout=5s --start-period=15s --retries=3 \
+              - generic [ref=f9e951]:
+                - generic [ref=f9e952]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e953]: CMD wget -qO- http://127.0.0.1:3000/health || exit 1
+              - generic [ref=f9e954]: 2026-Aug-10 17:33:20.414601
+              - generic [ref=f9e956]:
+                - generic [ref=f9e957]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e958]: "# Run as the unprivileged `node` user that ships in node:alpine."
+              - generic [ref=f9e959]:
+                - generic [ref=f9e960]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e961]: USER node
+              - generic [ref=f9e962]: 2026-Aug-10 17:33:20.414601
+              - generic [ref=f9e964]:
+                - generic [ref=f9e965]: 2026-Aug-10 17:33:20.414601
+                - generic [ref=f9e966]: CMD ["npx", "tsx", "server/index.ts"]
+              - generic [ref=f9e967]:
+                - generic [ref=f9e968]: 2026-Aug-10 17:33:20.442295
+                - generic [ref=f9e969]: "Final Dockerfile:"
+              - generic [ref=f9e970]:
+                - generic [ref=f9e971]: 2026-Aug-10 17:33:20.671813
+                - generic [ref=f9e972]: "[CMD]: docker exec fdcjv953qz5vu8dzkbbkg7w6 bash -c 'cat /artifacts/fdcjv953qz5vu8dzkbbkg7w6/Dockerfile'"
+              - generic [ref=f9e973]:
+                - generic [ref=f9e974]: 2026-Aug-10 17:33:20.671813
+                - generic [ref=f9e975]: "# syntax=docker/dockerfile:1.7"
+              - generic [ref=f9e976]:
+                - generic [ref=f9e977]: 2026-Aug-10 17:33:20.671813
+                - generic [ref=f9e978]: "#"
+              - generic [ref=f9e979]:
+                - generic [ref=f9e980]: 2026-Aug-10 17:33:20.671813
+                - generic [ref=f9e981]: "# Single-process container that serves both the React frontend (Vite build,"
+              - generic [ref=f9e982]:
+                - generic [ref=f9e983]: 2026-Aug-10 17:33:20.671813
+                - generic [ref=f9e984]: "# served as static files) and the proxy server (WebSocket /stream + REST"
+              - generic [ref=f9e985]:
+                - generic [ref=f9e986]: 2026-Aug-10 17:33:20.671813
+                - generic [ref=f9e987]: "# /health) on port 3000."
+              - generic [ref=f9e988]:
+                - generic [ref=f9e989]: 2026-Aug-10 17:33:20.671813
+                - generic [ref=f9e990]: "#"
+              - generic [ref=f9e991]:
+                - generic [ref=f9e992]: 2026-Aug-10 17:33:20.671813
+                - generic [ref=f9e993]: "# Why one process: the proxy is a tiny Node HTTP server that gains static"
+              - generic [ref=f9e994]:
+                - generic [ref=f9e995]: 2026-Aug-10 17:33:20.671813
+                - generic [ref=f9e996]: "# file serving via STATIC_DIR (see server/ws.ts). Bundling both into one"
+              - generic [ref=f9e997]:
+                - generic [ref=f9e998]: 2026-Aug-10 17:33:20.671813
+                - generic [ref=f9e999]: "# Node process means: no process manager, single log stream, single"
+              - generic [ref=f9e1000]:
+                - generic [ref=f9e1001]: 2026-Aug-10 17:33:20.671813
+                - generic [ref=f9e1002]: "# health-check target, smaller image, simpler ops."
+              - generic [ref=f9e1003]:
+                - generic [ref=f9e1004]: 2026-Aug-10 17:33:20.671813
+                - generic [ref=f9e1005]: "#"
+              - generic [ref=f9e1006]:
+                - generic [ref=f9e1007]: 2026-Aug-10 17:33:20.671813
+                - generic [ref=f9e1008]: "# Build:"
+              - generic [ref=f9e1009]:
+                - generic [ref=f9e1010]: 2026-Aug-10 17:33:20.671813
+                - generic [ref=f9e1011]: "# docker build -t gods-eye ."
+              - generic [ref=f9e1012]:
+                - generic [ref=f9e1013]: 2026-Aug-10 17:33:20.671813
+                - generic [ref=f9e1014]: "#"
+              - generic [ref=f9e1015]:
+                - generic [ref=f9e1016]: 2026-Aug-10 17:33:20.671813
+                - generic [ref=f9e1017]: "# Run (env vars come from your environment, NOT a baked-in .env):"
+              - generic [ref=f9e1018]:
+                - generic [ref=f9e1019]: 2026-Aug-10 17:33:20.671813
+                - generic [ref=f9e1020]: "# docker run --rm -p 3000:3000 \\"
+              - generic [ref=f9e1021]:
+                - generic [ref=f9e1022]: 2026-Aug-10 17:33:20.671813
+                - generic [ref=f9e1023]: "# -e VITE_SUPABASE_URL=http://100.75.202.73:<REDACTED>@gmail.com-api-client:cmUrEth1cLX6gKOnnK9ZDwB8EQgBEUSa,<REDACTED>-api-client:847IydLDIwPamZ8BKnu3AyIh1AE3O9Ce,<REDACTED>-api-client:KNBP2IF3YX3WcDNZvTBK5fOrodlMZ5wl"
+              - generic [ref=f9e1024]:
+                - generic [ref=f9e1025]: 2026-Aug-10 17:33:20.671813
+                - generic [ref=f9e1026]: ARG AUTH_REQUIRED=false
+              - generic [ref=f9e1027]:
+                - generic [ref=f9e1028]: 2026-Aug-10 17:33:20.671813
+                - generic [ref=f9e1029]: ARG GOD_MODE_EMAILS=<REDACTED>
+              - generic [ref=f9e1030]:
+                - generic [ref=f9e1031]: 2026-Aug-10 17:33:20.671813
+                - generic [ref=f9e1032]: ARG NEWSDATA_API_KEY=<REDACTED>
+              - generic [ref=f9e1033]:
+                - generic [ref=f9e1034]: 2026-Aug-10 17:33:20.671813
+                - generic [ref=f9e1035]: ARG CORS_ALLOWED_ORIGINS=https://earth.bryanchua.com,https:<REDACTED>@gmail.com-api-client:cmUrEth1cLX6gKOnnK9ZDwB8EQgBEUSa,<REDACTED>-api-client:847IydLDIwPamZ8BKnu3AyIh1AE3O9Ce,<REDACTED>-api-client:KNBP2IF3YX3WcDNZvTBK5fOrodlMZ5wl
+              - generic [ref=f9e1036]:
+                - generic [ref=f9e1037]: 2026-Aug-10 17:33:20.671813
+                - generic [ref=f9e1038]: ARG AUTH_REQUIRED=false
+              - generic [ref=f9e1039]:
+                - generic [ref=f9e1040]: 2026-Aug-10 17:33:20.671813
+                - generic [ref=f9e1041]: ARG GOD_MODE_EMAILS=<REDACTED>
+              - generic [ref=f9e1042]:
+                - generic [ref=f9e1043]: 2026-Aug-10 17:33:20.671813
+                - generic [ref=f9e1044]: ARG NEWSDATA_API_KEY=<REDACTED>
+              - generic [ref=f9e1045]:
+                - generic [ref=f9e1046]: 2026-Aug-10 17:33:20.671813
+                - generic [ref=f9e1047]: ARG CORS_ALLOWED_ORIGINS=https://earth.bryanchua.com,https://globe.bryanchua.com,https://map.bryanchua.com,https://gods-eyes.pages.dev
+              - generic [ref=f9e1048]:
+                - generic [ref=f9e1049]: 2026-Aug-10 17:33:20.671813
+                - generic [ref=f9e1050]: ARG GOD_MODE_ALL=
+              - generic [ref=f9e1051]:
+                - generic [ref=f9e1052]: 2026-Aug-10 17:33:20.671813
+                - generic [ref=f9e1053]: ARG QUOTA_TRUSTED_PROXIES=10.0.1.3,10.0.1.1
+              - generic [ref=f9e1054]:
+                - generic [ref=f9e1055]: 2026-Aug-10 17:33:20.671813
+                - generic [ref=f9e1056]: ARG COOLIFY_URL=http://v8ea9c0tuk3sa9xnc5vgxwke.14.100.61.124.sslip.io
+              - generic [ref=f9e1057]:
+                - generic [ref=f9e1058]: 2026-Aug-10 17:33:20.671813
+                - generic [ref=f9e1059]: ARG COOLIFY_FQDN=v8ea9c0tuk3sa9xnc5vgxwke.14.100.61.124.sslip.io
+              - generic [ref=f9e1060]:
+                - generic [ref=f9e1061]: 2026-Aug-10 17:33:20.671813
+                - generic [ref=f9e1062]: ARG COOLIFY_BRANCH=main
+              - generic [ref=f9e1063]:
+                - generic [ref=f9e1064]: 2026-Aug-10 17:33:20.671813
+                - generic [ref=f9e1065]: ARG COOLIFY_RESOURCE_UUID=v8ea9c0tuk3sa9xnc5vgxwke
+              - generic [ref=f9e1066]:
+                - generic [ref=f9e1067]: 2026-Aug-10 17:33:20.671813
+                - generic [ref=f9e1068]: WORKDIR /app
+              - generic [ref=f9e1069]:
+                - generic [ref=f9e1070]: 2026-Aug-10 17:33:20.671813
+                - generic [ref=f9e1071]: ENV NODE_ENV=production \
+              - generic [ref=f9e1072]:
+                - generic [ref=f9e1073]: 2026-Aug-10 17:33:20.671813
+                - generic [ref=f9e1074]: STATIC_DIR=/app/dist \
+              - generic [ref=f9e1075]:
+                - generic [ref=f9e1076]: 2026-Aug-10 17:33:20.671813
+                - generic [ref=f9e1077]: WS_PORT=3000
+              - generic [ref=f9e1078]: 2026-Aug-10 17:33:20.671813
+              - generic [ref=f9e1080]:
+                - generic [ref=f9e1081]: 2026-Aug-10 17:33:20.671813
+                - generic [ref=f9e1082]: COPY package.json package-lock.json ./
+              - generic [ref=f9e1083]:
+                - generic [ref=f9e1084]: 2026-Aug-10 17:33:20.671813
+                - generic [ref=f9e1085]: RUN --mount=type=cache,target=/root/.npm npm ci --ignore-scripts
+              - generic [ref=f9e1086]: 2026-Aug-10 17:33:20.671813
+              - generic [ref=f9e1088]:
+                - generic [ref=f9e1089]: 2026-Aug-10 17:33:20.671813
+                - generic [ref=f9e1090]: "# Copy the built frontend + the proxy server source. Server source ships"
+              - generic [ref=f9e1091]:
+                - generic [ref=f9e1092]: 2026-Aug-10 17:33:20.671813
+                - generic [ref=f9e1093]: "# as TS — tsx loads it at runtime. server/tsconfig.json is needed for the"
+              - generic [ref=f9e1094]:
+                - generic [ref=f9e1095]: 2026-Aug-10 17:33:20.671813
+                - generic [ref=f9e1096]: "# loader's type resolution."
+              - generic [ref=f9e1097]:
+                - generic [ref=f9e1098]: 2026-Aug-10 17:33:20.671813
+                - generic [ref=f9e1099]: COPY --from=build /app/dist ./dist
+              - generic [ref=f9e1100]:
+                - generic [ref=f9e1101]: 2026-Aug-10 17:33:20.671813
+                - generic [ref=f9e1102]: COPY server ./server
+              - generic [ref=f9e1103]:
+                - generic [ref=f9e1104]: 2026-Aug-10 17:33:20.671813
+                - generic [ref=f9e1105]: COPY tsconfig.json ./
+              - generic [ref=f9e1106]: 2026-Aug-10 17:33:20.671813
+              - generic [ref=f9e1108]:
+                - generic [ref=f9e1109]: 2026-Aug-10 17:33:20.671813
+                - generic [ref=f9e1110]: EXPOSE 3000
+              - generic [ref=f9e1111]: 2026-Aug-10 17:33:20.671813
+              - generic [ref=f9e1113]:
+                - generic [ref=f9e1114]: 2026-Aug-10 17:33:20.671813
+                - generic [ref=f9e1115]: "# Healthcheck hits the same port the UI/WS use — if Node falls over, all"
+              - generic [ref=f9e1116]:
+                - generic [ref=f9e1117]: 2026-Aug-10 17:33:20.671813
+                - generic [ref=f9e1118]: "# three (UI, API, WS) go down together, which matches the single-process"
+              - generic [ref=f9e1119]:
+                - generic [ref=f9e1120]: 2026-Aug-10 17:33:20.671813
+                - generic [ref=f9e1121]: "# design."
+              - generic [ref=f9e1122]:
+                - generic [ref=f9e1123]: 2026-Aug-10 17:33:20.671813
+                - generic [ref=f9e1124]: HEALTHCHECK --interval=30s --timeout=5s --start-period=15s --retries=3 \
+              - generic [ref=f9e1125]:
+                - generic [ref=f9e1126]: 2026-Aug-10 17:33:20.671813
+                - generic [ref=f9e1127]: CMD wget -qO- http://127.0.0.1:3000/health || exit 1
+              - generic [ref=f9e1128]: 2026-Aug-10 17:33:20.671813
+              - generic [ref=f9e1130]:
+                - generic [ref=f9e1131]: 2026-Aug-10 17:33:20.671813
+                - generic [ref=f9e1132]: "# Run as the unprivileged `node` user that ships in node:alpine."
+              - generic [ref=f9e1133]:
+                - generic [ref=f9e1134]: 2026-Aug-10 17:33:20.671813
+                - generic [ref=f9e1135]: USER node
+              - generic [ref=f9e1136]: 2026-Aug-10 17:33:20.671813
+              - generic [ref=f9e1138]:
+                - generic [ref=f9e1139]: 2026-Aug-10 17:33:20.671813
+                - generic [ref=f9e1140]: CMD ["npx", "tsx", "server/index.ts"]
+              - generic [ref=f9e1141]:
+                - generic [ref=f9e1142]: 2026-Aug-10 17:33:20.675938
+                - generic [ref=f9e1143]: "----------------------------------------"
+              - generic [ref=f9e1144]:
+                - generic [ref=f9e1145]: 2026-Aug-10 17:33:20.680484
+                - generic [ref=f9e1146]: Building docker image started.
+              - generic [ref=f9e1147]:
+                - generic [ref=f9e1148]: 2026-Aug-10 17:33:20.684457
+                - generic [ref=f9e1149]: To check the current progress, click on Show Debug Logs.
+              - generic [ref=f9e1150]:
+                - generic [ref=f9e1151]: 2026-Aug-10 17:33:20.905108
+                - generic [ref=f9e1152]: "[CMD]: docker exec fdcjv953qz5vu8dzkbbkg7w6 bash -c 'cat /artifacts/build.sh'"
+              - generic [ref=f9e1153]:
+                - generic [ref=f9e1154]: 2026-Aug-10 17:33:20.905108
+                - generic [ref=f9e1155]: cd /artifacts/fdcjv953qz5vu8dzkbbkg7w6 && set -a && source /artifacts/build-time.env && set +a && DOCKER_BUILDKIT=1 docker build --add-host cloudflared-map:10.0.1.3 --add-host coolify:10.0.1.10 --add-host coolify-db:10.0.1.4 --add-host coolify-realtime:10.0.1.6 --add-host coolify-redis:10.0.1.9 --network host -f /artifacts/fdcjv953qz5vu8dzkbbkg7w6/Dockerfile --progress plain -t v8ea9c0tuk3sa9xnc5vgxwke:e1dae8edc0051ce1cbd061c1f2b88c44401cc28c --build-arg COOLIFY_URL --build-arg COOLIFY_FQDN --build-arg COOLIFY_BRANCH --build-arg COOLIFY_RESOURCE_UUID --build-arg VITE_SUPABASE_URL --build-arg VITE_SUPABASE_ANON_KEY --build-arg SUPABASE_SERVICE_ROLE_KEY --build-arg SUPABASE_SERVICE_ROLE_JWT --build-arg SUPABASE_JWT_SECRET --build-arg VITE_LTA_API_KEY --build-arg VITE_AIS_API_KEY --build-arg VITE_HERE_API_KEY --build-arg VITE_TOMTOM_API_KEY --build-arg VITE_LONGDO_API_KEY --build-arg VITE_SUPABASE_ANON_JWT --build-arg OPENSKY_CREDS --build-arg AUTH_REQUIRED --build-arg GOD_MODE_EMAILS --build-arg NEWSDATA_API_KEY --build-arg CORS_ALLOWED_ORIGINS --build-arg GOD_MODE_ALL --build-arg QUOTA_TRUSTED_PROXIES --build-arg COOLIFY_BUILD_SECRETS_HASH=f8b8da8762f11dcb1fb218ae725789e69d0bd7dca201767580925103b49c36a4 --build-arg 'COOLIFY_URL' --build-arg 'COOLIFY_FQDN' --build-arg 'COOLIFY_BRANCH' --build-arg 'COOLIFY_RESOURCE_UUID' /artifacts/fdcjv953qz5vu8dzkbbkg7w6
+              - generic [ref=f9e1156]:
+                - generic [ref=f9e1157]: 2026-Aug-10 17:33:21.087722
+                - generic [ref=f9e1158]: "[CMD]: docker exec fdcjv953qz5vu8dzkbbkg7w6 bash -c 'bash /artifacts/build.sh'"
+              - generic [ref=f9e1159]:
+                - generic [ref=f9e1160]: 2026-Aug-10 17:33:21.087722
+                - generic [ref=f9e1161]: "#0 building with \"default\" instance using docker driver"
+              - generic [ref=f9e1162]: 2026-Aug-10 17:33:21.087722
+              - generic [ref=f9e1164]:
+                - generic [ref=f9e1165]: 2026-Aug-10 17:33:21.087722
+                - generic [ref=f9e1166]: "#1 [internal] load build definition from Dockerfile"
+              - generic [ref=f9e1167]:
+                - generic [ref=f9e1168]: 2026-Aug-10 17:33:21.087722
+                - generic [ref=f9e1169]: "#1 DONE 0.0s"
+              - generic [ref=f9e1170]:
+                - generic [ref=f9e1171]: 2026-Aug-10 17:33:21.252440
+                - generic [ref=f9e1172]: "#1 [internal] load build definition from Dockerfile"
+              - generic [ref=f9e1173]:
+                - generic [ref=f9e1174]: 2026-Aug-10 17:33:21.252440
+                - generic [ref=f9e1175]: "#1 transferring dockerfile: 7.12kB done"
+              - generic [ref=f9e1176]:
+                - generic [ref=f9e1177]: 2026-Aug-10 17:33:21.252440
+                - generic [ref=f9e1178]: "#1 DONE 0.0s"
+              - generic [ref=f9e1179]: 2026-Aug-10 17:33:21.252440
+              - generic [ref=f9e1181]:
+                - generic [ref=f9e1182]: 2026-Aug-10 17:33:21.252440
+                - generic [ref=f9e1183]: "#2 resolve image config for docker-image://docker.io/docker/dockerfile:1.7"
+              - generic [ref=f9e1184]:
+                - generic [ref=f9e1185]: 2026-Aug-10 17:33:22.317378
+                - generic [ref=f9e1186]: "#2 DONE 1.2s"
+              - generic [ref=f9e1187]:
+                - generic [ref=f9e1188]: 2026-Aug-10 17:33:22.524701
+                - generic [ref=f9e1189]: "#3 docker-image://docker.io/docker/dockerfile:1.7@sha256:a57df69d0ea827fb7266491f2813635de6f17269be881f696fbfdf2d83dda33e"
+              - generic [ref=f9e1190]:
+                - generic [ref=f9e1191]: 2026-Aug-10 17:33:22.524701
+                - generic [ref=f9e1192]: "#3 CACHED"
+              - generic [ref=f9e1193]: 2026-Aug-10 17:33:22.524701
+              - generic [ref=f9e1195]:
+                - generic [ref=f9e1196]: 2026-Aug-10 17:33:22.524701
+                - generic [ref=f9e1197]: "#4 [internal] load metadata for docker.io/library/node:22-alpine"
+              - generic [ref=f9e1198]:
+                - generic [ref=f9e1199]: 2026-Aug-10 17:33:23.511208
+                - generic [ref=f9e1200]: "#4 DONE 1.1s"
+              - generic [ref=f9e1201]:
+                - generic [ref=f9e1202]: 2026-Aug-10 17:33:23.613133
+                - generic [ref=f9e1203]: "#5 [internal] load .dockerignore"
+              - generic [ref=f9e1204]:
+                - generic [ref=f9e1205]: 2026-Aug-10 17:33:23.613133
+                - generic [ref=f9e1206]: "#5 transferring context: 605B done"
+              - generic [ref=f9e1207]:
+                - generic [ref=f9e1208]: 2026-Aug-10 17:33:23.613133
+                - generic [ref=f9e1209]: "#5 DONE 0.0s"
+              - generic [ref=f9e1210]: 2026-Aug-10 17:33:23.613133
+              - generic [ref=f9e1212]:
+                - generic [ref=f9e1213]: 2026-Aug-10 17:33:23.613133
+                - generic [ref=f9e1214]: "#6 [build 1/6] FROM docker.io/library/node:22-alpine@sha256:c610fcdfb1d5b4740dd70c284ed3cb16bb857e0f7166196e36a5501df7a3aa32"
+              - generic [ref=f9e1215]:
+                - generic [ref=f9e1216]: 2026-Aug-10 17:33:23.613133
+                - generic [ref=f9e1217]: "#6 DONE 0.0s"
+              - generic [ref=f9e1218]: 2026-Aug-10 17:33:23.613133
+              - generic [ref=f9e1220]:
+                - generic [ref=f9e1221]: 2026-Aug-10 17:33:23.613133
+                - generic [ref=f9e1222]: "#7 [internal] load build context"
+              - generic [ref=f9e1223]:
+                - generic [ref=f9e1224]: 2026-Aug-10 17:33:23.613133
+                - generic [ref=f9e1225]: "#7 transferring context: 4.56MB 0.0s done"
+              - generic [ref=f9e1226]:
+                - generic [ref=f9e1227]: 2026-Aug-10 17:33:23.613133
+                - generic [ref=f9e1228]: "#7 DONE 0.1s"
+              - generic [ref=f9e1229]:
+                - generic [ref=f9e1230]: 2026-Aug-10 17:33:23.768035
+                - generic [ref=f9e1231]: "#8 [build 2/6] WORKDIR /app"
+              - generic [ref=f9e1232]:
+                - generic [ref=f9e1233]: 2026-Aug-10 17:33:23.768035
+                - generic [ref=f9e1234]: "#8 CACHED"
+              - generic [ref=f9e1235]: 2026-Aug-10 17:33:23.768035
+              - generic [ref=f9e1237]:
+                - generic [ref=f9e1238]: 2026-Aug-10 17:33:23.768035
+                - generic [ref=f9e1239]: "#9 [build 3/6] COPY package.json package-lock.json ./"
+              - generic [ref=f9e1240]:
+                - generic [ref=f9e1241]: 2026-Aug-10 17:33:23.768035
+                - generic [ref=f9e1242]: "#9 CACHED"
+              - generic [ref=f9e1243]: 2026-Aug-10 17:33:23.768035
+              - generic [ref=f9e1245]:
+                - generic [ref=f9e1246]: 2026-Aug-10 17:33:23.768035
+                - generic [ref=f9e1247]: "#10 [build 4/6] RUN --mount=type=cache,target=/root/.npm npm ci --ignore-scripts"
+              - generic [ref=f9e1248]:
+                - generic [ref=f9e1249]: 2026-Aug-10 17:33:26.844993
+                - generic [ref=f9e1250]: "#10 ..."
+              - generic [ref=f9e1251]: 2026-Aug-10 17:33:26.844993
+              - generic [ref=f9e1253]:
+                - generic [ref=f9e1254]: 2026-Aug-10 17:33:26.844993
+                - generic [ref=f9e1255]: "#11 [runtime 4/7] RUN --mount=type=cache,target=/root/.npm npm ci --ignore-scripts"
+              - generic [ref=f9e1256]:
+                - generic [ref=f9e1257]: 2026-Aug-10 17:33:26.844993
+                - generic [ref=f9e1258]: "#11 1.801 npm warn deprecated sourcemap-codec@1.4.8: Please use @jridgewell/sourcemap-codec instead"
+              - generic [ref=f9e1259]:
+                - generic [ref=f9e1260]: 2026-Aug-10 17:33:26.844993
+                - generic [ref=f9e1261]: "#11 3.033"
+              - generic [ref=f9e1262]:
+                - generic [ref=f9e1263]: 2026-Aug-10 17:33:26.844993
+                - generic [ref=f9e1264]: "#11 3.033 added 136 packages, and audited 137 packages in 3s"
+              - generic [ref=f9e1265]:
+                - generic [ref=f9e1266]: 2026-Aug-10 17:33:26.844993
+                - generic [ref=f9e1267]: "#11 3.033"
+              - generic [ref=f9e1268]:
+                - generic [ref=f9e1269]: 2026-Aug-10 17:33:26.844993
+                - generic [ref=f9e1270]: "#11 3.033 18 packages are looking for funding"
+              - generic [ref=f9e1271]:
+                - generic [ref=f9e1272]: 2026-Aug-10 17:33:26.844993
+                - generic [ref=f9e1273]: "#11 3.033 run `npm fund` for details"
+              - generic [ref=f9e1274]:
+                - generic [ref=f9e1275]: 2026-Aug-10 17:33:26.844993
+                - generic [ref=f9e1276]: "#11 3.042"
+              - generic [ref=f9e1277]:
+                - generic [ref=f9e1278]: 2026-Aug-10 17:33:26.844993
+                - generic [ref=f9e1279]: "#11 3.042 3 vulnerabilities (1 low, 1 moderate, 1 high)"
+              - generic [ref=f9e1280]:
+                - generic [ref=f9e1281]: 2026-Aug-10 17:33:26.844993
+                - generic [ref=f9e1282]: "#11 3.042"
+              - generic [ref=f9e1283]:
+                - generic [ref=f9e1284]: 2026-Aug-10 17:33:26.844993
+                - generic [ref=f9e1285]: "#11 3.042 To address all issues, run:"
+              - generic [ref=f9e1286]:
+                - generic [ref=f9e1287]: 2026-Aug-10 17:33:26.844993
+                - generic [ref=f9e1288]: "#11 3.042 npm audit fix"
+              - generic [ref=f9e1289]:
+                - generic [ref=f9e1290]: 2026-Aug-10 17:33:26.844993
+                - generic [ref=f9e1291]: "#11 3.042"
+              - generic [ref=f9e1292]:
+                - generic [ref=f9e1293]: 2026-Aug-10 17:33:26.844993
+                - generic [ref=f9e1294]: "#11 3.042 Run `npm audit` for details."
+              - generic [ref=f9e1295]:
+                - generic [ref=f9e1296]: 2026-Aug-10 17:33:26.844993
+                - generic [ref=f9e1297]: "#11 DONE 3.2s"
+              - generic [ref=f9e1298]:
+                - generic [ref=f9e1299]: 2026-Aug-10 17:33:26.995782
+                - generic [ref=f9e1300]: "#10 [build 4/6] RUN --mount=type=cache,target=/root/.npm npm ci --ignore-scripts"
+              - generic [ref=f9e1301]:
+                - generic [ref=f9e1302]: 2026-Aug-10 17:33:27.294386
+                - generic [ref=f9e1303]: "#10 3.677 npm warn deprecated sourcemap-codec@1.4.8: Please use @jridgewell/sourcemap-codec instead"
+              - generic [ref=f9e1304]:
+                - generic [ref=f9e1305]: 2026-Aug-10 17:33:33.179679
+                - generic [ref=f9e1306]: "#10 9.562"
+              - generic [ref=f9e1307]:
+                - generic [ref=f9e1308]: 2026-Aug-10 17:33:33.179679
+                - generic [ref=f9e1309]: "#10 9.562 added 443 packages, and audited 444 packages in 9s"
+              - generic [ref=f9e1310]:
+                - generic [ref=f9e1311]: 2026-Aug-10 17:33:33.179679
+                - generic [ref=f9e1312]: "#10 9.562"
+              - generic [ref=f9e1313]:
+                - generic [ref=f9e1314]: 2026-Aug-10 17:33:33.378248
+                - generic [ref=f9e1315]: "#10 9.562 93 packages are looking for funding"
+              - generic [ref=f9e1316]:
+                - generic [ref=f9e1317]: 2026-Aug-10 17:33:33.378248
+                - generic [ref=f9e1318]: "#10 9.562 run `npm fund` for details"
+              - generic [ref=f9e1319]:
+                - generic [ref=f9e1320]: 2026-Aug-10 17:33:33.378248
+                - generic [ref=f9e1321]: "#10 9.610"
+              - generic [ref=f9e1322]:
+                - generic [ref=f9e1323]: 2026-Aug-10 17:33:33.378248
+                - generic [ref=f9e1324]: "#10 9.610 7 vulnerabilities (1 low, 4 moderate, 2 high)"
+              - generic [ref=f9e1325]:
+                - generic [ref=f9e1326]: 2026-Aug-10 17:33:33.378248
+                - generic [ref=f9e1327]: "#10 9.610"
+              - generic [ref=f9e1328]:
+                - generic [ref=f9e1329]: 2026-Aug-10 17:33:33.378248
+                - generic [ref=f9e1330]: "#10 9.610 To address all issues, run:"
+              - generic [ref=f9e1331]:
+                - generic [ref=f9e1332]: 2026-Aug-10 17:33:33.378248
+                - generic [ref=f9e1333]: "#10 9.610 npm audit fix"
+              - generic [ref=f9e1334]:
+                - generic [ref=f9e1335]: 2026-Aug-10 17:33:33.378248
+                - generic [ref=f9e1336]: "#10 9.610"
+              - generic [ref=f9e1337]:
+                - generic [ref=f9e1338]: 2026-Aug-10 17:33:33.378248
+                - generic [ref=f9e1339]: "#10 9.610 Run `npm audit` for details."
+              - generic [ref=f9e1340]:
+                - generic [ref=f9e1341]: 2026-Aug-10 17:33:33.426333
+                - generic [ref=f9e1342]: "#10 DONE 9.8s"
+              - generic [ref=f9e1343]:
+                - generic [ref=f9e1344]: 2026-Aug-10 17:33:33.620295
+                - generic [ref=f9e1345]: "#12 [build 5/6] COPY . ."
+              - generic [ref=f9e1346]:
+                - generic [ref=f9e1347]: 2026-Aug-10 17:33:33.620295
+                - generic [ref=f9e1348]: "#12 DONE 0.0s"
+              - generic [ref=f9e1349]: 2026-Aug-10 17:33:33.620295
+              - generic [ref=f9e1351]:
+                - generic [ref=f9e1352]: 2026-Aug-10 17:33:33.620295
+                - generic [ref=f9e1353]: "#13 [build 6/6] RUN npm run build # → dist/"
+              - generic [ref=f9e1354]:
+                - generic [ref=f9e1355]: 2026-Aug-10 17:33:33.741165
+                - generic [ref=f9e1356]: "#13 0.272"
+              - generic [ref=f9e1357]:
+                - generic [ref=f9e1358]: 2026-Aug-10 17:33:33.741165
+                - generic [ref=f9e1359]: "#13 0.272 > gods-eyes@0.0.0 build"
+              - generic [ref=f9e1360]:
+                - generic [ref=f9e1361]: 2026-Aug-10 17:33:33.741165
+                - generic [ref=f9e1362]: "#13 0.272 > npm run typecheck:server && tsc -b && vite build && node scripts/post-build.mjs"
+              - generic [ref=f9e1363]:
+                - generic [ref=f9e1364]: 2026-Aug-10 17:33:33.741165
+                - generic [ref=f9e1365]: "#13 0.272"
+              - generic [ref=f9e1366]:
+                - generic [ref=f9e1367]: 2026-Aug-10 17:33:33.985176
+                - generic [ref=f9e1368]: "#13 0.365"
+              - generic [ref=f9e1369]:
+                - generic [ref=f9e1370]: 2026-Aug-10 17:33:33.985176
+                - generic [ref=f9e1371]: "#13 0.365 > gods-eyes@0.0.0 typecheck:server"
+              - generic [ref=f9e1372]:
+                - generic [ref=f9e1373]: 2026-Aug-10 17:33:33.985176
+                - generic [ref=f9e1374]: "#13 0.365 > node scripts/typecheck-server.mjs"
+              - generic [ref=f9e1375]:
+                - generic [ref=f9e1376]: 2026-Aug-10 17:33:33.985176
+                - generic [ref=f9e1377]: "#13 0.365"
+              - generic [ref=f9e1378]:
+                - generic [ref=f9e1379]: 2026-Aug-10 17:33:35.776988
+                - generic [ref=f9e1380]: "#13 2.307 Server typecheck OK: server/index.ts"
+              - generic [ref=f9e1381]:
+                - generic [ref=f9e1382]: 2026-Aug-10 17:33:40.976443
+                - generic [ref=f9e1383]: "#13 7.507 vite v8.2.0 building client environment for production..."
+              - generic [ref=f9e1384]:
+                - generic [ref=f9e1385]: 2026-Aug-10 17:33:41.143465
+                - generic [ref=f9e1386]: "#13 7.523 \x1b[2K transforming..."
+              - generic [ref=f9e1387]:
+                - generic [ref=f9e1388]: 2026-Aug-10 17:33:41.189982
+                - generic [ref=f9e1389]: "[plugin rolldown:vite-resolve] Module \"node:module\" has been externalized for browser compatibility, imported by \"/app/node_modules/satellite.js/wasm-build/base-release/index.js\". See https://vite.dev/guide/troubleshooting.html#module-externalized-for-browser-compatibility for more details."
+              - generic [ref=f9e1390]:
+                - generic [ref=f9e1391]: 2026-Aug-10 17:33:41.434277
+                - generic [ref=f9e1392]: "#13 7.965 [plugin rolldown:vite-resolve] Module \"node:module\" has been externalized for browser compatibility, imported by \"/app/node_modules/satellite.js/wasm-build/pthreads-release/index.js\". See https://vite.dev/guide/troubleshooting.html#module-externalized-for-browser-compatibility for more details."
+              - generic [ref=f9e1393]:
+                - generic [ref=f9e1394]: 2026-Aug-10 17:33:41.570789
+                - generic [ref=f9e1395]: "#13 7.965 [plugin rolldown:vite-resolve] Module \"node:worker_threads\" has been externalized for browser compatibility, imported by \"/app/node_modules/satellite.js/wasm-build/pthreads-release/index.js\". See https://vite.dev/guide/troubleshooting.html#module-externalized-for-browser-compatibility for more details."
+              - generic [ref=f9e1396]:
+                - generic [ref=f9e1397]: 2026-Aug-10 17:33:41.570789
+                - generic [ref=f9e1398]: "#13 8.016 [plugin rolldown:vite-resolve] Module \"node:module\" has been externalized for browser compatibility, imported by \"/app/node_modules/satellite.js/wasm-build/pthreads-release/index.js\". See https://vite.dev/guide/troubleshooting.html#module-externalized-for-browser-compatibility for more details."
+              - generic [ref=f9e1399]:
+                - generic [ref=f9e1400]: 2026-Aug-10 17:33:41.570789
+                - generic [ref=f9e1401]: "#13 8.017 [plugin rolldown:vite-resolve] Module \"node:worker_threads\" has been externalized for browser compatibility, imported by \"/app/node_modules/satellite.js/wasm-build/pthreads-release/index.js\". See https://vite.dev/guide/troubleshooting.html#module-externalized-for-browser-compatibility for more details."
+              - generic [ref=f9e1402]:
+                - generic [ref=f9e1403]: 2026-Aug-10 17:33:41.570789
+                - generic [ref=f9e1404]: "#13 8.029 ✓ 159 modules transformed."
+              - generic [ref=f9e1405]:
+                - generic [ref=f9e1406]: 2026-Aug-10 17:33:41.570789
+                - generic [ref=f9e1407]: "#13 8.101 rendering chunks..."
+              - generic [ref=f9e1408]:
+                - generic [ref=f9e1409]: 2026-Aug-10 17:33:41.727118
+                - generic [ref=f9e1410]: "#13 8.256 computing gzip size..."
+              - generic [ref=f9e1411]:
+                - generic [ref=f9e1412]: 2026-Aug-10 17:33:41.889866
+                - generic [ref=f9e1413]: "#13 8.267 dist/.assetsignore 0.02 kB"
+              - generic [ref=f9e1414]:
+                - generic [ref=f9e1415]: 2026-Aug-10 17:33:41.889866
+                - generic [ref=f9e1416]: "#13 8.267 dist/assets/__vite-browser-external-Cn0MOYvd.js 0.10 kB"
+              - generic [ref=f9e1417]:
+                - generic [ref=f9e1418]: 2026-Aug-10 17:33:41.889866
+                - generic [ref=f9e1419]: "#13 8.267 dist/wrangler.json 1.05 kB │ gzip: 0.55 kB"
+              - generic [ref=f9e1420]:
+                - generic [ref=f9e1421]: 2026-Aug-10 17:33:41.889866
+                - generic [ref=f9e1422]: "#13 8.267 dist/index.html 13.59 kB │ gzip: 4.86 kB"
+              - generic [ref=f9e1423]:
+                - generic [ref=f9e1424]: 2026-Aug-10 17:33:41.889866
+                - generic [ref=f9e1425]: "#13 8.267 dist/assets/index-DXYuJCHL.js 309.95 kB"
+              - generic [ref=f9e1426]:
+                - generic [ref=f9e1427]: 2026-Aug-10 17:33:41.889866
+                - generic [ref=f9e1428]: "#13 8.267 dist/assets/index-CWPU1pC-.css 29.95 kB │ gzip: 6.90 kB"
+              - generic [ref=f9e1429]:
+                - generic [ref=f9e1430]: 2026-Aug-10 17:33:41.889866
+                - generic [ref=f9e1431]: "#13 8.267 dist/assets/rolldown-runtime-CbXtAM7H.js 0.58 kB │ gzip: 0.36 kB"
+              - generic [ref=f9e1432]:
+                - generic [ref=f9e1433]: 2026-Aug-10 17:33:41.889866
+                - generic [ref=f9e1434]: "#13 8.267 dist/assets/cameras-CA0WGgZE.js 5.72 kB │ gzip: 2.30 kB"
+              - generic [ref=f9e1435]:
+                - generic [ref=f9e1436]: 2026-Aug-10 17:33:41.889866
+                - generic [ref=f9e1437]: "#13 8.267 dist/assets/SgScene-C_bRyWC1.js 5.79 kB │ gzip: 2.27 kB"
+              - generic [ref=f9e1438]:
+                - generic [ref=f9e1439]: 2026-Aug-10 17:33:41.889866
+                - generic [ref=f9e1440]: "#13 8.267 dist/assets/sg-_KpPByzw.js 6.79 kB │ gzip: 2.34 kB"
+              - generic [ref=f9e1441]:
+                - generic [ref=f9e1442]: 2026-Aug-10 17:33:41.889866
+                - generic [ref=f9e1443]: "#13 8.267 dist/assets/store-BsPWYR9R.js 9.66 kB │ gzip: 3.13 kB"
+              - generic [ref=f9e1444]:
+                - generic [ref=f9e1445]: 2026-Aug-10 17:33:41.889866
+                - generic [ref=f9e1446]: "#13 8.267 dist/assets/useDataFeed-CnC7TV4B.js 11.93 kB │ gzip: 4.62 kB"
+              - generic [ref=f9e1447]:
+                - generic [ref=f9e1448]: 2026-Aug-10 17:33:41.889866
+                - generic [ref=f9e1449]: "#13 8.267 dist/assets/vendor-satellite-sQrMPzZC.js 21.06 kB │ gzip: 10.43 kB"
+              - generic [ref=f9e1450]:
+                - generic [ref=f9e1451]: 2026-Aug-10 17:33:41.889866
+                - generic [ref=f9e1452]: "#13 8.267 dist/assets/DetailPanel-DxBwPWYT.js 23.40 kB │ gzip: 5.61 kB"
+              - generic [ref=f9e1453]:
+                - generic [ref=f9e1454]: 2026-Aug-10 17:33:41.889866
+                - generic [ref=f9e1455]: "#13 8.267 dist/assets/resium-D62dDv1T.js 49.47 kB │ gzip: 11.67 kB"
+              - generic [ref=f9e1456]:
+                - generic [ref=f9e1457]: 2026-Aug-10 17:33:41.889866
+                - generic [ref=f9e1458]: "#13 8.267 dist/assets/index-CFJU_Zlb.js 112.70 kB │ gzip: 33.01 kB"
+              - generic [ref=f9e1459]:
+                - generic [ref=f9e1460]: 2026-Aug-10 17:33:41.889866
+                - generic [ref=f9e1461]: "#13 8.267 dist/assets/vendor-supabase-D5WPzQu9.js 186.22 kB │ gzip: 48.41 kB"
+              - generic [ref=f9e1462]:
+                - generic [ref=f9e1463]: 2026-Aug-10 17:33:41.889866
+                - generic [ref=f9e1464]: "#13 8.267 dist/assets/vendor-react-BQwKY0tH.js 189.56 kB │ gzip: 59.62 kB"
+              - generic [ref=f9e1465]:
+                - generic [ref=f9e1466]: 2026-Aug-10 17:33:41.889866
+                - generic [ref=f9e1467]: "#13 8.267 dist/assets/hls-DgF9zh_6.js 508.43 kB │ gzip: 157.23 kB"
+              - generic [ref=f9e1468]:
+                - generic [ref=f9e1469]: 2026-Aug-10 17:33:41.889866
+                - generic [ref=f9e1470]: "#13 8.267"
+              - generic [ref=f9e1471]:
+                - generic [ref=f9e1472]: 2026-Aug-10 17:33:41.889866
+                - generic [ref=f9e1473]: "#13 8.268 ✓ built in 759ms"
+              - generic [ref=f9e1474]:
+                - generic [ref=f9e1475]: 2026-Aug-10 17:33:41.889866
+                - generic [ref=f9e1476]: "#13 8.269 [plugin builtin:vite-reporter]"
+              - generic [ref=f9e1477]:
+                - generic [ref=f9e1478]: 2026-Aug-10 17:33:41.889866
+                - generic [ref=f9e1479]: "#13 8.269 (!) Some chunks are larger than 500 kB after minification. Consider:"
+              - generic [ref=f9e1480]:
+                - generic [ref=f9e1481]: 2026-Aug-10 17:33:41.889866
+                - generic [ref=f9e1482]: "#13 8.269 - Using dynamic import() to code-split the application"
+              - generic [ref=f9e1483]:
+                - generic [ref=f9e1484]: 2026-Aug-10 17:33:41.889866
+                - generic [ref=f9e1485]: "#13 8.269 - Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting"
+              - generic [ref=f9e1486]:
+                - generic [ref=f9e1487]: 2026-Aug-10 17:33:41.889866
+                - generic [ref=f9e1488]: "#13 8.269 - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit."
+              - generic [ref=f9e1489]:
+                - generic [ref=f9e1490]: 2026-Aug-10 17:33:41.979740
+                - generic [ref=f9e1491]: "#13 8.510 [post-build] Cesium.js → CDN (https://cdn.jsdelivr.net/npm/cesium@1.140.0/Build/Cesium/Cesium.js)"
+              - generic [ref=f9e1492]:
+                - generic [ref=f9e1493]: 2026-Aug-10 17:33:42.130286
+                - generic [ref=f9e1494]: "#13 8.510 [post-build] widgets.css → CDN (https://cdn.jsdelivr.net/npm/cesium@1.140.0/Build/Cesium/Widgets/widgets.css)"
+              - generic [ref=f9e1495]:
+                - generic [ref=f9e1496]: 2026-Aug-10 17:33:58.604145
+                - generic [ref=f9e1497]: "#13 25.13 [post-build] compressed 183 files | raw 10637 KB → gzip 3339 KB (69%) | brotli 2653 KB (75%)"
+              - generic [ref=f9e1498]:
+                - generic [ref=f9e1499]: 2026-Aug-10 17:33:58.811209
+                - generic [ref=f9e1500]: "#13 25.15 [post-build] removed dist/cesium (now served from CDN)"
+              - generic [ref=f9e1501]:
+                - generic [ref=f9e1502]: 2026-Aug-10 17:33:58.811209
+                - generic [ref=f9e1503]: "#13 25.16 npm notice"
+              - generic [ref=f9e1504]:
+                - generic [ref=f9e1505]: 2026-Aug-10 17:33:58.811209
+                - generic [ref=f9e1506]: "#13 25.16 npm notice New major version of npm available! 10.9.8 -> 12.0.2"
+              - generic [ref=f9e1507]:
+                - generic [ref=f9e1508]: 2026-Aug-10 17:33:58.811209
+                - generic [ref=f9e1509]: "#13 25.16 npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.0.2"
+              - generic [ref=f9e1510]:
+                - generic [ref=f9e1511]: 2026-Aug-10 17:33:58.811209
+                - generic [ref=f9e1512]: "#13 25.16 npm notice To update run:<REDACTED>@12.0.2"
+              - generic [ref=f9e1513]:
+                - generic [ref=f9e1514]: 2026-Aug-10 17:33:58.811209
+                - generic [ref=f9e1515]: "#13 25.16 npm notice"
+              - generic [ref=f9e1516]:
+                - generic [ref=f9e1517]: 2026-Aug-10 17:33:58.811209
+                - generic [ref=f9e1518]: "#13 DONE 25.2s"
+              - generic [ref=f9e1519]:
+                - generic [ref=f9e1520]: 2026-Aug-10 17:33:58.910549
+                - generic [ref=f9e1521]: "#14 [runtime 5/7] COPY --from=build /app/dist ./dist"
+              - generic [ref=f9e1522]:
+                - generic [ref=f9e1523]: 2026-Aug-10 17:33:59.133170
+                - generic [ref=f9e1524]: "#14 DONE 0.0s"
+              - generic [ref=f9e1525]: 2026-Aug-10 17:33:59.133170
+              - generic [ref=f9e1527]:
+                - generic [ref=f9e1528]: 2026-Aug-10 17:33:59.133170
+                - generic [ref=f9e1529]: "#15 [runtime 6/7] COPY server ./server"
+              - generic [ref=f9e1530]:
+                - generic [ref=f9e1531]: 2026-Aug-10 17:33:59.133170
+                - generic [ref=f9e1532]: "#15 DONE 0.0s"
+              - generic [ref=f9e1533]: 2026-Aug-10 17:33:59.133170
+              - generic [ref=f9e1535]:
+                - generic [ref=f9e1536]: 2026-Aug-10 17:33:59.133170
+                - generic [ref=f9e1537]: "#16 [runtime 7/7] COPY tsconfig.json ./"
+              - generic [ref=f9e1538]:
+                - generic [ref=f9e1539]: 2026-Aug-10 17:33:59.133170
+                - generic [ref=f9e1540]: "#16 DONE 0.0s"
+              - generic [ref=f9e1541]: 2026-Aug-10 17:33:59.133170
+              - generic [ref=f9e1543]:
+                - generic [ref=f9e1544]: 2026-Aug-10 17:33:59.133170
+                - generic [ref=f9e1545]: "#17 exporting to image"
+              - generic [ref=f9e1546]:
+                - generic [ref=f9e1547]: 2026-Aug-10 17:33:59.133170
+                - generic [ref=f9e1548]: "#17 exporting layers"
+              - generic [ref=f9e1549]:
+                - generic [ref=f9e1550]: 2026-Aug-10 17:34:02.201804
+                - generic [ref=f9e1551]: "#17 exporting layers 3.2s done"
+              - generic [ref=f9e1552]:
+                - generic [ref=f9e1553]: 2026-Aug-10 17:34:02.233431
+                - generic [ref=f9e1554]: "#17 writing image sha256:fbf7d11c750cb5f7ecfdc1c6e5219c50401cb81e5c2c01f84acb22471ccde6a0 done"
+              - generic [ref=f9e1555]:
+                - generic [ref=f9e1556]: 2026-Aug-10 17:34:02.233431
+                - generic [ref=f9e1557]: "#17 naming to docker.io/library/v8ea9c0tuk3sa9xnc5vgxwke:e1dae8edc0051ce1cbd061c1f2b88c44401cc28c done"
+              - generic [ref=f9e1558]:
+                - generic [ref=f9e1559]: 2026-Aug-10 17:34:02.233431
+                - generic [ref=f9e1560]: "#17 DONE 3.2s"
+              - generic [ref=f9e1561]:
+                - generic [ref=f9e1562]: 2026-Aug-10 17:34:02.244746
+                - generic [ref=f9e1563]: Building docker image completed.
+              - generic [ref=f9e1564]:
+                - generic [ref=f9e1565]: 2026-Aug-10 17:34:02.278079
+                - generic [ref=f9e1566]: Creating .env file with runtime variables for container.
+              - generic [ref=f9e1567]:
+                - generic [ref=f9e1568]: 2026-Aug-10 17:34:02.473710
+                - generic [ref=f9e1569]: "----------------------------------------"
+              - generic [ref=f9e1570]:
+                - generic [ref=f9e1571]: 2026-Aug-10 17:34:02.478286
+                - generic [ref=f9e1572]: Application has ports mapped to the host system, rolling update is not supported.
+              - generic [ref=f9e1573]:
+                - generic [ref=f9e1574]: 2026-Aug-10 17:34:02.483176
+                - generic [ref=f9e1575]: Removing old containers.
+              - generic [ref=f9e1576]:
+                - generic [ref=f9e1577]: 2026-Aug-10 17:34:02.880626
+                - generic [ref=f9e1578]: "[CMD]: docker stop -t 30 v8ea9c0tuk3sa9xnc5vgxwke-172726799551"
+              - generic [ref=f9e1579]:
+                - generic [ref=f9e1580]: 2026-Aug-10 17:34:02.880626
+                - generic [ref=f9e1581]: v8ea9c0tuk3sa9xnc5vgxwke-172726799551
+              - generic [ref=f9e1582]:
+                - generic [ref=f9e1583]: 2026-Aug-10 17:34:02.960677
+                - generic [ref=f9e1584]: "[CMD]: docker rm -f v8ea9c0tuk3sa9xnc5vgxwke-172726799551"
+              - generic [ref=f9e1585]:
+                - generic [ref=f9e1586]: 2026-Aug-10 17:34:02.960677
+                - generic [ref=f9e1587]: v8ea9c0tuk3sa9xnc5vgxwke-172726799551
+              - generic [ref=f9e1588]:
+                - generic [ref=f9e1589]: 2026-Aug-10 17:34:03.203210
+                - generic [ref=f9e1590]: "[CMD]: docker exec fdcjv953qz5vu8dzkbbkg7w6 bash -c 'COOLIFY_URL=http://v8ea9c0tuk3sa9xnc5vgxwke.14.100.61.124.sslip.io COOLIFY_FQDN=v8ea9c0tuk3sa9xnc5vgxwke.14.100.61.124.sslip.io COOLIFY_BRANCH=main COOLIFY_RESOURCE_UUID=v8ea9c0tuk3sa9xnc5vgxwke docker compose --project-name v8ea9c0tuk3sa9xnc5vgxwke --project-directory /artifacts/fdcjv953qz5vu8dzkbbkg7w6 -f /artifacts/fdcjv953qz5vu8dzkbbkg7w6/docker-compose.yaml up --build -d'"
+              - generic [ref=f9e1591]:
+                - generic [ref=f9e1592]: 2026-Aug-10 17:34:03.203210
+                - generic [ref=f9e1593]: Container v8ea9c0tuk3sa9xnc5vgxwke-173312331585 Creating
+              - generic [ref=f9e1594]:
+                - generic [ref=f9e1595]: 2026-Aug-10 17:34:03.226724
+                - generic [ref=f9e1596]: v8ea9c0tuk3sa9xnc5vgxwke-173312331585 Your kernel does not support memory swappiness capabilities or the cgroup is not mounted. Memory swappiness discarded.
+              - generic [ref=f9e1597]:
+                - generic [ref=f9e1598]: 2026-Aug-10 17:34:03.229503
+                - generic [ref=f9e1599]: Container v8ea9c0tuk3sa9xnc5vgxwke-173312331585 Created
+              - generic [ref=f9e1600]:
+                - generic [ref=f9e1601]: 2026-Aug-10 17:34:03.229503
+                - generic [ref=f9e1602]: Container v8ea9c0tuk3sa9xnc5vgxwke-173312331585 Starting
+              - generic [ref=f9e1603]:
+                - generic [ref=f9e1604]: 2026-Aug-10 17:34:03.346647
+                - generic [ref=f9e1605]: Container v8ea9c0tuk3sa9xnc5vgxwke-173312331585 Started
+              - generic [ref=f9e1606]:
+                - generic [ref=f9e1607]: 2026-Aug-10 17:34:03.353714
+                - generic [ref=f9e1608]: New container started.
+              - generic [ref=f9e1609]:
+                - generic [ref=f9e1610]: 2026-Aug-10 17:34:03.578833
+                - generic [ref=f9e1611]: "Gracefully shutting down build container: fdcjv953qz5vu8dzkbbkg7w6"
+              - generic [ref=f9e1612]:
+                - generic [ref=f9e1613]: 2026-Aug-10 17:34:03.799925
+                - generic [ref=f9e1614]: "[CMD]: docker stop -t 30 fdcjv953qz5vu8dzkbbkg7w6"
+              - generic [ref=f9e1615]:
+                - generic [ref=f9e1616]: 2026-Aug-10 17:34:03.799925
+                - generic [ref=f9e1617]: fdcjv953qz5vu8dzkbbkg7w6
+  - list

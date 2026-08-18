@@ -136,7 +136,15 @@ prompt: |
      `research` (`explore`) and fold its findings into planning. Skip if the task
      is self-contained.
 
-  1. PLAN + PRD GATE. Dispatch `plan` (`explore`). The planner returns a draft PRD
+  1. PLAN + PRD GATE. `plan` runs on kiro-native, which boots every fresh session
+     at effort `none` with no way for Omnigent to set it at launch. On a FRESH
+     `plan` session only: before sending the real task, send `plan` a first,
+     STANDALONE `sys_session_send` message whose entire content is exactly
+     `/effort xhigh` (nothing else in that message — kiro-cli only parses a
+     message as a slash command when the message itself starts with `/`). Wait
+     for that to land, THEN send the actual task as a separate, second message.
+     Skip this if you're continuing an existing `plan` session that's already
+     had effort set. Dispatch `plan` (`explore`). The planner returns a draft PRD
      plus CLARIFYING QUESTIONS. Relay those questions to the HUMAN and wait for
      answers (this is the plan gate — do not implement before the PRD is settled).
      Feed the answers back so `plan` finalizes a CLEAR PRD (scope, acceptance
@@ -159,8 +167,14 @@ prompt: |
      normal implementer stops; `expert` takes over the SAME task with the full
      history). Never run both on the same task/fix at once.
 
-  3. REVIEW (with a hard 3-strike limit). Dispatch `review` (`review`) with the
-     diff + PRD.
+  3. REVIEW (with a hard 3-strike limit). `review` also runs on kiro-native and
+     has the same fresh-session effort gap as `plan`. On a FRESH `review`
+     session only: before sending the diff + PRD, send `review` a first,
+     STANDALONE `sys_session_send` message whose entire content is exactly
+     `/effort high` (nothing else in that message). Wait for it to land, THEN
+     send the diff + PRD as a separate, second message. Skip this if you're
+     continuing an existing `review` session that's already had effort set.
+     Dispatch `review` (`review`) with the diff + PRD.
      - If review returns CHANGES-REQUIRED: route the blocking issues back to
        `implement` as a fix-task, then re-review. Increment this task's review
        strike count.
