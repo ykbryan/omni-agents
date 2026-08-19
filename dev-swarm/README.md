@@ -2,8 +2,8 @@
 
 A multi-vendor coding **swarm**. A Claude (Sonnet 5) brain takes your prompt,
 enriches it, fans it out into tasks, and drives each through a bounded pipeline of
-nine specialists — Claude (direct SDK and claude-native), GPT (Codex CLI),
-and MiniMax —
+nine specialists — Claude (direct SDK and claude-native), GPT via Kiro (pi
+harness), and MiniMax —
 plus a tenth, on-demand MiniMax `support` worker for debugging,
 troubleshooting, log/data analysis, and boilerplate. The brain writes no code
 and never merges; the human merges the PRs.
@@ -14,10 +14,10 @@ and never merges; the human merges the PRs.
 |---|---|---|---|---|---|
 | **brain** | dev-swarm | `claude-sdk` | `claude-sonnet-5` | medium | takes the goal, fans out, orchestrates |
 | **research** | researcher | `pi` (minimax) | `minimax/MiniMax-M3` | — | online / local research (`explore`) |
-| **plan** | planner | `codex` | `gpt-5.6-sol` | xhigh | PRD + clarifying questions (`explore`) |
+| **plan** | planner | `pi` (kiro) | `kiro/gpt-5.6-sol` | xhigh (in model string) | PRD + clarifying questions (`explore`) |
 | **implement** | implementer | `claude-native` | `claude-sonnet-5` | high | NORMAL tasks: review PRD, code + tests, open PR; native browser (`implement`) |
 | **expert** | expert implementer | `claude-native` | `claude-opus-5` | high | DIFFICULT tasks only: hard bugs / failed fixes; native browser (`implement`) |
-| **review** | code reviewer | `codex` | `gpt-5.6-sol` | high | cross-model diff review (`review`) |
+| **review** | code reviewer | `pi` (kiro) | `kiro/gpt-5.6-sol` | high (in model string) | cross-model diff review (`review`) |
 | **qa** | QA / visual-check | `claude-native` | `claude-opus-5` | high | run & see: browser/visual (`review`) |
 | **sanitize** | sanitizer / content-integrity | `pi` (minimax) | `minimax/MiniMax-M3` | — | scan diff for invisible/anomalous Unicode; flag possible disclosure signals to the human (`implement`) |
 | **docs** | document writer | `pi` (minimax) | `minimax/MiniMax-M3` | — | README + LEARNING (`implement`) |
@@ -26,8 +26,8 @@ and never merges; the human merges the PRs.
 
 **Permissions:** the swarm runs headless, no per-action approval prompts. The
 pi/minimax workers (`research`, `docs`, `host`, `support`, `sanitize`) and the
-`codex` planner and reviewer use **`bypassPermissions`**, which gives them
-uninterrupted headless autonomy directly. The `claude-native` workers (`qa`,
+pi/kiro planner and reviewer (`plan`, `review`) use **`bypassPermissions`**,
+which gives them uninterrupted headless autonomy directly. The `claude-native` workers (`qa`,
 `implement`, `expert`) use **`auto`** instead — `bypassPermissions`
 (`--dangerously-skip-permissions`) does
 not reliably clear Claude Code's per-worktree "trust this folder?" dialog for a
@@ -74,7 +74,7 @@ activates the swarm — the brain answers directly, or (if it can't) dispatches
    opens its own PR. A fix `implement` can't land (repeated review/QA failures,
    HARD flags) **hands off** to `expert` with the full history — one at a time,
    never both at once.
-4. **review** (GPT via Codex CLI, cross-model) — judges the diff vs the PRD.
+4. **review** (GPT via Kiro, pi harness, cross-model) — judges the diff vs the PRD.
    - fail → back to **implement**, retry.
    - **3 failures → STOP the whole swarm and alert the human** (with the review
      history). No silent looping.
@@ -122,10 +122,11 @@ plan, or straight to the task's owning implementer for a fix or scaffold).
 ## Independent review
 
 Implementers run **Claude (Sonnet 5 normal / Opus 5 expert) on claude-native**; the
-reviewer runs **GPT-5.6 Sol on the Codex CLI** — a different model line, so review is
+reviewer runs **GPT-5.6 Sol via Kiro (AWS CodeWhisperer), on the `pi` harness through
+the `@arvoretech/pi-kiro-provider` extension** — a different model line, so review is
 an independent cross-check, not the same model grading its own work. The reviewer
 gets only the diff + PRD (never the worktree) and never edits; only the implementer
-opens a PR. Planning runs on **GPT-5.6 Sol via the Codex CLI**, same as review;
+opens a PR. Planning runs on **GPT-5.6 Sol via Kiro**, same as review;
 run-and-see QA uses **Claude Opus 5**.
 
 ## LEARNING.md — cross-session memory
@@ -145,7 +146,7 @@ screenshots and live visual/UI checks work out of the box. `implement` and
 `expert` also run on **`claude-native`**, so they have the same native
 Playwright MCP access — TEXT/DOM snapshots or a real screenshot when they
 genuinely need to see something, though the systematic pixel/visual pass stays
-`qa`'s job. `review` (Codex CLI) and `research`, `host` (minimax on pi) have
+`qa`'s job. `review` (kiro on pi) and `research`, `host` (minimax on pi) have
 the Playwright MCP too, but are **text/DOM only** (`browser_navigate` +
 `browser_snapshot`) — a screenshot is a large image and these models
 reject it with `context_length_exceeded`.
@@ -154,13 +155,19 @@ reject it with `context_length_exceeded`.
 
 - A **Claude provider** (`omnigent setup`) — for the brain, `qa`,
   `implement`, `expert`.
-- **`codex`** (Codex CLI, authenticated) — for `plan` and `review`. The model
-  (`gpt-5.6-sol`) is taken from your `~/.codex/config.toml` default, not
-  pinned in either agent config; reasoning effort IS pinned per-agent
-  (`plan` xhigh, `review` high).
 - **`pi`** + the **minimax** provider — for `research`, `docs`, `host`,
   `support`, `sanitize` (`minimax/MiniMax-M3`, `minimax/MiniMax-M2.7`,
   provider-qualified).
+- **`pi`** + the **kiro** provider (`npm:@arvoretech/pi-kiro-provider`, a
+  maintained fork of `mikeyobrien/pi-provider-kiro`) — for `plan` and
+  `review`. Install with `pi install npm:@arvoretech/pi-kiro-provider`, then
+  log in once with `/login kiro` inside an interactive `pi` session (it can
+  reuse an existing `kiro-cli` OAuth session if you have one). Model
+  (`gpt-5.6-sol`) and reasoning effort (`plan` xhigh, `review` high) are both
+  pinned directly in the `model:` string per agent — `pi --model` accepts a
+  `provider/id:thinking` suffix, so there's no separate effort field to set.
+  This runs as a plain CLI subprocess, so it works on any host with `pi` on
+  PATH — no native terminal required, unlike the old `kiro-native` harness.
 - **`tailscale`** on PATH + host on the tailnet — for `host` preview URLs.
 - A browser MCP (Playwright) for `qa` visual checks and `research` browsing.
 
@@ -171,10 +178,10 @@ dev-swarm/
   config.yaml                # brain (claude-sdk sonnet-5, medium) + full pipeline
   agents/
     research/config.yaml     # pi minimax/MiniMax-M3 — online/local research
-    plan/config.yaml         # codex gpt-5.6-sol (xhigh) — PRD + questions
+    plan/config.yaml         # pi kiro/gpt-5.6-sol:xhigh — PRD + questions
     implement/config.yaml    # claude-native claude-sonnet-5 (high) — normal implementer
     expert/config.yaml       # claude-native claude-opus-5 (high) — expert implementer (hard tasks)
-    review/config.yaml       # codex gpt-5.6-sol (high) — cross-model review
+    review/config.yaml       # pi kiro/gpt-5.6-sol:high — cross-model review
     qa/config.yaml           # claude-native opus-5 (high) — QA / visual
     sanitize/config.yaml     # pi minimax/MiniMax-M3 — invisible-Unicode / integrity scan
     docs/config.yaml         # pi minimax/MiniMax-M3 — README + LEARNING
