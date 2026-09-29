@@ -6,7 +6,7 @@ description: >-
   the app, inspects the result, and reports pass/fail with evidence. Does not open
   PRs or edit code.
 
-# claude-native (Claude Code) harness, claude-opus-5 at high effort. Runs on
+# claude-native (Claude Code) harness, claude-opus-5-5 at high effort. Runs on
 # Claude Code specifically so it HAS the Playwright/browser MCP (configured in
 # ~/.claude.json and verified working on this host) for real visual/UI checks,
 # plus the live preview pane. Screenshots are fine on Claude models; prefer
@@ -22,7 +22,7 @@ executor:
   type: omnigent
   config:
     harness: claude-native
-    model: claude-opus-5
+    model: claude-opus-5-5
     reasoning_effort: high
     permission_mode: auto
 

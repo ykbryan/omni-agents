@@ -5,7 +5,7 @@ description: >-
   reserved for DIFFICULT tasks — hard problems, gnarly bugs, or work a prior
   implementer couldn't land. Higher-capability model.
 
-# claude-native (Claude Code) harness, claude-opus-5 at high effort. Runs on
+# claude-native (Claude Code) harness, claude-opus-5-5 at high effort. Runs on
 # Claude Code directly (not via kiro) for the hardest implementation work — full
 # Playwright/browser MCP access (TEXT/DOM diagnosis or real screenshots), no kiro
 # image-size cap to work around.
@@ -18,7 +18,7 @@ executor:
   type: omnigent
   config:
     harness: claude-native
-    model: claude-opus-5
+    model: claude-opus-5-5
     reasoning_effort: high
     permission_mode: auto
 

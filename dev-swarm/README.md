@@ -16,9 +16,9 @@ and never merges; the human merges the PRs.
 | **research** | researcher | `pi` (minimax) | `minimax/MiniMax-M3` | — | online / local research (`explore`) |
 | **plan** | planner | `codex` | `gpt-5.6-sol` | xhigh | PRD + clarifying questions (`explore`) |
 | **implement** | implementer | `claude-native` | `claude-sonnet-5-5` | high | NORMAL tasks: review PRD, code + tests, open PR; native browser (`implement`) |
-| **expert** | expert implementer | `claude-native` | `claude-opus-5` | high | DIFFICULT tasks only: hard bugs / failed fixes; native browser (`implement`) |
+| **expert** | expert implementer | `claude-native` | `claude-opus-5-5` | high | DIFFICULT tasks only: hard bugs / failed fixes; native browser (`implement`) |
 | **review** | code reviewer | `codex` | `gpt-5.6-sol` | high | cross-model diff review (`review`) |
-| **qa** | QA / visual-check | `claude-native` | `claude-opus-5` | high | run & see: browser/visual (`review`) |
+| **qa** | QA / visual-check | `claude-native` | `claude-opus-5-5` | high | run & see: browser/visual (`review`) |
 | **sanitize** | sanitizer / content-integrity | `pi` (minimax) | `minimax/MiniMax-M3` | — | scan diff for invisible/anomalous Unicode; flag possible disclosure signals to the human (`implement`) |
 | **docs** | document writer | `pi` (minimax) | `minimax/MiniMax-M3` | — | README + LEARNING (`implement`) |
 | **host** | host / preview | `pi` (minimax) | `minimax/MiniMax-M2.7` | — | serve latest on an unused port + Tailscale URL (`implement`) |
@@ -121,7 +121,7 @@ plan, or straight to the task's owning implementer for a fix or scaffold).
 
 ## Independent review
 
-Implementers run **Claude (Sonnet 5.5 normal / Opus 5 expert) on claude-native**; the
+Implementers run **Claude (Sonnet 5.5 normal / Opus 5.5 expert) on claude-native**; the
 reviewer runs **GPT-5.6 Sol on the Codex CLI** — a different model line, so review is
 an independent cross-check, not the same model grading its own work. The reviewer
 gets only the diff + PRD (never the worktree) and never edits; only the implementer
@@ -173,9 +173,9 @@ dev-swarm/
     research/config.yaml     # pi minimax/MiniMax-M3 — online/local research
     plan/config.yaml         # codex gpt-5.6-sol (xhigh) — PRD + questions
     implement/config.yaml    # claude-native claude-sonnet-5-5 (high) — normal implementer
-    expert/config.yaml       # claude-native claude-opus-5 (high) — expert implementer (hard tasks)
+    expert/config.yaml       # claude-native claude-opus-5-5 (high) — expert implementer (hard tasks)
     review/config.yaml       # codex gpt-5.6-sol (high) — cross-model review
-    qa/config.yaml           # claude-native opus-5 (high) — QA / visual
+    qa/config.yaml           # claude-native opus-5.5 (high) — QA / visual
     sanitize/config.yaml     # pi minimax/MiniMax-M3 — invisible-Unicode / integrity scan
     docs/config.yaml         # pi minimax/MiniMax-M3 — README + LEARNING
     host/config.yaml         # pi minimax/MiniMax-M2.7 — serve (unused port) + Tailscale URL

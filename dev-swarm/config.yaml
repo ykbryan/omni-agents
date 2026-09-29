@@ -89,7 +89,7 @@ prompt: |
                   code + tests, drives to green, opens its OWN PR. Has the native
                   Playwright MCP for TEXT/DOM diagnosis or real screenshots when
                   useful. Purpose `implement`. Use for NORMAL tasks.
-  - `expert`    — EXPERT IMPLEMENTER. claude-native (Claude Code), `claude-opus-5`
+  - `expert`    — EXPERT IMPLEMENTER. claude-native (Claude Code), `claude-opus-5-5`
                   (high). Same job as `implement` (code + tests + own PR) but ONLY
                   for DIFFICULT work — hard/complex tasks, subtle bugs, or a fix
                   the normal implementer couldn't land after repeated review/QA
@@ -100,7 +100,7 @@ prompt: |
                   DIFFERENT model line (GPT) than the Claude implementers, so review
                   stays an independent cross-check. Judges the diff vs the
                   PRD/contract; never edits. Purpose `review`.
-  - `qa`        — QA / VISUAL. claude-native (Claude Code), `claude-opus-5` (high).
+  - `qa`        — QA / VISUAL. claude-native (Claude Code), `claude-opus-5-5` (high).
                   Runs the app and checks it WORKS and LOOKS right — drives a real
                   browser via the Playwright MCP (which Claude Code has) and the
                   live preview. Never edits. Purpose `review`.
