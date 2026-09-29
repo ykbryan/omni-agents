@@ -5,35 +5,19 @@ description: >-
   clarifying questions for the human. Produces scoped tasks and acceptance
   criteria. Read-mostly; writes no product code.
 
-# Moved OFF kiro-native onto `pi` harness talking to Kiro through the
-# `@arvoretech/pi-kiro-provider` extension (npm:@arvoretech/pi-kiro-provider,
-# a maintained fork of mikeyobrien/pi-provider-kiro). Same underlying model
-# (gpt-5.6-sol) and provider (Kiro/AWS CodeWhisperer) as the old kiro-native
-# setup, but `pi` is a plain CLI_SUBPROCESS harness Omnigent can run on ANY
-# host with `pi` on PATH — unlike kiro-native, which needed a real terminal
-# on a machine with kiro-cli installed (Mac-only; VM 110's server container
-# had no `kiro` binary on PATH at all). This fixes that gap: `pi` + this
-# extension is verified working on VM 110 (logged in via `/login kiro`,
-# reusing the host's kiro-cli OAuth session where possible).
-#
-# Effort: `pi --model` accepts an optional `:<thinking>` suffix
-# (`provider/id:level`, e.g. Pi's own `pi --model sonnet:high` example), so
-# xhigh is baked directly into the `model:` string below at launch — no
-# priming-message workaround needed (unlike kiro-native, which had no
-# effort-passthrough at all and required the orchestrator to send a
-# standalone `/effort xhigh` message; see dev-swarm/config.yaml history).
-#
-# Setup required on any host that runs this worker: `pi install
-# npm:@arvoretech/pi-kiro-provider` + `/login kiro` once (or let it reuse an
-# existing kiro-cli session). As of this commit: done on VM 110. NOT yet
-# done on Bryan's Mac — plan/review will fail to launch there until the Mac
-# also runs `/login kiro` in an interactive `pi` session (this is an OAuth
-# login step, so it has to be done by hand, not scripted).
+# codex (Codex CLI) harness at xhigh reasoning effort, GPT-5.6 Sol. Same Codex
+# CLI path as `review` (~/.codex/config.toml pins `model = "gpt-5.6-sol"`), so
+# the model is deliberately NOT pinned here either — the codex harness
+# resolves the configured OpenAI/Codex default, and unlike the openai-agents
+# harness it has no silent Databricks fallback for an unpinned model.
+# `reasoning_effort: xhigh` IS pinned explicitly (unlike `review`'s `high`) so
+# the planner's effort level is self-documenting in git, not just inherited
+# from a local dotfile default.
 executor:
   type: omnigent
   config:
-    harness: pi
-    model: kiro/gpt-5.6-sol:xhigh
+    harness: codex
+    reasoning_effort: xhigh
     permission_mode: bypassPermissions
 
 prompt: |
