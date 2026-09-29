@@ -126,7 +126,7 @@ reviewer runs **GPT-5.6 Sol on the Codex CLI** — a different model line, so re
 an independent cross-check, not the same model grading its own work. The reviewer
 gets only the diff + PRD (never the worktree) and never edits; only the implementer
 opens a PR. Planning runs on **GPT-5.6 Sol via the Codex CLI**, same as review;
-run-and-see QA uses **Claude Opus 5**.
+run-and-see QA uses **Claude Opus 5.5**.
 
 ## LEARNING.md — cross-session memory
 
