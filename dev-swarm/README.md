@@ -14,7 +14,7 @@ and never merges; the human merges the PRs.
 |---|---|---|---|---|---|
 | **brain** | dev-swarm | `claude-sdk` | `claude-sonnet-5-5` | medium | takes the goal, fans out, orchestrates |
 | **research** | researcher | `pi` (minimax) | `minimax/MiniMax-M3` | — | online / local research (`explore`) |
-| **plan** | planner | `codex` | `gpt-5.6-sol` | xhigh | PRD + clarifying questions (`explore`) |
+| **plan** | planner | `claude-native` | `claude-opus-5-5` | xhigh | PRD + clarifying questions (`explore`) |
 | **implement** | implementer | `claude-native` | `claude-sonnet-5-5` | high | NORMAL tasks: review PRD, code + tests, open PR; native browser (`implement`) |
 | **expert** | expert implementer | `claude-native` | `claude-opus-5-5` | high | DIFFICULT tasks only: hard bugs / failed fixes; native browser (`implement`) |
 | **review** | code reviewer | `codex` | `gpt-5.6-sol` | high | cross-model diff review (`review`) |
@@ -26,8 +26,8 @@ and never merges; the human merges the PRs.
 
 **Permissions:** the swarm runs headless, no per-action approval prompts. The
 pi/minimax workers (`research`, `docs`, `host`, `support`, `sanitize`) and the
-`codex` planner and reviewer use **`bypassPermissions`**, which gives them
-uninterrupted headless autonomy directly. The `claude-native` workers (`qa`,
+`codex` reviewer uses **`bypassPermissions`**, which gives them
+uninterrupted headless autonomy directly. The `claude-native` workers (`plan`, `qa`,
 `implement`, `expert`) use **`auto`** instead — `bypassPermissions`
 (`--dangerously-skip-permissions`) does
 not reliably clear Claude Code's per-worktree "trust this folder?" dialog for a
@@ -125,8 +125,8 @@ Implementers run **Claude (Sonnet 5.5 normal / Opus 5.5 expert) on claude-native
 reviewer runs **GPT-5.6 Sol on the Codex CLI** — a different model line, so review is
 an independent cross-check, not the same model grading its own work. The reviewer
 gets only the diff + PRD (never the worktree) and never edits; only the implementer
-opens a PR. Planning runs on **GPT-5.6 Sol via the Codex CLI**, same as review;
-run-and-see QA uses **Claude Opus 5.5**.
+opens a PR. Planning and run-and-see QA run on **Claude Opus 5.5**; review runs on
+**GPT-5.6 Sol via the Codex CLI**.
 
 ## LEARNING.md — cross-session memory
 
@@ -153,11 +153,10 @@ reject it with `context_length_exceeded`.
 ## Host requirements (the runner)
 
 - A **Claude provider** (`omnigent setup`) — for the brain, `qa`,
-  `implement`, `expert`.
-- **`codex`** (Codex CLI, authenticated) — for `plan` and `review`. The model
+  `implement`, `expert`, `plan`.
+- **`codex`** (Codex CLI, authenticated) — for `review`. The model
   (`gpt-5.6-sol`) is taken from your `~/.codex/config.toml` default, not
-  pinned in either agent config; reasoning effort IS pinned per-agent
-  (`plan` xhigh, `review` high).
+  pinned in the agent config; reasoning effort IS pinned (`review` high).
 - **`pi`** + the **minimax** provider — for `research`, `docs`, `host`,
   `support`, `sanitize` (`minimax/MiniMax-M3`, `minimax/MiniMax-M2.7`,
   provider-qualified).
@@ -171,7 +170,7 @@ dev-swarm/
   config.yaml                # brain (claude-sdk sonnet-5.5, medium) + full pipeline
   agents/
     research/config.yaml     # pi minimax/MiniMax-M3 — online/local research
-    plan/config.yaml         # codex gpt-5.6-sol (xhigh) — PRD + questions
+    plan/config.yaml         # claude-native opus-5.5 (xhigh) — PRD + questions
     implement/config.yaml    # claude-native claude-sonnet-5-5 (high) — normal implementer
     expert/config.yaml       # claude-native claude-opus-5-5 (high) — expert implementer (hard tasks)
     review/config.yaml       # codex gpt-5.6-sol (high) — cross-model review
