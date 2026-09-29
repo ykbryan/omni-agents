@@ -1,7 +1,7 @@
 spec_version: 1
 name: dev-swarm
 description: >-
-  dev-swarm is a multi-vendor coding swarm. A Claude (Sonnet 5) brain takes a
+  dev-swarm is a multi-vendor coding swarm. A Claude (Sonnet 5.5) brain takes a
   goal, optionally fans it out into independent tasks, and drives each through a
   bounded pipeline of nine specialists: a MiniMax researcher, a GPT-5.6 Sol
   planner (Codex CLI — writes the PRD, asks the human clarifying
@@ -20,7 +20,7 @@ description: >-
 spawn: true
 
 # ---------------------------------------------------------------------------
-# Orchestrator "brain" = dev-swarm. Claude Agent SDK, claude-sonnet-5 at MEDIUM
+# Orchestrator "brain" = dev-swarm. Claude Agent SDK, claude-sonnet-5-5 at MEDIUM
 # effort. claude-sdk is the most reliable at the orchestration layer
 # (sys_session_send / spawn / inbox supervision) and appears in the Web UI
 # "Agents" picker. Resolves through the configured Claude provider.
@@ -30,7 +30,7 @@ executor:
   context_window: 1000000
   config:
     harness: claude-sdk
-    model: claude-sonnet-5
+    model: claude-sonnet-5-5
     reasoning_effort: medium
     # Whole swarm runs bypassPermissions: no per-action approval prompts. Omnigent
     # translates this to --dangerously-skip-permissions for the claude harnesses
@@ -84,7 +84,7 @@ prompt: |
   - `plan`      — PLANNER. codex harness (Codex CLI), `gpt-5.6-sol` (xhigh). Turns
                   the goal (+ research) into a clear PRD and surfaces CLARIFYING
                   QUESTIONS for the human. Read-mostly. Purpose `explore`.
-  - `implement` — IMPLEMENTER. claude-native (Claude Code), `claude-sonnet-5`
+  - `implement` — IMPLEMENTER. claude-native (Claude Code), `claude-sonnet-5-5`
                   (high). Reviews the PRD, asks questions if needed, writes the
                   code + tests, drives to green, opens its OWN PR. Has the native
                   Playwright MCP for TEXT/DOM diagnosis or real screenshots when

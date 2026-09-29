@@ -1,6 +1,6 @@
 # dev-swarm
 
-A multi-vendor coding **swarm**. A Claude (Sonnet 5) brain takes your prompt,
+A multi-vendor coding **swarm**. A Claude (Sonnet 5.5) brain takes your prompt,
 enriches it, fans it out into tasks, and drives each through a bounded pipeline of
 nine specialists — Claude (direct SDK and claude-native), GPT (Codex CLI),
 and MiniMax —
@@ -12,10 +12,10 @@ and never merges; the human merges the PRs.
 
 | Role | Worker | Harness | Model | Effort | Purpose |
 |---|---|---|---|---|---|
-| **brain** | dev-swarm | `claude-sdk` | `claude-sonnet-5` | medium | takes the goal, fans out, orchestrates |
+| **brain** | dev-swarm | `claude-sdk` | `claude-sonnet-5-5` | medium | takes the goal, fans out, orchestrates |
 | **research** | researcher | `pi` (minimax) | `minimax/MiniMax-M3` | — | online / local research (`explore`) |
 | **plan** | planner | `codex` | `gpt-5.6-sol` | xhigh | PRD + clarifying questions (`explore`) |
-| **implement** | implementer | `claude-native` | `claude-sonnet-5` | high | NORMAL tasks: review PRD, code + tests, open PR; native browser (`implement`) |
+| **implement** | implementer | `claude-native` | `claude-sonnet-5-5` | high | NORMAL tasks: review PRD, code + tests, open PR; native browser (`implement`) |
 | **expert** | expert implementer | `claude-native` | `claude-opus-5` | high | DIFFICULT tasks only: hard bugs / failed fixes; native browser (`implement`) |
 | **review** | code reviewer | `codex` | `gpt-5.6-sol` | high | cross-model diff review (`review`) |
 | **qa** | QA / visual-check | `claude-native` | `claude-opus-5` | high | run & see: browser/visual (`review`) |
@@ -121,7 +121,7 @@ plan, or straight to the task's owning implementer for a fix or scaffold).
 
 ## Independent review
 
-Implementers run **Claude (Sonnet 5 normal / Opus 5 expert) on claude-native**; the
+Implementers run **Claude (Sonnet 5.5 normal / Opus 5 expert) on claude-native**; the
 reviewer runs **GPT-5.6 Sol on the Codex CLI** — a different model line, so review is
 an independent cross-check, not the same model grading its own work. The reviewer
 gets only the diff + PRD (never the worktree) and never edits; only the implementer
@@ -168,11 +168,11 @@ reject it with `context_length_exceeded`.
 
 ```
 dev-swarm/
-  config.yaml                # brain (claude-sdk sonnet-5, medium) + full pipeline
+  config.yaml                # brain (claude-sdk sonnet-5.5, medium) + full pipeline
   agents/
     research/config.yaml     # pi minimax/MiniMax-M3 — online/local research
     plan/config.yaml         # codex gpt-5.6-sol (xhigh) — PRD + questions
-    implement/config.yaml    # claude-native claude-sonnet-5 (high) — normal implementer
+    implement/config.yaml    # claude-native claude-sonnet-5-5 (high) — normal implementer
     expert/config.yaml       # claude-native claude-opus-5 (high) — expert implementer (hard tasks)
     review/config.yaml       # codex gpt-5.6-sol (high) — cross-model review
     qa/config.yaml           # claude-native opus-5 (high) — QA / visual

@@ -5,7 +5,7 @@ description: >-
   the real code + test changes for a scoped task in its own git worktree, drives
   them to green, and opens its own PR.
 
-# claude-native (Claude Code) harness, claude-sonnet-5 at high effort. Runs on
+# claude-native (Claude Code) harness, claude-sonnet-5-5 at high effort. Runs on
 # Claude Code directly (not via kiro) so it has the Playwright/browser MCP
 # natively for both TEXT/DOM diagnosis and real screenshots when useful — no
 # kiro image-size cap to work around here.
@@ -18,7 +18,7 @@ executor:
   type: omnigent
   config:
     harness: claude-native
-    model: claude-sonnet-5
+    model: claude-sonnet-5-5
     reasoning_effort: high
     permission_mode: auto
 
